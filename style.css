@@ -1,0 +1,235 @@
+/* a faire
+trouver les 4 couleurs du theme
+trouver 4 colueurs pour les langages et les attribuer en js 
+aux cartes concernées en utilisant var CSS 
+-remplacer les JS CSS HTML par les petit logos officiels
+
+
+ATTENTION IL DOIT Y AVOIR QQCH A MODIFIER AU NIVEAU DU JS 
+PEUT ETRE CREATION DES ELEMENTS
+CAR J AI RAJOUTE LE WRAPPER ET SES PROPRIETES NE S APPLIQUENT PAS AUX CARTES
+MAIS CELLES DU BODY OUI
+*/
+
+
+
+
+:root{
+    --mainColor : hsla(240, 100%, 50%, 0.82) ;
+    --secondColor : #ffb700 ;
+    --accentColor : rgb(24, 235, 13) ;
+    --fourthColor : rgb(129, 129, 202) ;
+    --leftMenuWidth : 10vw ;
+    --gridAreaNormal : 
+    "h1 h1 h1 h1 h1 "
+    "h2 h2 h2 h2 h2 " 
+    "menu menu menu menu menu "
+    "menu menu menu menu menu "
+    "keywords keywords keywords keywords keywords "
+    "keywords keywords keywords keywords keywords "
+    "keywords keywords keywords keywords keywords "
+    "cards cards cards cards cards "
+    "cards cards cards cards cards "
+    "cards cards cards cards cards "
+    "cards cards cards cards cards "
+    "cards cards cards cards cards "
+    "cards cards cards cards cards "
+    "cards cards cards cards cards "
+    "cards cards cards cards cards "
+    "cards cards cards cards cards "
+    "cards cards cards cards cards "
+    "cards cards cards cards cards "
+    "cards cards cards cards cards "
+    ;
+}
+
+*{
+    padding: 0% ;
+    margin: 0%;
+}
+
+body{
+    background-color: rgb(3, 18, 48);
+    color: wheat;
+}
+
+#wrapper {
+    position: absolute;
+    background-color: rgb(3, 18, 48);
+    color: antiquewhite;
+    display : grid ;
+    grid-template-columns: repeat(5,20%); 
+    grid-template-rows: repeat(20,5%); 
+    grid-template-areas: 
+    var(--gridAreaNormal) ;
+    width: 100%;
+    height: 100vh ;
+    top: 0%;
+    left :0px ;
+}
+
+h1{
+    background-color: chocolate;
+    grid-area: h1 ;
+    text-align: center;
+}
+
+h2{
+    background-color: rgb(60, 142, 114);
+    grid-area: h2 ;
+    text-align: center;
+}
+
+
+#left-menu-span{
+    position: absolute;
+    top : 0% ;
+    left : 0% ;
+    background-color: blue;
+    z-index: 7;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    font-style: oblique;
+    font-size: large;
+    border: dotted white 2px ;
+    width: var(--leftMenuWidth)
+}
+
+#menu{
+    background-color: brown;
+    grid-area: menu ;
+    height: auto;
+}
+
+#left-menu{
+    visibility: hidden;
+    position: absolute;
+    top : 0% ;
+    left : 0% ;
+    background-color: rgb(21, 123, 136);
+    width: var(--leftMenuWidth);
+    height: 100vh;
+    z-index: 5;
+}
+
+a{
+    background-color: rgb(199, 138, 23);
+    color :aliceblue ;
+    margin: 5px ;
+    padding: 5px ;
+    border-radius: 5% ;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: baseline;
+    
+}
+
+#list{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: auto;
+}
+
+li{
+    display: flex;
+    flex-direction: row ;
+    background-color: darkgoldenrod;
+    list-style-type: none;
+    margin: 1%;
+    padding: 8px 2% ;
+    border-radius: 15px ;
+    border: 5px solid greenyellow;
+    cursor: pointer;
+}
+
+#cards{
+    display: flex ;
+    flex-direction: row;
+    justify-content: center ;
+    grid-area: cards ;
+    /* background-color: darkorchid; */
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+}
+
+#keywords{
+    display: flex;
+    grid-area: keywords ;
+    background-color: gold;
+    color: blue;
+    width: 100%;
+    height: 100% ;
+    flex-wrap: wrap;
+}
+/* CSS DE LA CARD */
+
+.card{
+    position: relative;
+    border : 5px solid black ;
+    border-radius: 15px 5px 15px 5px;
+    background-color: rgb(42, 57, 134);
+    margin : 3%  3%;
+    height: fit-content;
+}
+
+.nom{
+    text-align: center;
+    border: 2px solid white ;
+    border-radius: 15px 5px 15px 5px;
+}
+/* ca marche pas */
+.definition::first-line{
+    padding : 5px ;
+}
+
+.example{
+    border : 5px solid rgb(103, 100, 100) ;
+    border-radius: 5px ;
+    background-color: black;
+    color: limegreen;
+    align-items: flex-start;
+    height: 6rem;
+    height: fit-content;
+}
+
+.type{
+    position: absolute;
+    bottom : 0%;
+    right : 0% ;
+    border: solid rgb(202, 69, 91) 5px ;
+    border-radius: 15px 5px 15px 5px;
+}
+
+img{
+    width :1rem ;
+    height :auto ;
+}
+
+#scrollToTop{
+    position: fixed ;
+    width: 30px ;
+    height: 30px;
+    bottom :5% ;
+    right: 5%;
+    background-image: url("https://icongr.am/jam/chevrons-square-up-f.svg?size=128&color=currentColor") ;
+    background-size: contain;
+    filter : brightness(1) contrast(0%) saturate(60%);
+    z-index: 5;
+}
+
+#scrollToTop:hover{
+    background-image: url("https://icongr.am/jam/chevrons-square-up.svg?size=128&color=currentColor") ;
+}
+
+#photo{
+    position: fixed ;
+    width: 230px ;
+    height: 230px;
+    bottom :5% ;
+    left: 5%;
+    filter :hue-rotate(234deg) ;
+    z-index: 5;
+}
