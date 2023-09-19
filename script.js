@@ -1,3 +1,11 @@
+// A FAIRE IDEE 
+//pour le menu d egauch mettre la liste des mots clés classés par ordre laphabétique
+// faire que les mots clés soient triés par langage aussi dans la rubrique keywords qd on a cliqué
+
+
+
+
+
 // POURQUOI JE N4ARRIVE PAS A creer le bouton COLLER specifique à chaque carte?
 // ==> utilsier la fonctin dans une classe ? méthode de classes ?
 
@@ -19,7 +27,52 @@ let  keywordList=[]
 let  keywordLinks=""
 
 const datas = [
-
+    {
+        nom : "forEach()" ,
+        definition : ["Methode qui prend en paramètre une fonction qui accepte 1 à 3 arguments "] ,
+        example : [ "tableau.forEach(function(value, index,array){",
+                    "console.log(`${value} est au rang numéro ${index}`)})"] ,
+        type : "JS"
+    } ,
+    {
+        nom : "do...while loop" ,
+        definition : ["do {instructions} while(condition) - Au moins une fois "] ,
+        example : [ "do {",
+            "i = i + 1;",
+            "result = result + i;",
+            "}",
+            "while (i < 5);"] ,
+        type : "JS"
+    } ,
+    {
+        nom : "this 1/2" ,
+        definition : ["le mot-clé \"this\" se réfère tjrs à un objet",
+                    "qui varie selon où on l'utilise :",
+                    "- a/ Tout seul=>[object Window]",
+                    "- b/ Dans la méthode d'un objet =>l'objet ds lequel est déclaré la méthode",
+                    "- c/ Dans une fonction=>[object Window]",
+                    "- d/ Dans une fonction fléchée =>[object Window](même si c'est une méthode d'un objet)",
+                    "- e/ En Mode Strict ,dans une fonction=> undefined",
+                    "- f/ Dans un event listener=>l'élément sur lequel se déclenche l'évenemt"
+                    ] ,
+        example : [ "b/ const objet = {nom :\"obj\" , getThis : function(){return this} }",
+                    "const objet = {nom :\"obj\" , getThis : ()=>{return this} }"] ,
+        type : "JS"
+    } , 
+    {
+        nom : "this 2/2" ,
+        definition : ["3 méthodes natives pour contrôler le comportement de \"this\"",
+                    "- a/ Call() : permet d'utiliser la méthode d'un objet sur un autre=>",
+                    " obj1.methode.call(obj2,autres, arguments, optionnels)",
+                    "- b/ Apply() : idem que call() sf que les arguments optionnels st ds un array",
+                    "- c/ Bind() : similaire mais renvoie une nvelle fonction sans l'exécuter", 
+                    " là où call() et apply() exécutaient immédiatement",
+                    ] ,
+        example : [ "a/ john.display.call(jane,\"paris\",\"hotel\")",
+                    "b/ john.display.call(jane,[\"paris\",\"hotel\"])",
+                    "c/ const display2 = john.display.bind(jane)"] ,
+        type : "JS"
+    } , 
     {
         nom : "switch" ,
         definition : ["Si on a une valeur à comparer "] ,
@@ -32,7 +85,21 @@ const datas = [
                     "default:"] ,
         type : "JS"
     } , 
+    {
+        nom : "Fonctions anonyme /auto-invoquée = IIFE / récursive" ,
+        definition : ["- 1/ Anonyme : sans nom, pour aller plus vite, mais on pt la mettre ds une variable pour l'appeler + tard ",
+                    "- 2/ IIFE : fct qui s'éxécute immédiatmt, on met entre () et on rajoute des () à la fin.",
+                    " On utilise ça en général avec les fcts anonymes ms ça marche avec les fcts en général.",
+                    " - 3/ Récursive : qui s'appelle elle-même tant que la condition est valable en général",
+                ] ,
 
+
+        example : [ "1/ const calc = function(){return 2*3}",
+                    "2/ (function(){return 2*3})()",
+                    "3/ function add(a){if(a<5){a+=1 ; add(a)})",
+                    ] ,
+        type : "JS"
+    } , 
 
     {
         nom : "display Niveau 3" ,
