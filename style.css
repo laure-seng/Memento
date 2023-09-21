@@ -1,7 +1,7 @@
 /* a faire
 trouver les 4 couleurs du theme
 trouver 4 colueurs pour les langages et les attribuer en js 
-aux cartes concernées en utilisant var CSS 
+aux cartes concernées en utilisant var CSS => idee bof ça fait une distraction pour rien
 -remplacer les JS CSS HTML des carts par les petit logos officiels
 
 
@@ -215,10 +215,10 @@ li{
 
 .type{
     position: absolute;
-    bottom : 0%;
-    right : 0% ;
-    border: solid rgb(202, 69, 91) 5px ;
-    border-radius: 15px 5px 15px 5px;
+    bottom : 2px;
+    right : 2px ;
+    border: solid white 2px ;
+    border-radius: 50%
 }
 
 img{

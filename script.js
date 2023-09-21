@@ -49,7 +49,7 @@ const datas = [
                     "@media screen and (max-width: 767px)=> smartphone",
                     "@media screen and (min-width: 30em) and (orientation: landscape) { ... }",
                     "@media (min-height: 680px), screen and (orientation: portrait) { ... }"] ,
-        type : "JS"
+        type : "CSS"
     } ,
     {
         nom : "git 1/2 Essentiels" ,
@@ -76,6 +76,7 @@ const datas = [
                     " - git pull :Récupère tout l'historique du dépôt nommé et incorpore les modifications", 
                     " Config : git config --global  / user.name [nom] / user.email [adresse email] / color.ui auto", 
                     " Le fichier git.ignore liste les fichiers qui ne dvt pas ê suivis",
+                    "gitk pour avoir une représentation graphique des changements",
                     " Pour en savoir plus sur chaque commande : man git-nomDeLaCommande",
                     ] ,
         example : [ "git stash list",
@@ -131,7 +132,7 @@ const datas = [
                     "case 'x':",
                     "console.log(sf);",
                     "break;",
-                    "case '':",
+                    "case 'y':",
                     "break;",
                     "default:"] ,
         type : "JS"
@@ -195,7 +196,9 @@ const datas = [
     {
         nom : "Dégradés" ,
         definition : ["=>3 types :","linear-gradient","radial-gradient","repeating-linear-gradient( ça fctne avec radial gradient aussi)"],
-        example : "",
+        example : ["linear-gradient : red, yellow 10% (=> color stop ) ;",
+        "radial-gradient : circle yellow,#f06d06 ;",
+        "repeating-linear-gradient:45deg,yellow,yellow 10px,red 10px,red 20px"],
         type : "CSS"
     } ,
 
@@ -452,7 +455,7 @@ function displayCard(dataArray){
         let nom=document.createElement("h3")
         let definition=document.createElement("div")
         let example=document.createElement("p")
-        let type=document.createElement("span")
+        let type=document.createElement("img")
         let copyButtonImg=document.createElement("img")
         //attribution des class appropriées
         card.setAttribute("class" ,"card")
@@ -466,47 +469,65 @@ function displayCard(dataArray){
         copyButtonImg.setAttribute("src" ,"https://icongr.am/octicons/copy.svg?size=128&color=currentColor")
         copyButtonImg.setAttribute("id" ,`copyButton${index}`)
         
-        //Création des références aux textes de l'objet
+        //Création des références aux textes de l'objet 
         let texteNom=document.createTextNode(data.nom)
-        let texteType=document.createTextNode(data.type)
-            //Itération pour afficher la définition ligne par ligne
-            for(let line of data.definition) {
-                let defParag=document.createElement("p")
-                let defLineText=document.createTextNode(line)
-                defParag.appendChild(defLineText)
-                definition.appendChild(defParag)
-            }
-            //Itération pour afficher l'example ligne par ligne
-            for(let line of data.example) {
-                let exampleParag=document.createElement("p")
-                let exampleLineText=document.createTextNode(line)
-                exampleParag.appendChild(exampleLineText)
-                example.appendChild(exampleParag)
-            }
 
-            //Ajout des textes aux éléments appropriés
-            nom.appendChild(texteNom)
-            type.appendChild(texteType)
-            
-            //Raccordement des éléments à la carte
-            card.appendChild(nom)
-            card.appendChild(definition)
-            card.appendChild(example)
-            card.appendChild(type)
-            card.appendChild(copyButtonImg)
-            //Raccordement de la carte au container #cards
-            cards.appendChild(card) 
-            // //Création d'un bouton pour copier le code ds le presse-papier
-        
-            // let copyButton=document.getElementById(`copyButton${index}`)
-            // copyButton.addEventListener("click",()=>copyToClipboard(data))
-            // function copyToClipboard(data){
-            //     let textToCopy=data.example.join()
-            //     console.log(textToCopy)
-            //     navigator.clipboard.writeText(textToCopy);
-            //     // console.log(textToCopy, `#copyButton${data.index}`)
-            //     alert("Copied the text: " + textToCopy);
-            // }
+        //Choix de l'image en bas à droite en fct du type de langage de la carte
+        let typeImageSrc="" ;
+        switch (data.type) {
+            case 'HTML':
+                typeImageSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" ;
+                console.log(data.type)
+            break;
+            case 'CSS':
+                typeImageSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" ;
+            break;
+            case 'JS':
+                typeImageSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg";
+            break;
+            case 'OTHERS':
+                typeImageSrc="https://icongr.am/material/cat.svg?size=128&color=currentColor" ;
+            default :
+                typeImageSrc="https://icongr.am/material/cat.svg?size=128&color=currentColor" ;
+            break ;
+        }
+        type.setAttribute("src" ,typeImageSrc)
+        //Itération pour afficher la définition ligne par ligne
+        for(let line of data.definition) {
+            let defParag=document.createElement("p")
+            let defLineText=document.createTextNode(line)
+            defParag.appendChild(defLineText)
+            definition.appendChild(defParag)
+        }
+        //Itération pour afficher l'example ligne par ligne
+        for(let line of data.example) {
+            let exampleParag=document.createElement("p")
+            let exampleLineText=document.createTextNode(line)
+            exampleParag.appendChild(exampleLineText)
+            example.appendChild(exampleParag)
+        }
+
+        //Ajout des textes aux éléments appropriés
+        nom.appendChild(texteNom)
+        //Raccordement des éléments à la carte
+        card.appendChild(nom)
+        card.appendChild(definition)
+        card.appendChild(example)
+        card.appendChild(type)
+        card.appendChild(copyButtonImg)
+        //Raccordement de la carte au container #cards
+        cards.appendChild(card) 
+        // //Création d'un bouton pour copier le code ds le presse-papier
+    
+        // let copyButton=document.getElementById(`copyButton${index}`)
+        // copyButton.addEventListener("click",()=>copyToClipboard(data))
+        // function copyToClipboard(data){
+        //     let textToCopy=data.example.join()
+        //     console.log(textToCopy)
+        //     navigator.clipboard.writeText(textToCopy);
+        //     // console.log(textToCopy, `#copyButton${data.index}`)
+        //     alert("Copied the text: " + textToCopy);
+        // }
     }    
 }
 displayCard(datas)
