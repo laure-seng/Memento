@@ -35,6 +35,38 @@ const datas = [
         type : "JS"
     } ,
     {
+        nom : "git 1/2 Essentiels" ,
+        definition : [
+                    " Création d'un dépôt local : git init [nom-du-projet] // git clone [url]",
+                    " Chgmts de l'esp.de trav. à l'index : git add/rm/mv [fichier]//status//diff//",
+                    " git reset [fichier] : enlève de l'index ms pas de l'esp.de trav.",
+                    " Chgmts de l'esp.de trav. au dépôt local :  git commit -m [message]",
+                    " Branches : pour regrouper des commits => git branch=>liste ttes les branches",
+                    " git branch/checkout/merge/branch -d + [nom-de-branche]",
+                    " Historique :git log/git log --follow [fichier]/git diff [premiere-branche]...[deuxieme-branche]/git show [commit]",
+                    " git reset [commit] annule les commits avant [commit] sans modif les fichiers locaux"],
+        example : [ "git add index.html",
+                    "git branch -d branchePourrie",
+                    "git reset NumeroDuCOmmitFoireux"] ,
+        type : "OTHERS"
+    },
+    {
+        nom : "git 2/2 A savoir aussi" ,
+        definition : ["Enregistrer des fragments pour mettre de côté des idées dans la remise=stash  : ",
+                    " git stash/ stash pop/ stash list/ stash drop",    
+                    " Synchroniser des chgmts entre un dépot distant et l'historique de version :'", 
+                    " - git fetch [nom-de-depot]/git merge [nom-de-depot]/[branche]/git push [alias] [branche]", 
+                    " - git pull :Récupère tout l'historique du dépôt nommé et incorpore les modifications", 
+                    " Config : git config --global  / user.name [nom] / user.email [adresse email] / color.ui auto", 
+                    " Le fichier git.ignore liste les fichiers qui ne dvt pas ê suivis",
+                    " Pour en savoir plus sur chaque commande : man git-nomDeLaCommande",
+                    ] ,
+        example : [ "git stash list",
+                    "git merge monProjet/maSuperBranche",
+                    "git push main/maSuperBRanche"] ,
+        type : "OTHERS"
+    } ,
+    {
         nom : "do...while loop" ,
         definition : ["do {instructions} while(condition) - Au moins une fois "] ,
         example : [ "do {",
