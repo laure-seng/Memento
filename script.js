@@ -349,7 +349,7 @@ function scrollToTop(top,left){
 // Visibilite du menu de gauche
 leftMenuSpan.addEventListener("mouseover",()=>{
 leftMenu.style.visibility="visible";
-wrapper.style.left="15vw"; scrollToTop(0,0)}) //correspond à var(--leftMenuWidth)
+wrapper.style.left="18vw"; scrollToTop(0,0)}) //correspond à var(--leftMenuWidth)
 leftMenu.addEventListener("mouseleave",()=>{
 leftMenu.style.visibility="hidden";
 wrapper.style.left="0vw"})
