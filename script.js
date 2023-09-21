@@ -37,6 +37,21 @@ const datas = [
         type : "JS"
     } ,
     {
+        nom : "Media Queries" ,
+        definition : ["Pour modifier l'apparence du site en fct du type d'appareil et de ses caractéristiques",
+                    "Types de média : all, print,screen,speech",
+                    "Caractéristiques : width,height,aspect-ratio, orientation,display,hover...",
+                    "La plupart des caractéristiques peuvent être préfixées par \"min-\" ou \"max-\" ",
+                    "Opérateurs logiques : and, not, only, ,"
+    ] ,
+        example : [ "@media screen and (min-width: 1024px)=> desktop",
+                    "@media screen and (min-width: 768px) and (max-width: 1023px)=> tablets",
+                    "@media screen and (max-width: 767px)=> smartphone",
+                    "@media screen and (min-width: 30em) and (orientation: landscape) { ... }",
+                    "@media (min-height: 680px), screen and (orientation: portrait) { ... }"] ,
+        type : "JS"
+    } ,
+    {
         nom : "git 1/2 Essentiels" ,
         definition : [
                     " Création d'un dépôt local : git init [nom-du-projet] // git clone [url]",
@@ -334,7 +349,7 @@ function scrollToTop(top,left){
 // Visibilite du menu de gauche
 leftMenuSpan.addEventListener("mouseover",()=>{
 leftMenu.style.visibility="visible";
-wrapper.style.left="20vw"; scrollToTop(0,0)}) //correspond à var(--leftMenuWidth)
+wrapper.style.left="15vw"; scrollToTop(0,0)}) //correspond à var(--leftMenuWidth)
 leftMenu.addEventListener("mouseleave",()=>{
 leftMenu.style.visibility="hidden";
 wrapper.style.left="0vw"})

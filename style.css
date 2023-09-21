@@ -19,28 +19,7 @@ MAIS CELLES DU BODY OUI
     --secondColor : #ffb700 ;
     --accentColor : rgb(24, 235, 13) ;
     --fourthColor : rgb(129, 129, 202) ;
-    --leftMenuWidth : 20vw ;
-    --gridAreaNormal : 
-    "h1 h1 h1 h1 h1 "
-    "h2 h2 h2 h2 h2 " 
-    "menu menu menu menu menu "
-    "menu menu menu menu menu "
-    "keywords keywords keywords keywords keywords "
-    "keywords keywords keywords keywords keywords "
-    "keywords keywords keywords keywords keywords "
-    "cards cards cards cards cards "
-    "cards cards cards cards cards "
-    "cards cards cards cards cards "
-    "cards cards cards cards cards "
-    "cards cards cards cards cards "
-    "cards cards cards cards cards "
-    "cards cards cards cards cards "
-    "cards cards cards cards cards "
-    "cards cards cards cards cards "
-    "cards cards cards cards cards "
-    "cards cards cards cards cards "
-    "cards cards cards cards cards "
-    ;
+    --leftMenuWidth : 15dvw ;
 }
 
 *{
@@ -68,15 +47,6 @@ body{
     height: 3vh;
 }
 
-/* #left-menu-wrapper{
-    display: block;
-    position: fixed;
-    top : 0% ;
-    left : 0% ;
-    z-index: 10;
-    width: fit-content;
-}  */
-
 .paragLeftMenuLink{
     margin-top : 5px ;
     margin-bottom : 5px ;
@@ -103,7 +73,7 @@ body{
     top : 3vh ;
     left : 0% ;
     background-color: rgb(21, 123, 136);
-    width: 20vw ;
+    width: var(--leftMenuWidth) ;
     height: fit-content ;
     z-index: 1;
 }
@@ -112,11 +82,9 @@ body{
     position: absolute;
     background-color: none ;
     color: antiquewhite;
-    display : grid ;
-    grid-template-columns: repeat(5,20%); 
-    grid-template-rows: repeat(20,5%); 
-    grid-template-areas: 
-    var(--gridAreaNormal) ;
+    display : flex ;
+    flex-direction: column;
+
     width: 100%;
     height: 100vh ;
     top: 0%;
@@ -160,7 +128,6 @@ h2{
     flex-wrap: wrap;
     flex-direction: row;
     height: fit-content;
-
 }
 
 .keywordLink{
@@ -283,4 +250,19 @@ img{
     left: 5%;
     filter :hue-rotate(234deg) ;
     z-index: 5;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px){
+    
+#cards{
+    display: flex ;
+    flex-direction: column;
+    justify-content: center ;
+    align-items: center;
+    grid-area: cards ;
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+    height: fit-content;
+}
 }
