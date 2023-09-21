@@ -2,7 +2,7 @@
 trouver les 4 couleurs du theme
 trouver 4 colueurs pour les langages et les attribuer en js 
 aux cartes concernées en utilisant var CSS 
--remplacer les JS CSS HTML par les petit logos officiels
+-remplacer les JS CSS HTML des carts par les petit logos officiels
 
 
 ATTENTION IL DOIT Y AVOIR QQCH A MODIFIER AU NIVEAU DU JS 
@@ -19,7 +19,7 @@ MAIS CELLES DU BODY OUI
     --secondColor : #ffb700 ;
     --accentColor : rgb(24, 235, 13) ;
     --fourthColor : rgb(129, 129, 202) ;
-    --leftMenuWidth : 10vw ;
+    --leftMenuWidth : 20vw ;
     --gridAreaNormal : 
     "h1 h1 h1 h1 h1 "
     "h2 h2 h2 h2 h2 " 
@@ -53,9 +53,64 @@ body{
     color: wheat;
 }
 
+#left-menu-span{
+    position: fixed ;
+    top : 0% ;
+    left : 0% ;
+    background-color: blue;
+    z-index: 10;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    font-style: oblique;
+    font-size: large;
+    border: dotted white 2px ;
+    width:  5vw;
+    height: 3vh;
+}
+
+/* #left-menu-wrapper{
+    display: block;
+    position: fixed;
+    top : 0% ;
+    left : 0% ;
+    z-index: 10;
+    width: fit-content;
+}  */
+
+.paragLeftMenuLink{
+    margin-top : 5px ;
+    margin-bottom : 5px ;
+    /* background-color: black; */
+}
+.leftMenuLink{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    color : blue ;
+    background-color: antiquewhite;
+    padding: 5px;
+    /* margin : 4% ; */
+    height: fit-content ;
+}
+#left-menu{
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: absolute;
+    visibility: hidden;
+    top : 3vh ;
+    left : 0% ;
+    background-color: rgb(21, 123, 136);
+    width: 20vw ;
+    height: fit-content ;
+    z-index: 1;
+}
+
 #wrapper {
     position: absolute;
-    background-color: rgb(3, 18, 48);
+    background-color: none ;
     color: antiquewhite;
     display : grid ;
     grid-template-columns: repeat(5,20%); 
@@ -81,19 +136,6 @@ h2{
 }
 
 
-#left-menu-span{
-    position: absolute;
-    top : 0% ;
-    left : 0% ;
-    background-color: blue;
-    z-index: 7;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 800;
-    font-style: oblique;
-    font-size: large;
-    border: dotted white 2px ;
-    width: var(--leftMenuWidth)
-}
 
 #menu{
     background-color: brown;
@@ -101,18 +143,32 @@ h2{
     height: auto;
 }
 
-#left-menu{
-    visibility: hidden;
-    position: absolute;
-    top : 0% ;
-    left : 0% ;
-    background-color: rgb(21, 123, 136);
-    width: var(--leftMenuWidth);
-    height: 100vh;
-    z-index: 5;
+#keywordsWrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    grid-area: keywords ;
+    background-color: gold;
+    color: blue;
+    width: 100% ;
+    height: fit-content ;
+    z-index: 10;
 }
 
-a{
+#keywords{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: fit-content;
+
+}
+
+.keywordLink{
+    /* display: flex;
+    flex-direction: row; */
+    width: fit-content;
+    height: fit-content ;
+    flex-wrap: wrap;
     background-color: rgb(199, 138, 23);
     color :aliceblue ;
     margin: 5px ;
@@ -121,10 +177,11 @@ a{
     text-decoration: none;
     text-align: center;
     vertical-align: baseline;
-    
+    width: fit-content;
+    font-size: small;
 }
 
-#list{
+#filtersList{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -148,22 +205,15 @@ li{
     display: flex ;
     flex-direction: row;
     justify-content: center ;
+    align-items: flex-start;
     grid-area: cards ;
     /* background-color: darkorchid; */
     width: 100%;
     height: auto;
     flex-wrap: wrap;
+    height: fit-content;
 }
 
-#keywords{
-    display: flex;
-    grid-area: keywords ;
-    background-color: gold;
-    color: blue;
-    width: 100%;
-    height: 100% ;
-    flex-wrap: wrap;
-}
 /* CSS DE LA CARD */
 
 .card{
@@ -173,6 +223,7 @@ li{
     background-color: rgb(42, 57, 134);
     margin : 3%  3%;
     height: fit-content;
+    z-index: 4;
 }
 
 .nom{

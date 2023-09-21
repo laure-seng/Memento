@@ -17,13 +17,15 @@
 // Idees de fctionnalites en plus : mettre en favoris / création de sa propre carte en rajoutant via un formulaire
 
 const body=document.querySelector("body")
-const keywords= document.querySelector("#keywords")
+let keywords= document.querySelector("#keywords")
+const keywordsWrapper= document.querySelector("#keywordsWrapper")
 const leftMenuSpan= document.querySelector("#left-menu-span")
 const leftMenu= document.querySelector("#left-menu")
 const leftMenuWrapper= document.querySelector("#left-menu-wrapper")
 const wrapper= document.querySelector("#wrapper")
 let cards=document.querySelector("#cards")
 let  keywordList=[]
+let  keywordListAlphaSort=[]
 let  keywordLinks=""
 
 const datas = [
@@ -63,7 +65,9 @@ const datas = [
                     ] ,
         example : [ "git stash list",
                     "git merge monProjet/maSuperBranche",
-                    "git push main/maSuperBRanche"] ,
+                    "git push main/maSuperBRanche",
+                    "git push -u origin main"
+                ] ,
         type : "OTHERS"
     } ,
     {
@@ -316,19 +320,57 @@ const bonnesPratiques = [
 ]
 
 //ScrollToTop
-document.getElementById("scrollToTop").addEventListener("click",()=>{window.scrollTo({
-    top: 100,
-    left: 100,
-    behavior: "smooth",
-  });})
+document.getElementById("scrollToTop").addEventListener("click",()=>scrollToTop(100,100))
+
+function scrollToTop(top,left){
+    window.scrollTo({
+        top: top,
+        left: left,
+        behavior: "smooth",
+        });
+    console.log("scrollin")        
+}
 
 // Visibilite du menu de gauche
 leftMenuSpan.addEventListener("mouseover",()=>{
 leftMenu.style.visibility="visible";
-wrapper.style.left="10vw"})
-leftMenuWrapper.addEventListener("mouseleave",()=>{
+wrapper.style.left="20vw"; scrollToTop(0,0)}) //correspond à var(--leftMenuWidth)
+leftMenu.addEventListener("mouseleave",()=>{
 leftMenu.style.visibility="hidden";
 wrapper.style.left="0vw"})
+
+//Génération du menu gauche
+//Génération de la liste des keywords classés par ordre alpha
+keywordListAlphaSort=
+    //Propriété "nom" 1ère lettre majuscule
+    datas.map(function(value) { return {
+        nom : value.nom[0].toUpperCase()+ value.nom.slice(1,value.nom.length) ,
+        definition : value.definition ,
+        example : value.example ,
+        type : value.type }
+    })
+    //classement par ordre alpha
+    .sort(function (a, b) {
+        if (a.nom < b.nom) {
+        return -1;
+        }
+        if (a.nom > b.nom) {
+        return 1;
+        }
+        return 0;
+    })
+    //création des liens et display à gauche
+    .map((data)=>{
+        let parag=document.createElement("p")
+        parag.setAttribute("class" ,`paragLeftMenuLink`)
+        let keywordLink=document.createElement("a")
+        keywordLink.textContent=`${data.nom}`
+        keywordLink.setAttribute("href" ,`#data${data.nom}`)
+        keywordLink.setAttribute("class" ,`leftMenuLink`)
+        parag.appendChild(keywordLink)
+        leftMenu.appendChild(parag);
+    })
+
 
 //Fonction pour filtrer par langage
 let htmlCards=[]
@@ -339,7 +381,13 @@ function filter(type){
     cards=document.createElement("div")
     cards.setAttribute("id","cards")
     wrapper.appendChild(cards)
+    //reset des affichages des keywords
+    // keywordList=[]
+    keywordsWrapper.removeChild(keywords)
+    keywords=document.createElement("p")
+    keywords.setAttribute("id","keywords")
     displayCard(filtered)
+    generateKeywords(filtered)
 }    
 document.querySelector("#HTMLfilter").addEventListener("click",()=>filter("HTML"))
 document.querySelector("#CSSfilter").addEventListener("click",()=>filter("CSS"))
@@ -351,20 +399,33 @@ document.querySelector("#ALLfilter").addEventListener("click",()=>{
     cards.setAttribute("id","cards")
     wrapper.appendChild(cards)
     displayCard(datas)})
-
+//afficher toutes les cartes si filtrées pour accéder à la carte demandée 
+document.querySelector("a").addEventListener("click",()=>{
+    wrapper.removeChild(cards)
+    cards=document.createElement("div")
+    cards.setAttribute("id","cards")
+    wrapper.appendChild(cards)
+    displayCard(datas)})
 
 
 //Création de la liste des keywords
+function generateKeywords(datas){
 
     for (let data of datas) {
-        keywordList.push(data.nom)
+        
+        // keywordList.push(data.nom)
         let keywordLink=document.createElement("a")
         keywordLink.textContent=`${data.nom}`
         keywordLink.setAttribute("href" ,`#data${data.nom}`)
+        keywordLink.setAttribute("class" ,"keywordLink")
         keywords.appendChild(keywordLink)
+        keywordsWrapper.appendChild(keywords)
     }
-    keywordList.join()
-    console.log(keywordList)
+    // keywordList.join()
+    console.log("kwordlist est",keywordList)
+}
+generateKeywords(datas)
+    
 
 
 //Affichage des cartes
