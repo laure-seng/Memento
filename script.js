@@ -37,6 +37,70 @@ const datas = [
         type : "JS"
     } ,
     {
+        nom : "Object.keys()/ .values()/ .entries()" ,
+        definition : ["Object.keys()renvoie un tableau avec les noms des propriétés propres énumérables d'un objet ",
+                    "Object.values()renvoie un tableau avec les valeurs des propriétés propres énumérables d'un objet ",
+                    "Object.entries()renvoie un tableau des propriétés propres énumérables d'un objet ",
+                    "dont la clé est une chaîne de caractères, sous la forme de paires [clé, valeur]",
+                    ] ,
+        example : [ "const object1 = {a: 'somestring',b: 42, c: false};",
+                    "Object.keys(object1) renvoie Array [\"a\", \"b\", \"c\"]",
+                    "Object.values(object1) renvoie Array [\"somestring\", 42, false]",
+                    "Object.entries(object1) renvoie Array [ [a: 'somestring'], [b: 42], [c: false]]",
+                    ] ,
+        type : "JS"
+    } ,
+    {
+        nom : "Objet Map" ,
+        definition : ["Un objet Map permet de parcourir ses éléments selon leur ordre d'insertion.",
+                    "Méthodes associées àl'objet Map : set(), get(),delete(),size",
+                    ] ,
+        example : [ "const map1 =new Map()",
+                    "map1.set('a', 1);",
+                    "map1.get('a'); renvoie 1",
+                    "map1.size renvoie 1",
+                    "map1.delete('a')"] ,
+        type : "JS"
+    } ,
+
+    {
+        nom : "Objet Set" ,
+        definition : ["Un objet Set contient des valeurs qui n'apparaissent qu'une fois.",
+                "Méthodes associées à l'objet Set : has(), add(),get(),delete(),size",
+                "entries(),keys(),values(),clear()",
+                ] ,
+        example : [ "const set1 =new Set()",
+                "set1.add('a');",
+                "set1.add('a'); => ça ne fera rien",
+                "set1.size renvoie 1",
+                "set1.clear(); => efface tout le contenu du Set"] ,
+        type : "JS"
+} ,
+    {
+        nom : "Regular Expression (RegEx)" ,
+        definition : ["Objet qui sert à créer un pattern de rech. de texte, svt utilisé avec search() ou replace()",
+                    "Sous la forme de /pattern/modifiers;",
+                    "Modifieurs : i (case-insensitive) / g (global match) / m (multiligne matching)",
+                    "Le pattern pt contenir des a/ [] , des b/ métacaractères , c/ des quantifieurs",
+                    "a/[ady]=>a ou d ou y [0-9]=>0à9 ,(x|y)=> x ou y" ,
+                    "b/ \d=>digit , \s=> space , \bword ou word\b=> cherche word au début ou à la fin d'un mot",
+                    "b/ \\uxxxx=> cherche l'unicode xxxx",
+                    "c/ n+ => au moins 1 n , n*=>0 à + n , n?=> 0 ou 1 n",
+                    "Cet objet a des méthodes spécifiques :",
+                    "- test() :  pattern.test(texteAAnalyser)=> renvoie true ou false",
+                    "- exec() : renvoie un objet contenant le texte recherché ou null si pas de crrspdance",
+                    "Passer par le constructeur pour créer un Regex avec la valeur d'une variable cf exemple"
+    ] ,
+        example : [ "search(/[a-z]+/ig) ",
+                    "/[a-f0-9] */gi",
+                    "b/  /\bLO/=> cherche Lo au début d'un mot",
+                    "/e/.test(\"hello\") renvoie true",
+                    "/e/.exec(\"hello\")=> renvoie un objet avec les propriétés index, input ...;",
+                    "let regex= new RegExp (`${text2}`,\"gi\")"
+                ] ,
+        type : "JS"
+    } ,
+    {
         nom : "Media Queries" ,
         definition : ["Pour modifier l'apparence du site en fct du type d'appareil et de ses caractéristiques",
                     "Types de média : all, print,screen,speech",
