@@ -37,6 +37,16 @@ const datas = [
         type : "JS"
     } ,
     {
+        nom : "reduce()" ,
+        definition : ["Prend paramètre une fonction qui a 2 arguments(acc et value)+ 1 optionnel(initValue)",
+                    ".reduce ((accumulateur, current value)=> instructions,valeurDeDepart)"],
+        example : [ ".reduce((acc,val)=>acc+val,0)"] ,
+        type : "JS"
+    } ,
+
+
+
+    {
         nom : "Object.keys()/ .values()/ .entries()" ,
         definition : ["Object.keys()renvoie un tableau avec les noms des propriétés propres énumérables d'un objet ",
                     "Object.values()renvoie un tableau avec les valeurs des propriétés propres énumérables d'un objet ",
@@ -79,7 +89,7 @@ const datas = [
     {
         nom : "Regular Expression (RegEx)" ,
         definition : ["Objet qui sert à créer un pattern de rech. de texte, svt utilisé avec search() ou replace()",
-                    "Sous la forme de /pattern/modifiers;",
+                    "Sous la forme de /pattern/modifiers ou let regex= new RegEx(\"pattern\",\"modifiers\");",
                     "Modifieurs : i (case-insensitive) / g (global match) / m (multiligne matching)",
                     "Le pattern pt contenir des a/ [] , des b/ métacaractères , c/ des quantifieurs",
                     "a/[ady]=>a ou d ou y [0-9]=>0à9 ,(x|y)=> x ou y" ,
@@ -92,7 +102,7 @@ const datas = [
                     "Passer par le constructeur pour créer un Regex avec la valeur d'une variable cf exemple"
     ] ,
         example : [ "search(/[a-z]+/ig) ",
-                    "/[a-f0-9] */gi",
+                    "/[a-f0-9] */gi","/^(\d{4}|\d{6})$/.test(pin)",
                     "b/  /\bLO/=> cherche Lo au début d'un mot",
                     "/e/.test(\"hello\") renvoie true",
                     "/e/.exec(\"hello\")=> renvoie un objet avec les propriétés index, input ...;",
