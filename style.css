@@ -31,7 +31,17 @@ body{
     background-color: rgb(3, 18, 48);
     color: wheat;
 }
+table {
+    
+    border: 2px solid rgb(238, 232, 232);
+    
+}
 
+td,th{
+    border: 2px solid rgb(238, 232, 232);
+    text-align: center;
+    border-collapse: collapse;
+}
 #left-menu-span{
     position: fixed ;
     top : 0% ;
