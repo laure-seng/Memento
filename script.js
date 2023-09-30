@@ -21,6 +21,8 @@ let  keywordList=[]
 let  keywordListAlphaSort=[]
 let  keywordLinks=""
 
+
+
 const datas = [
     {
     nom : "Test tableau" ,
@@ -34,24 +36,24 @@ const datas = [
     {
     nom : "Regex metacharacters" ,
     datas : [{"Caractère" : "Usage"},
-            {"backslash \\" : "descr à rajouter"},
-            {"caret ^ " : "descr à rajouter"},
-            {"dollar sign $ ": "descr à rajouter"},
-            {"period or dot ." : "descr à rajouter"},
-            {"vertical bar or pipe symbol |" : "descr à rajouter"},
-            {"question mark ?" : "description à raj"},
-            {"asterisk or star *" : "description à raj"},
-            {"plus sign +," : "description à raj"},
-            {"opening parenthesis (" : "description à raj"},
-            {"closing parenthesis )" : "description à raj"},
-            {"opening square bracket [" : "description à raj"},
-            {"opening curly brace {" : "description à raj"},
+            {"backslash \\" : " Permet d'échapper le caractère qui le suit"},
+            {"caret ^ " : "Négative de l'expr qui suit"},
+            {"dollar sign $ ": " Concerne la fin du texte"},
+            {"period or dot ." : "Remplace n'importe quel caractère"},
+            {"vertical bar or pipe symbol |" : " OU "},
+            {"question mark ?" : "----"},
+            {"asterisk or star *" : " Vise le caractère précédent 0 fois ou + "},
+            {"plus sign +," : "Vise le caractère précédent 1 fois ou + "},
+            {"opening parenthesis (" : "Match le texte/expr entre parenthèse "},
+            {"closing parenthesis )" : "Match le texte/expr entre parenthèse ""},
+            {"opening square bracket [" : "Match un caractère compris ds les crochets"},
+            {"opening curly brace {" : "Match un caractère compris ds les crochets""},
             ],    
     type : "JS",
     tableau: true 
     } ,
     {
-        nom : "Regex -Tester " ,
+        nom : "Regex -Testing " ,
         definition : ["regexPattern.test(texte)=> envoie true ou false",
                     "regexPattern.exec(texte)=> renvoie un tableau "] ,
         example : [ "/[abc]/.exec(\"coucou\")",
@@ -125,7 +127,7 @@ const datas = [
     } ,
     {
     nom : "Regular Expression (RegEx)" ,
-    definition : ["Objet qui sert à créer un pattern de rech. de texte, svt utilisé avec search() ou replace()",
+    definition : ["Objet qui sert à créer un pattern de rech. de texte, svt utilisé avec search(), match() ou replace()",
     "Sous la forme de /pattern/modifiers ou let regex= new RegEx(\"pattern\",\"modifiers\");",
     "Modifieurs : i (case-insensitive) / g (global match) / m (multiligne matching)",
     "Le pattern pt contenir des a/ [] , des b/ métacaractères , c/ des quantifieurs",
@@ -138,6 +140,7 @@ const datas = [
     "- exec() : renvoie un objet contenant le texte recherché ou null si pas de crrspdance",
     "Passer par le constructeur pour créer un Regex avec la valeur d'une variable cf exemple"] ,
     example : [ "search(/[a-z]+/ig) ",
+    "str.match(/[abc]/=> renvoie un tableau",
     "/[a-f0-9] */gi","/^(\d{4}|\d{6})$/.test(pin)",
     "b/  /\bLO/=> cherche Lo au début d'un mot",
     "/e/.test(\"hello\") renvoie true",
