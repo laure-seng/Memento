@@ -32,6 +32,13 @@ const datas = [
     type :"JS",
     tableau : true
     },
+    // {
+    //     nom : "Comparaison des types d'objets en JS"
+    // [
+            
+
+
+
 
     {
     nom : "Regex metacharacters" ,
@@ -45,9 +52,9 @@ const datas = [
             {"asterisk or star *" : " Vise le caractère précédent 0 fois ou + "},
             {"plus sign +," : "Vise le caractère précédent 1 fois ou + "},
             {"opening parenthesis (" : "Match le texte/expr entre parenthèse "},
-            {"closing parenthesis )" : "Match le texte/expr entre parenthèse ""},
+            {"closing parenthesis )" : "Match le texte/expr entre parenthèse "},
             {"opening square bracket [" : "Match un caractère compris ds les crochets"},
-            {"opening curly brace {" : "Match un caractère compris ds les crochets""},
+            {"opening curly brace {" : "Match un caractère compris ds les crochets"},
             ],    
     type : "JS",
     tableau: true 
@@ -566,6 +573,7 @@ function displayCard(dataArray){
         th.setAttribute("colspan",data.datas.length) // faire que le titre prenne la largeur du tableau
         th.appendChild(textTitle);
         rowHeadTitle.appendChild(th);
+        //tableau simple avec deux elements par ligne
         //Créer une ligne par objet de data.datas => chq ligne sera sous la forme "key value"
         let infos=data.datas// c est un tableau dt chaq item est une paire key/value
         
