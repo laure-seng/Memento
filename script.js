@@ -25,13 +25,64 @@ let  keywordLinks=""
 
 const datas = [
     {
-    nom : "Test tableau" ,
-    datas : [{a:1},
-            {b:2},
-            {c:3},],
-    type :"JS",
+        nom : "Modal/ Non modal popover" ,
+        definition : ["Modal : freeze la page en cours => utiliser HTML <dialog>",
+                    "Non modal : se rajoute par-dessus la page encours=> utiliser id=`popover`",
+                    "Popover : 1/ Créer un bouton avec l.attribut popovertarget=\"nomdelapopup\"",
+                    "2/Créer la popup avec un id =\"nomdelapopup\""
+                ] ,
+
+        example : [ "<button popovertarget=\"my-pop\">click</button>",
+        "<div popover id=\"my-pop\">Bonjour tout le monde !</div>"] ,
+        type : "CSS"
+    } ,
+    {
+        nom : "color-mix" ,
+        definition : ["Définit une couleur qui est le mélande 2 couleurs",
+                    "color-mix(in <color-space>, <color1> <percentageOfMix>, <color2>)",
+                ] ,
+
+        example : [ "color-mix(in lch, peru 40%, lightgoldenrod)",
+        "color-mix(in srgb, #34c9eb 20%, white)"] ,
+        type : "CSS"
+    } ,
+    
+    {
+    nom : "Shell bases" ,
+    datas : [{"history":" !ID permet d'exécuter la cmd retrouvée ds l'historique "},
+            {"sudo -i":"su "},
+            {"chmod -777 <nomdufichier>":"donne ts les droits au ficier qui suit"},],
+    type :"AUTRES",
     tableau : true
     },
+    {
+        nom : "CSS news 2023" ,
+        datas : [{"Nested CSS":""},
+                {"Scoped CSS":""},
+                ],
+        type :"CSS",
+        tableau : true
+        },
+    {
+        nom : "Vim bases" ,
+        datas : [{"i /echap":" Mode insertion et en sortir"},
+                {":wq ":"write an d quit "},
+                {"y d p ou P ":"Yanking=Copier Delete ou Paste (cf.options ci-dessous"},
+                {"yy":"ligne courante"},
+                {"3y":"3lignes"},
+                {"yaw ":"Mot avec espace de fin"},
+                {"yiw":"Mot courant"},
+                {"yiB":"Bloc courant"},
+                {"y$":"Ce qui est à droite du curseur"},
+                {"y^":"Ce qui est à gauche du curseur"},
+                {"yt+caractère x":"Yank jusqu'à x"},
+                {"yfx":"Yank entre le curseur et x"},
+                {"yi + caractère '\"([{ ":"Entre les '\"['("},
+            
+            ],
+        type :"AUTRES",
+        tableau : true
+        },
     // {
     //     nom : "Comparaison des types d'objets en JS"
     // [
