@@ -10,13 +10,13 @@
 // Idees de fctionnalites en plus : mettre en favoris / création de sa propre carte en rajoutant via un formulaire
 
 const body=document.querySelector("body")
-const keywords= document.querySelector("#keywords")
+let keywords= document.querySelector("#keywords")
 const keywordsWrapper= document.querySelector("#keywordsWrapper")
 const leftMenuSpan= document.querySelector("#left-menu-span")
 const leftMenu= document.querySelector("#left-menu")
 const leftMenuWrapper= document.querySelector("#left-menu-wrapper")
 const wrapper= document.querySelector("#wrapper")
-const cards=document.querySelector("#cards")
+let cards=document.querySelector("#cards")
 let  keywordList=[]
 let  keywordListAlphaSort=[]
 let  keywordLinks=""
