@@ -9,6 +9,11 @@
 // ne pas prendre l'erreu à la légère concernant le pb du copy2clipboard c peut etre ça le pb !!!
 // Idees de fctionnalites en plus : mettre en favoris / création de sa propre carte en rajoutant via un formulaire
 
+// cpléter les datats  et faire marcher les liens des filtres
+
+
+//rajouter le langage aux data de type tableau
+
 const body=document.querySelector("body")
 let keywords= document.querySelector("#keywords")
 const keywordsWrapper= document.querySelector("#keywordsWrapper")
@@ -25,6 +30,31 @@ let  keywordLinks=""
 
 const datas = [
     {
+        nom : "Transition" ,
+        definition : [" Dans l'élément qu'on va animer, rajouter la ligne :",
+                    "transition: <transition-property> <transition-duration> <transition-timing-function> <transition-delay>",
+                    "La transition démarrera quand la propriété change de valeur. ",
+                    "Par exemple sur le même élément avec  :hover", 
+                ] ,
+        example : [ "div { width:100px ; transition: width 2s; }",
+                    " div:hover {width : 300px ;}"
+    ],
+        type : "CSS"
+    } ,
+    {
+        nom : "Sélecteurs CSS,  ,Pseudo-elements, Pseudo-classes" ,
+        definition : [" - Sélecteurs simples : de type('p'), de classe(.maClass), d'identifiant(#monID),",
+                    "universel ('*'), d'attribut ([attr] ou [attr=maValeur])",
+                    "- Combinateurs: élement +voisin direct, ~voisins, >enfants, descendants, col||td (colonne) ",
+                    "- Pseudo-classes: element:link, :visited, :hover,:active,:focus,:nth-child(n)",
+                    "- Pseudo-elements: ::first-line, ::first-letter, ::before, ::after",
+                ] ,
+        example : [ "div img[class=\"logo\"]",
+                    "p>span::first-letter"
+    ],
+        type : "CSS"
+    } ,
+    {
         nom : "Modal/ Non modal popover" ,
         definition : ["Modal : freeze la page en cours => utiliser HTML <dialog>",
                     "Non modal : se rajoute par-dessus la page encours=> utiliser id=`popover`",
@@ -34,34 +64,40 @@ const datas = [
 
         example : [ "<button popovertarget=\"my-pop\">click</button>",
         "<div popover id=\"my-pop\">Bonjour tout le monde !</div>"] ,
-        type : "CSS"
+        type : "NEWS"
     } ,
     {
         nom : "color-mix" ,
-        definition : ["Définit une couleur qui est le mélande 2 couleurs",
-                    "color-mix(in <color-space>, <color1> <percentageOfMix>, <color2>)",
+        definition : ["Définit une couleur qui est le mélange 2 couleurs",
+                    "color-mix(in <color-space>, <color1> <percentageOfc1>, <color2> <percentageOfc2>,)",
+                    "Où <color-space> peut prendre la valeur de srgb, srgb-linear, lab, oklab, xyz, xyz-d50, xyz-d65, hsl, hwb, lch, oklch. "
                 ] ,
 
-        example : [ "color-mix(in lch, peru 40%, lightgoldenrod)",
-        "color-mix(in srgb, #34c9eb 20%, white)"] ,
-        type : "CSS"
+        example : [ "color: color-mix(in lch, peru 40%, lightgoldenrod)",
+        "background-color: color-mix(in srgb, #34c9eb 20%, white)"] ,
+        type : "NEWS"
     } ,
     
     {
     nom : "Shell bases" ,
     datas : [{"history":" !ID permet d'exécuter la cmd retrouvée ds l'historique "},
             {"sudo -i":"su "},
-            {"chmod -777 <nomdufichier>":"donne ts les droits au ficier qui suit"},],
-    type :"AUTRES",
-    tableau : true
+            {"chmod -777 <nomdufichier>":"donne ts les droits au ficier qui suit"},
+            {"En vrac ": "pwd, ls, mkdir, cd,touch, cp, mv, rm"},
+            {"En vrac 2 ": "clear, echo, history, zip, tar, sudo, cat,man"}
+        ],
+        tableau : true,
+        type :"LINUX",
     },
     {
         nom : "CSS news 2023" ,
         datas : [{"Nested CSS":""},
                 {"Scoped CSS":""},
+                {"Dynamic ViewPort Units":"dvw dvh"},
+                {"Container queries":"utilisatio de {} pour appeler des classes à l'intérieur de la mediaquery"},
                 ],
-        type :"CSS",
-        tableau : true
+        tableau : true,
+        type : "NEWS"
         },
     {
         nom : "Vim bases" ,
@@ -78,19 +114,24 @@ const datas = [
                 {"yt+caractère x":"Yank jusqu'à x"},
                 {"yfx":"Yank entre le curseur et x"},
                 {"yi + caractère '\"([{ ":"Entre les '\"['("},
-            
+
             ],
-        type :"AUTRES",
-        tableau : true
+            tableau : true,
+        type :"LINUX",
         },
-    // {
-    //     nom : "Comparaison des types d'objets en JS"
-    // [
-            
-
-
-
-
+    {   nom : "Fonctions d'usine" ,
+        definition : ["Pour créer un objet comme avec les classes, sans utiliser \"this\",", 
+                    "on crée une fonction qui a la forme suivante :",
+                    "function nomDeLaFct(key1,key2,key3) { ",
+                    "return {value1,value2,value3}}",
+                    "On obtient l'objet {key1:value1,keyé:value2,key3:value3, "
+    ] ,
+        example : [ "function create (a,b,c){return {a,b,c}",
+        "let x = create(\"1\",\"2\",\"3\")",
+        "Résulte à x={a: '1', b: '2', c: '3'}"
+    ] ,
+        type : "JS"
+    } ,
     {
     nom : "Regex metacharacters" ,
     datas : [{"Caractère" : "Usage"},
@@ -476,7 +517,7 @@ const datas = [
     nom : "$PATH" ,
     example : ["$PATH=/usr/bin/local"] ,
     definition : ["chemin vers les binaires =exécutables des programmes" , "à modifier, dans votre environnement, en utilisant votre .bash_profile", "— celui qui est enregistré dans /Users/votrenomdutilisateur/.bash_profile"] ,
-    type : "OTHERS"
+    type : "LINUX"
     } 
 ]
 
@@ -503,13 +544,16 @@ document.getElementById("scrollToTop")?.addEventListener("click",()=>scrollToTop
 leftMenu.style.visibility="visible";
 wrapper.style.left="18vw"; scrollToTop(0,0)
 // Visibilite du menu de gauche
-// leftMenuSpan.addEventListener("mouseover",()=>{
-//     leftMenu.style.visibility="visible";
-//     wrapper.style.left="18vw"; scrollToTop(0,0)
-// }) //correspond à var(--leftMenuWidth)
-// leftMenu.addEventListener("mouseleave",()=>{
-//     leftMenu.style.visibility="hidden";
-//     wrapper.style.left="0vw"})
+leftMenuSpan.addEventListener("mouseover",()=>{
+    leftMenuSpan.style.display="none" ;
+    leftMenu.style.visibility="visible";
+    leftMenu.style.top="0px";
+    wrapper.style.left="18vw"; scrollToTop(0,0)
+}) //correspond à var(--leftMenuWidth)
+leftMenu.addEventListener("mouseleave",()=>{
+    leftMenuSpan.style.display="inline" ;
+    leftMenu.style.visibility="hidden";
+    wrapper.style.left="0vw"})
 
 //Génération du menu gauche
 //Génération de la liste des keywords classés par ordre alpha
@@ -562,11 +606,13 @@ displayCard(filtered)
 generateKeywords(filtered)
 }    
 
-document.querySelector("#HTMLfilter").addEventListener("click",()=>filter("HTML"))
-document.querySelector("#CSSfilter").addEventListener("click",()=>filter("CSS"))
-document.querySelector("#JSfilter").addEventListener("click",()=>filter("JS"))
-document.querySelector("#OTHERSfilter").addEventListener("click",()=>filter("OTHERS"))
-document.querySelector("#ALLfilter").addEventListener("click",()=>{
+document.getElementById("HTMLfilter").addEventListener("click",()=>filter("HTML"))
+document.getElementById("CSSfilter").addEventListener("click",()=>filter("CSS"))
+document.getElementById("JSfilter").addEventListener("click",()=>filter("JS"))
+document.getElementById("LINUXfilter").addEventListener("click",()=>filter("LINUX"))
+document.getElementById("NEWSfilter").addEventListener("click",()=>filter("NEWS"))
+document.getElementById("OTHERSfilter").addEventListener("click",()=>filter("OTHERS"))
+document.getElementById("ALLfilter").addEventListener("click",()=>{
 wrapper.removeChild(cards)
 cards=document.createElement("div")
 cards.setAttribute("id","cards")

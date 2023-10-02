@@ -9,14 +9,18 @@
 
 <body>
 
-<span id="left-menu-span"> ***</span>
+<span id="left-menu-span">MENU</span>
 <div id="left-menu"></div>
-
 
 
 <div id="wrapper">
 	<h1 id="title">MEMENTO</h1>
-	<h2 id="subtitle"> Trucs à mémoriser et à utiliser</h2>
+	<h2 id="subtitle"> Trucs à mémoriser et à utiliser
+		<button popovertarget="popoverTrial"> 
+			<img class="logo" id="allIcon" alt="allIcon" src="https://icongr.am/material/cat.svg?size=128&color=currentColor" /> 
+		</button>
+	</h2>
+	<div popover id="popoverTrial">MIAAAAOUUUUU!</div>
 	<nav id="menu"> 
 		<ul id="filtersList">
 			<li id="HTMLfilter"> HTML 
@@ -28,12 +32,18 @@
 			<li id="JSfilter"> JS
 			<img class="logo" id="jsIcon" alt="jsIcon" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
 			</li>
+			<li id="LINUXfilter"> LINUX
+			<img class="logo" id="linuxIcon" alt="linuxIcon" src="https://icongr.am/devicon/linux-original.svg?size=128&color=currentColor"/>
+			</li>
 			<li id="OTHERSfilter"> AUTRES
 			<img class="logo" id="jsIcon" alt="jsIcon" src="https://icongr.am/clarity/applications.svg?size=128&color=currentColor" />
 			</li>
+			<li id="NEWSfilter"> NEWS
+			<img class="logo" id="newsIcon" alt="newsIcon" src="https://icongr.am/entypo/new.svg?size=128&color=currentColor" />
+			</li>
 			<li id="ALLfilter"> TOUS
-				<img class="logo" id="allIcon" alt="allIcon" src="https://icongr.am/material/cat.svg?size=128&color=currentColor" />
-				</li>
+			<img class="logo" id="allIcon" alt="allIcon" src="https://icongr.am/material/cat.svg?size=128&color=currentColor" />
+			</li>
 		</ul>
 	</nav>
 	<div id="keywordsWrapper"> 

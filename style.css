@@ -9,16 +9,16 @@ ATTENTION IL DOIT Y AVOIR QQCH A MODIFIER AU NIVEAU DU JS
 PEUT ETRE CREATION DES ELEMENTS
 CAR J AI RAJOUTE LE WRAPPER ET SES PROPRIETES NE S APPLIQUENT PAS AUX CARTES
 MAIS CELLES DU BODY OUI
+
+Anmation du leftmenuspan à définir
 */
 
-
-
-
 :root{
-    --mainColor : hsla(240, 100%, 50%, 0.82) ;
-    --secondColor : #ffb700 ;
-    --accentColor : rgb(24, 235, 13) ;
-    --fourthColor : rgb(129, 129, 202) ;
+    /* srgb, srgb-linear, lab, oklab, xyz, xyz-d50, xyz-d65, hsl, hwb, lch, oklch. */
+    --mainColor : rgb(0, 28, 128);
+    --secondColor : rgb(0, 247, 255) ;
+    --accentColor : color-mix(in srgb, rgb(0, 247, 255) 70%, rgb(0, 28, 128) 40%);
+    --fourthColor : color-mix(in srgb, rgb(0, 247, 255) 90%, rgb(0, 28, 128) 20%);
     --leftMenuWidth : 18dvw ;
 }
 
@@ -28,49 +28,65 @@ MAIS CELLES DU BODY OUI
 }
 
 body{
-    background-color: rgb(3, 18, 48);
+    background-color: color-mix(in srgb, rgb(0, 247, 255) 20%, rgb(0, 28, 128) 80%);
     color: wheat;
 }
-table {
-    
-    border: 2px solid rgb(238, 232, 232);
-    
+
+/* Style de la popup */
+#popoverTrial{
+    font-size: xx-large;
+    position: fixed;
+    top : 50% ;
+    left : 50% ;
+    width: 300px;
+    height : 50px ;
+    text-align: center;
+    vertical-align :middle ;
+    padding: 20px ;
 }
 
+/* Style du tableau */
 td,th{
-    border: 2px solid rgb(238, 232, 232);
+    border: 2px solid whitesmoke ;
     text-align: center;
     border-collapse: collapse;
 }
+/* Style des titres des cartes et des tableaux */
+h3, th{
+font-size: large;
+font-weight: bold;
+border-radius: 15px 5px 15px 5px;
+}
+
+/* Style du menu de gauche*/
 #left-menu-span{
     position: fixed ;
     top : 0% ;
     left : 0% ;
-    background-color: blue;
     z-index: 10;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 800;
     font-style: oblique;
     font-size: large;
     border: dotted white 2px ;
+    border-radius: 5px ;
     width:  5vw;
     height: 3vh;
+    text-align: center;
+    background-color: --fourthColor ;
 }
 
-.paragLeftMenuLink{
-    margin-top : 5px ;
-    margin-bottom : 5px ;
-    /* background-color: black; */
-}
 .leftMenuLink{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    color : blue ;
+    color : rgb(0, 0, 255) ;
     background-color: antiquewhite;
     padding: 5px;
-    /* margin : 4% ; */
     height: fit-content ;
+    border-radius: 5px ;
+    border : 2px solid blue ;
+    text-decoration: none;
 }
 #left-menu{
     position: sticky;
@@ -82,19 +98,19 @@ td,th{
     visibility: hidden;
     top : 3vh ;
     left : 0% ;
-    background-color: rgb(21, 123, 136);
+    background-color: --accentColor ;
     width: var(--leftMenuWidth) ;
     height: fit-content ;
     z-index: 1;
+    transition: top 1s;
 }
-
+/* Style de l'ensemble*/
 #wrapper {
     position: absolute;
     background-color: none ;
     color: antiquewhite;
     display : flex ;
     flex-direction: column;
-
     width: 100%;
     height: 100vh ;
     top: 0%;
@@ -102,22 +118,17 @@ td,th{
 }
 
 h1{
-    background-color: chocolate;
-    grid-area: h1 ;
+    background-color: --fourthColor ;
     text-align: center;
 }
 
 h2{
     background-color: rgb(60, 142, 114);
-    grid-area: h2 ;
     text-align: center;
 }
 
-
-
 #menu{
     background-color: brown;
-    grid-area: menu ;
     height: auto;
 }
 
@@ -137,6 +148,7 @@ h2{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content :center;
     height: fit-content;
 }
 
@@ -177,11 +189,10 @@ li{
     border: 5px solid greenyellow;
     cursor: pointer;
 }
-
 #cards{
     display: flex ;
     flex-direction: row;
-    justify-content: center ;
+    justify-content: space-around ;
     align-items: flex-start;
     grid-area: cards ;
     /* background-color: darkorchid; */
