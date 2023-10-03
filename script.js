@@ -96,7 +96,7 @@ const datas = [
     {
         nom : "Prompt Personnaliser" ,
         definition : ["On choisit les variables à afficher :",
-                    "\u user \H host \A heure \d date \w workingDir",
+                    "\\u user \H host \A heure \d date \w workingDir",
                     "On précède la variable d'une couleur sous la forme\e[x:yy",
                     "Où x=0 ou 1 pour couleur plus claire, yy code couleur",
                     "m est nécessaire pour ne pas effacer la première lettre ??"
