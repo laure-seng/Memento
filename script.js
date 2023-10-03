@@ -103,7 +103,7 @@ const datas = [
                 ] ,
 
         example : [ "color: color-mix(in lch, peru 40%, lightgoldenrod)",
-        "export PS1=\"\e[1;91m\A\e[1;36m\d\e[1;33m\u\e[1;31m@\e[1;33m\H\e[1;35m\w]\$\e[m \""] ,
+        "export PS1=\"\e[1;91m\A\e[1;36m\d\e[1;33m\\u\e[1;31m@\e[1;33m\H\e[1;35m\w]\$\e[m \""] ,
         type : "LINUX"
     } ,
 
