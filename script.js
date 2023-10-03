@@ -30,6 +30,21 @@ let  keywordLinks=""
 
 const datas = [
     {
+        nom : "Grid /Simplifié" ,
+        definition : [ "Avec Grid, les area ont des dimensions fixes prédéterminées != flex",
+                    " grid-template-areas va définir une grille avec les différents items",
+                    " grid-template-columns va définir la taille des colonnes",
+                    " grid-template-rows va définir la taille des lignes",
+                ] ,
+        example : [ "Dans le container :",
+                    "grid-template-areas: \"head head\"\"nav  main\"\"nav  foot\";",
+                    "grid-template-columns: repeat(2,20dvw)",
+                    "grid-template-rows: 50px 1fr 30px;",
+                    " Dans chaque item : grid-area : head ; "
+    ],
+        type : "CSS"
+    } ,
+    {
         nom : "Transition" ,
         definition : [" Dans l'élément qu'on va animer, rajouter la ligne :",
                     "transition: <transition-property> <transition-duration> <transition-timing-function> <transition-delay>",
@@ -78,6 +93,22 @@ const datas = [
         type : "NEWS"
     } ,
     
+    {
+        nom : "Prompt Personnaliser" ,
+        definition : ["On choisit les variables à afficher :",
+                    "\u user \H host \A heure \d date \w workingDir",
+                    "On précède la variable d'une couleur sous la forme\e[x:yy",
+                    "Où x=0 ou 1 pour couleur plus claire, yy code couleur",
+                    "m est nécessaire pour ne pas effacer la première lettre ??"
+                ] ,
+
+        example : [ "color: color-mix(in lch, peru 40%, lightgoldenrod)",
+        "export PS1=\"\e[1;91m\A\e[1;36m\d\e[1;33m\u\e[1;31m@\e[1;33m\H\e[1;35m\w]\$\e[m \""] ,
+        type : "LINUX"
+    } ,
+
+
+
     {
     nom : "Shell bases" ,
     datas : [{"history":" !ID permet d'exécuter la cmd retrouvée ds l'historique "},
@@ -487,11 +518,12 @@ const datas = [
     {
     nom : "CSS Variables" ,
     definition : ["=>Peut contenir des couleurs, chiffres, objets, images et + " ],
-    example : [":root{--bckColor : #1e90ff ;}",
-    "color : var(--bckColor) ;",
-    "let rs = getComputedStyle(r);",
-    "rs.getPropertyValue('--blue')",
-    "r.style.setProperty('--blue', 'lightblue')"] ,
+    example : ["Dans le CSS :root{--bckColor : #1e90ff ;}",
+    "Dans le CSS color : var(--bckColor) ;",
+    "Dans le JS let r = document.querySelector(':root');",
+    "Dans le JS let rs = getComputedStyle(r);",
+    "Dans le JS  rs.getPropertyValue('--blue')",
+    "Dans le JS  r.style.setProperty('--blue', 'lightblue')"] ,
     type : "CSS"
     } ,
     {
