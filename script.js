@@ -31,7 +31,8 @@ let  keywordLinks=""
 const datas = [
     {
         nom : "Array Methods_Array.prototype. " ,
-        datas : [{"at(x)":"Rvoie l'élément du tableau à l'indice x(x<ou>0"},
+        datas : [{"Array.from() /Array.of()/ Array.isArray()":"Meth.statiques"},
+                {"at(x)":"Rvoie l'élément du tableau à l'indice x(x<ou>0"},
                 {"concat(x) ":"Rvoie un nv tabl avec x étant un tabl.ou valeurs"},
                 {"copyWithin(a, x, yf)":"copie les élemts de x à y en a"},
                 {"entries()/keys()/values()":"Rvoie un tabl itérator avec paires clé/valeur ou clés ou valeurs"},
