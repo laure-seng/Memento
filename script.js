@@ -31,7 +31,7 @@ let  keywordLinks=""
 const datas = [
     {
         nom : "Array Methods_Array.prototype. " ,
-        datas : [{"Array.from() /Array.of()/ Array.isArray()":"Meth.statiques"},
+        datas : [{"Array.from(tabl/obj) /Array.of(x)/ Array.isArray(variable)":"Meth.statiques"},
                 {"at(x)":"Rvoie l'élément du tableau à l'indice x(x<ou>0"},
                 {"concat(x) ":"Rvoie un nv tabl avec x étant un tabl.ou valeurs"},
                 {"copyWithin(a, x, yf)":"copie les élemts de x à y en a"},
@@ -83,6 +83,17 @@ const datas = [
         example : [ "div { width:100px ; transition: width 2s; }",
                     " div:hover {width : 300px ;}"
     ],
+        type : "CSS"
+    } ,
+    {
+        nom : "Personnaliser Vscode" ,
+        definition : ["Changer la couleur de la scrollbar",
+        " scrollbarSlider.shadow /activeBackground /background/hoverBackground"
+                ] ,
+        example : [ "ctrl+shift+P et ouvrir user preferences JSON",
+        "\"workbench.colorCustomizations\"\: \{\"scrollbarSlider.background\"\: \"#ff0000\"\}",
+    ],
+
         type : "CSS"
     } ,
     {
@@ -724,10 +735,12 @@ function displayCard(dataArray){
         
         //Création du head avec deux lignes
         // L une pour le titre du tableau
-        let thead=table.createTHead() //créer le head du table
-        let rowHeadTitle=thead.insertRow() // créer le row pour le titre dans le head
+        let nom=table.createTHead() //créer le head du table
+        let rowHeadTitle=nom.insertRow() // créer le row pour le titre dans le head
         let textTitle = document.createTextNode(data.nom);
         let th= document.createElement("th");
+        nom.setAttribute("class" ,"nom")
+        nom.setAttribute("id" ,`data${data.nom}`)
         th.setAttribute("colspan",data.datas.length) // faire que le titre prenne la largeur du tableau
         th.appendChild(textTitle);
         rowHeadTitle.appendChild(th);
