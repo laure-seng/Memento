@@ -193,9 +193,9 @@ li{
 }
 #cards{
     display: flex ;
-    flex-direction: row;
-    justify-content: space-around ;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     grid-area: cards ;
     /* background-color: darkorchid; */
     width: 100%;
