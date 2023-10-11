@@ -28,7 +28,8 @@ Anmation du leftmenuspan à définir
 }
 
 body{
-    background-color: color-mix(in srgb, rgb(0, 247, 255) 20%, rgb(0, 28, 128) 80%);
+    background-color: crimson;
+    /* background-color: color-mix(in srgb, rgb(0, 247, 255) 20%, rgb(0, 28, 128) 80%); */
     color: wheat;
 }
 
@@ -63,15 +64,15 @@ border-radius: 15px 5px 15px 5px;
     position: fixed ;
     top : 0% ;
     left : 0% ;
-    z-index: 10;
+    z-index: 110;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 800;
     font-style: oblique;
     font-size: large;
     border: dotted white 2px ;
     border-radius: 5px ;
-    width:  5vw;
-    height: 3vh;
+    width:  auto;
+    height: auto;
     text-align: center;
     background-color: --fourthColor ;
 }
@@ -143,7 +144,7 @@ h2{
     color: blue;
     width: 100% ;
     height: fit-content ;
-    z-index: 10;
+    z-index: 5;
 }
 
 #keywords{
@@ -152,6 +153,7 @@ h2{
     flex-direction: row;
     justify-content :center;
     height: fit-content;
+    z-index: 3;
 }
 
 .keywordLink{
@@ -170,6 +172,7 @@ h2{
     vertical-align: baseline;
     width: fit-content;
     font-size: small;
+    z-index: 3;
 }
 
 #filtersList{
