@@ -1,4 +1,4 @@
-
+//commentaire pour du beurre
 // POURQUOI JE N4ARRIVE PAS A creer le bouton COLLER specifique à chaque carte?
 // ==> utilsier la fonctin dans une classe ? méthode de classes ?
 
