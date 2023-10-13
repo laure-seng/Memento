@@ -1,4 +1,5 @@
 //commentaire pour du beurre
+// essai pour toggler la classlistsur filtre de kewords pas fctnel
 // POURQUOI JE N4ARRIVE PAS A creer le bouton COLLER specifique à chaque carte?
 // ==> utilsier la fonctin dans une classe ? méthode de classes ?
 
@@ -13,8 +14,8 @@
 
 
 //rajouter le langage aux data de type tableau
-
 const body=document.querySelector("body")
+const li=document.getElementsByTagName("li")
 let keywords= document.querySelector("#keywords")
 const keywordsWrapper= document.querySelector("#keywordsWrapper")
 const leftMenuSpan= document.querySelector("#left-menu-span")
@@ -26,7 +27,13 @@ let  keywordList=[]
 let  keywordListAlphaSort=[]
 let  keywordLinks=""
 
-
+const HTMLfilterLink=document.getElementById("HTMLfilter")
+const CSSfilterLink=document.getElementById("CSSfilter")
+const JSfilterLink=document.getElementById("JSfilter")
+const LINUXfilterLink=document.getElementById("LINUXfilter")
+const NEWSfilterLink=document.getElementById("NEWSfilter")
+const OTHERSfilterLink=document.getElementById("OTHERSfilter")
+const ALLfilterLink=document.getElementById("ALLfilter")
 
 const datas = [
     {
@@ -94,7 +101,7 @@ const datas = [
         "\"workbench.colorCustomizations\"\: \{\"scrollbarSlider.background\"\: \"#ff0000\"\}",
     ],
 
-        type : "CSS"
+        type : "OTHERS"
     } ,
     {
         nom : "Sélecteurs CSS,  ,Pseudo-elements, Pseudo-classes" ,
@@ -122,7 +129,7 @@ const datas = [
         type : "NEWS"
     } ,
     {
-        nom : "color-mix" ,
+        nom : "Color-mix" ,
         definition : ["Définit une couleur qui est le mélange 2 couleurs",
                     "color-mix(in <color-space>, <color1> <percentageOfc1>, <color2> <percentageOfc2>,)",
                     "Où <color-space> peut prendre la valeur de srgb, srgb-linear, lab, oklab, xyz, xyz-d50, xyz-d65, hsl, hwb, lch, oklch. "
@@ -231,7 +238,7 @@ const datas = [
         type : "JS"
         } ,
     {
-    nom : "forEach()" ,
+    nom : "ForEach()" ,
     definition : ["Methode qui prend en paramètre une fonction qui accepte 1 à 3 arguments "] ,
     example : [ "tableau.forEach(function(value, index,array){",
     "console.log(`${value} est au rang numéro ${index}`)})"] ,
@@ -253,7 +260,7 @@ const datas = [
     type : "JS"
     } ,
     {
-    nom : "reduce()" ,
+    nom : "Reduce()" ,
     definition : ["Prend paramètre une fonction qui a 2 arguments(acc et value)+ 1 optionnel(initValue)",
     ".reduce ((accumulateur, current value)=> instructions,valeurDeDepart)"],
     example : [ ".reduce((acc,val)=>acc+val,0)"] ,
@@ -333,7 +340,7 @@ const datas = [
     type : "CSS"
     } ,
     {
-    nom : "git 1/2 Essentiels" ,
+    nom : "Git 1/2 Essentiels" ,
     definition : [
     " Création d'un dépôt local : git init [nom-du-projet] // git clone [url]",
     " Chgmts de l'esp.de trav. à l'index : git add/rm/mv [fichier]//status//diff//",
@@ -349,7 +356,7 @@ const datas = [
     type : "OTHERS"
     },
     {
-    nom : "git 2/2 A savoir aussi" ,
+    nom : "Git 2/2 A savoir aussi" ,
     definition : ["Enregistrer des fragments pour mettre de côté des idées dans la remise=stash  : ",
     " git stash/ stash pop/ stash list/ stash drop",    
     " Synchroniser des chgmts entre un dépot distant et l'historique de version :'", 
@@ -366,7 +373,7 @@ const datas = [
     type : "OTHERS"
     } ,
     {
-    nom : "do...while loop" ,
+    nom : "Do...while loop" ,
     definition : ["do {instructions} while(condition) - Au moins une fois "] ,
     example : [ "do {",
     "i = i + 1;",
@@ -376,7 +383,7 @@ const datas = [
     type : "JS"
     } ,
     {
-    nom : "this 1/2" ,
+    nom : "This 1/2" ,
     definition : ["le mot-clé \"this\" se réfère tjrs à un objet",
     "qui varie selon où on l'utilise :",
     "- a/ Tout seul=>[object Window]",
@@ -390,7 +397,7 @@ const datas = [
     type : "JS"
     } , 
     {
-    nom : "this 2/2" ,
+    nom : "This 2/2" ,
     definition : ["3 méthodes natives pour contrôler le comportement de \"this\"",
     "- a/ Call() : permet d'utiliser la méthode d'un objet sur un autre=>",
     " obj1.methode.call(obj2,autres, arguments, optionnels)",
@@ -403,7 +410,7 @@ const datas = [
     type : "JS"
     } , 
     {
-    nom : "switch" ,
+    nom : "Switch" ,
     definition : ["Si on a une valeur à comparer "] ,
     example : [ "switch (expr) {",
     "case 'x':",
@@ -426,8 +433,9 @@ const datas = [
     type : "JS"
     } , 
     {
-    nom : "display Niveau 3" ,
-    definition : ["Display correspond en fait à deux valeurs,même si on en voit qu'une : " ,
+    nom : "Display" ,
+    definition : ["block(<p>) et inline-block (<button>) on peut modifier la taille et les marges ) , inline(<span>) que les marges de côté " ,
+        "display Niveau 3 =Display correspond en fait à deux valeurs,même si on en voit qu'une : " ,
     "La première, valeur interne = de l'élément : inline ou block", "la deuxième, valeur externe = des enfants : flex grid table etc ...",
     "cf. https://la-cascade.io/articles/approfondir-la-propriete-display-les-deux-valeurs-de-display"] ,
     example : ["display : inline/block/flex/","inline-block/inline-flex/inline-grid ;","table,list-items..."] ,
@@ -441,13 +449,13 @@ const datas = [
     type : "CSS"
     } ,
     {   
-    nom : "section" ,
+    nom : "Section" ,
     definition : ["=>Balise HTML"] ,
     example : ["<section> </section>"] ,
     type : "HTML"
     } ,
     {
-    nom : "set" ,
+    nom : "Set" ,
     definition : ["=>Unique set of data"] ,
     example : ["const mySet1 = new Set();"] ,
     type : "JS"
@@ -459,7 +467,7 @@ const datas = [
     type : "JS"
     } ,
     {
-    nom : "box-sizing" ,
+    nom : "Box-sizing" ,
     definition : ["=>To customize box behavior"] ,
     example : ["box-sizing: content-box;", "box-sizing: border-box;" ],
     type : "CSS"
@@ -473,14 +481,14 @@ const datas = [
     type : "CSS"
     } ,
     {
-    nom : "linear-gradient" ,
+    nom : "Linear-gradient" ,
     definition : ["=>On définit la direction (to right, to top right,45deg qui est, par défaut, de HT en bas)",
     "et éventuellment un ou des color stop"] ,
     example : ["linear-gradient : red, yellow 10% (=> color stop ) ;"],
     type : "CSS"
     } ,
     {
-    nom : "radial-gradient" ,
+    nom : "Radial-gradient" ,
     definition : ["=>On définit la direction (circle closest-side, ou farthest-side ou closest-corner ou farthest-corner)",
     " qui est, par défaut, du centre vers l'extér))",
     "et éventuellment un ou des color stop"] ,
@@ -488,7 +496,7 @@ const datas = [
     type : "CSS"
     } ,
     {
-    nom : "repeating-linear-gradient" ,
+    nom : "Repeating-linear-gradient" ,
     definition : ["=>ça fctne avec radial gradient aussi",
     "le dernier color-stop déterminé la taille"] ,
     example : ["repeating-linear-gradient:45deg,yellow,yellow 10px,red 10px,red 20px"],
@@ -614,13 +622,14 @@ document.getElementById("scrollToTop")?.addEventListener("click",()=>scrollToTop
 
 
 leftMenu.style.visibility="visible";
-wrapper.style.left="18vw"; scrollToTop(0,0)
+wrapper.style.left="20vw"; 
+scrollToTop(0,0);
 // Visibilite du menu de gauche
 leftMenuSpan.addEventListener("mouseover",()=>{
     leftMenuSpan.style.display="none" ;
     leftMenu.style.visibility="visible";
     leftMenu.style.top="0px";
-    wrapper.style.left="18vw"; scrollToTop(0,0)
+    wrapper.style.left="20vw"; scrollToTop(0,0)
 }) //correspond à var(--leftMenuWidth)
 leftMenu.addEventListener("mouseleave",()=>{
     leftMenuSpan.style.display="inline" ;
@@ -678,13 +687,13 @@ displayCard(filtered)
 generateKeywords(filtered)
 }    
 
-document.getElementById("HTMLfilter").addEventListener("click",()=>filter("HTML"))
-document.getElementById("CSSfilter").addEventListener("click",()=>filter("CSS"))
-document.getElementById("JSfilter").addEventListener("click",()=>filter("JS"))
-document.getElementById("LINUXfilter").addEventListener("click",()=>filter("LINUX"))
-document.getElementById("NEWSfilter").addEventListener("click",()=>filter("NEWS"))
-document.getElementById("OTHERSfilter").addEventListener("click",()=>filter("OTHERS"))
-document.getElementById("ALLfilter").addEventListener("click",()=>{
+HTMLfilterLink.addEventListener("click",()=>{this.classList.toggle("activeFilter") ; filter("HTML")})
+CSSfilterLink.addEventListener("click",()=>filter("CSS"))
+JSfilterLink.addEventListener("click",()=>filter("JS"))
+LINUXfilterLink.addEventListener("click",()=>filter("LINUX"))
+NEWSfilterLink.addEventListener("click",()=>filter("NEWS"))
+OTHERSfilterLink.addEventListener("click",()=>filter("OTHERS"))
+ALLfilterLink.addEventListener("click",()=>{
 wrapper.removeChild(cards)
 cards=document.createElement("div")
 cards.setAttribute("id","cards")
@@ -692,6 +701,7 @@ wrapper.appendChild(cards)
 displayCard(datas)})
 //afficher toutes les cartes si filtrées pour accéder à la carte demandée 
 document.querySelector("a").addEventListener("click",()=>{
+
 wrapper.removeChild(cards)
 cards=document.createElement("div")
 cards.setAttribute("id","cards")

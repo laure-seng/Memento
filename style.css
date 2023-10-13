@@ -15,11 +15,11 @@ Anmation du leftmenuspan à définir
 
 :root{
     /* srgb, srgb-linear, lab, oklab, xyz, xyz-d50, xyz-d65, hsl, hwb, lch, oklch. */
-    --mainColor : rgb(0, 28, 128);
-    --secondColor : rgb(0, 247, 255) ;
-    --accentColor : color-mix(in srgb, rgb(0, 247, 255) 70%, rgb(0, 28, 128) 40%);
-    --fourthColor : color-mix(in srgb, rgb(0, 247, 255) 90%, rgb(0, 28, 128) 20%);
-    --leftMenuWidth : 18dvw ;
+    --mainColor : #05137a ;
+    --secondColor : #2935a1 ;
+    --accentColor : #e2dcdc ;
+    --fourthColor : #132043 ;
+    --leftMenuWidth : 20dvw ;
 }
 
 *{
@@ -28,11 +28,11 @@ Anmation du leftmenuspan à définir
 }
 
 body{
-    background-color: crimson;
+    background-color: var(--mainColor);
     /* background-color: color-mix(in srgb, rgb(0, 247, 255) 20%, rgb(0, 28, 128) 80%); */
-    color: wheat;
+    color: rgb(255, 255, 255) ;
+    font-family: 'Rubik', sans-serif;
 }
-
 /* Style de la popup */
 #popoverTrial{
     font-size: xx-large;
@@ -69,7 +69,9 @@ border-radius: 15px 5px 15px 5px;
     font-weight: 800;
     font-style: oblique;
     font-size: large;
-    border: dotted white 2px ;
+    border: solid white 2px ;
+    box-shadow: 2px 2px 2px black;
+    padding : 2px ;
     border-radius: 5px ;
     width:  auto;
     height: auto;
@@ -81,14 +83,27 @@ border-radius: 15px 5px 15px 5px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    color : rgb(0, 0, 255) ;
-    background-color: antiquewhite;
+    color :  rgb(255, 252, 252) ;
+    background-color: rgb(51, 97, 126);
     padding: 5px;
     height: fit-content ;
     border-radius: 5px ;
-    border : 2px solid blue ;
+    border : 2px solid rgb(8, 8, 101) ;
     text-decoration: none;
 }
+
+.leftMenuLink:active{
+    background-color: rgb(44, 72, 90);
+    color :rgb(182, 226, 245) ;
+    transition: all 500ms ;
+}
+
+.leftMenuLink:hover{
+    background-color: rgb(112, 150, 175);
+    color :rgb(235, 235, 247) ;
+    transition: all 500ms ;
+}
+
 #left-menu{
     position: sticky;
     display: flex;
@@ -99,10 +114,10 @@ border-radius: 15px 5px 15px 5px;
     visibility: hidden;
     top : 3vh ;
     left : 0% ;
-    background-color: --accentColor ;
+    background-color: var(--mainColor) ;
     width: var(--leftMenuWidth) ;
     height: fit-content ;
-    z-index: 1;
+    z-index: 180;
     transition: top 1s;
 
 }
@@ -120,18 +135,24 @@ border-radius: 15px 5px 15px 5px;
     transition: left 1s;
 }
 
-h1{
-    background-color: --fourthColor ;
+h1,h2{
+    padding: 10px;
     text-align: center;
+}
+
+h1{
+    background-color: var(--mainColor) ;
+    color: #c2c3ba;
+
 }
 
 h2{
-    background-color: rgb(60, 142, 114);
-    text-align: center;
+    background-color: var(--secondColor);
+    color: #b8a268;
 }
 
 #menu{
-    background-color: brown;
+    background-color: var(--mainColor);
     height: auto;
 }
 
@@ -140,11 +161,13 @@ h2{
     flex-direction: row;
     flex-wrap: wrap;
     grid-area: keywords ;
-    background-color: gold;
-    color: blue;
+    background-color: var(--mainColor);
+    color: rgb(26, 26, 104);
     width: 100% ;
     height: fit-content ;
     z-index: 5;
+    border : "5"px solid #ffffff ; 
+    box-shadow: 2px 2px 5px rgb(1, 1, 1) ;
 }
 
 #keywords{
@@ -157,22 +180,23 @@ h2{
 }
 
 .keywordLink{
-    /* display: flex;
-    flex-direction: row; */
     width: fit-content;
     height: fit-content ;
     flex-wrap: wrap;
-    background-color: rgb(199, 138, 23);
-    color :aliceblue ;
+    background-color: rgb(7, 3, 56) ;
+    color :rgb(162, 198, 239) ;
     margin: 5px ;
     padding: 5px ;
-    border-radius: 5% ;
+    border-radius: 5px ;
     text-decoration: none;
     text-align: center;
-    vertical-align: baseline;
     width: fit-content;
     font-size: small;
-    z-index: 3;
+}
+
+.keywordLink:hover{
+    background-color: rgb(15, 8, 122) ;
+    color :rgb(240, 247, 254) ;
 }
 
 #filtersList{
@@ -186,13 +210,26 @@ h2{
 li{
     display: flex;
     flex-direction: row ;
-    background-color: darkgoldenrod;
+    background-color: rgb(185, 172, 180);
     list-style-type: none;
     margin: 1%;
     padding: 8px 2% ;
     border-radius: 15px ;
-    border: 5px solid greenyellow;
+    border: 5px solid rgb(86, 68, 161);
     cursor: pointer;
+    box-shadow: 2px 2px 5px rgb(1, 1, 1) ;
+}
+
+li:hover {
+    background-color: rgb(67, 63, 66);
+    border: 5px solid rgb(110, 106, 125);
+    transition: all 500ms;
+
+}
+
+.activeFilter{
+    background-color: rgb(211, 33, 167);
+    border: 5px solid rgb(110, 106, 125);
 }
 #cards{
     display: flex ;
