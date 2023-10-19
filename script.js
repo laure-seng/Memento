@@ -633,11 +633,11 @@ behavior: "smooth",
 });
 console.log("scrollin")        
 }
-document.getElementById("scrollToTop")?.addEventListener("click",()=>scrollToTop(100,100))
+document.getElementById("scrollToTop").addEventListener("click",()=>scrollToTop(100,100))
 
 
-leftMenu.style.visibility="visible";
-wrapper.style.left="20vw"; 
+// leftMenu.style.visibility="visible";
+// wrapper.style.left="20vw"; 
 scrollToTop(0,0);
 // Visibilite du menu de gauche
 leftMenuSpan.addEventListener("mouseover",()=>{

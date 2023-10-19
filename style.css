@@ -319,7 +319,11 @@ img{
 
 
 @media screen and (min-width: 768px) and (max-width: 1023px){
-    
+
+#wrapper { 
+    width: 100dvw;   
+}
+
 #cards{
     display: flex ;
     flex-direction: column;
@@ -330,6 +334,17 @@ img{
     height: auto;
     flex-wrap: wrap;
     height: fit-content;
-    background-color: aqua;
 }
+
+#left-menu{
+    display: none;
+}
+
+#left-menu-span:hover+div{
+    display: flex;
+}
+
+/* .leftMenuLink:hover{
+    display: none;
+} */
 }
