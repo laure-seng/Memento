@@ -66,6 +66,21 @@ const datas = [
         type :"JS",
         },
         {
+            nom : "String search methods" ,
+            datas : [
+                    {"indexOf(str,ind de départ de la rech)":"Rvoie l'index de la 1ère occurrence de str sinon -1"},
+                    {"lastIndexOf(str,ind de départ de la rech)) ":"Rvoie l'index de la dernière occurrence de str sinon -1.Cherche à reculons"},
+                    {"search(str ou REGEX)":"Rvoie l'index de la crrspdce"},
+                    {"match(str ou REGEX)":"Rvoie un tableau avec les corrspdces"},
+                    {"matchAll(str ou REGEX))":"Rvoie un iterator avec les corrspdces"},
+                    {"includes(str) ":"Rvoit true ou false"},
+                    {"startsWith(str,ind de départ de la rech)":"Rvoit true ou false"},
+                    {"endsWith(str,ind de départ de la rech)":"Rvoit true ou false"},
+                ],
+                tableau : true,
+            type :"JS",
+            },
+        {
             nom : "Centrer une image" ,
             definition : [ "1/ La déclarer comme un block (car img est un element inline à la base",
             "et mettre les marges en auto centrera hrztlmt",
