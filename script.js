@@ -81,6 +81,21 @@ const datas = [
             type :"JS",
             },
         {
+            nom : "String methods" ,
+            datas : [{"Retourne des nvx strings" :"car le string est immutable, car c une primitive"}
+                    {"3méthodes d'extraction de texte" : "si omission du 2e param=> jusqu'à la fin"}
+                    {"slice(1, 3facultatif)":"salut=>al, accepte val négatives et lira à l'envers"},
+                    {"substring(1,2eparam facult)":"salut=>alut , les valeurs<0 st cisidérées comme 0"},
+                    {"substr(start 1, length 2)":"salut=>al,accepte val négatives et lira à l'envers "},
+                    {"replace(str ou regex,str2) / replaceAll()":"charAt() /charCodeAt()"},
+                    {"toUpperCase(),toLowerCase()"},
+                    {"str.concat(str,str,str)":"split(),length()"},
+                    {"trim()/trimStart()/trimEnd()":"pad()/padStart()/padEnd()"},
+                ],
+                tableau : true,
+            type :"JS",
+            },
+        {
             nom : "Centrer une image" ,
             definition : [ "1/ La déclarer comme un block (car img est un element inline à la base",
             "et mettre les marges en auto centrera hrztlmt",
