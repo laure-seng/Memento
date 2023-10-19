@@ -315,6 +315,9 @@ img{
     z-index: 5;
 }
 
+
+
+
 @media screen and (min-width: 768px) and (max-width: 1023px){
     
 #cards{
@@ -327,5 +330,6 @@ img{
     height: auto;
     flex-wrap: wrap;
     height: fit-content;
+    background-color: aqua;
 }
 }

@@ -65,6 +65,21 @@ const datas = [
             tableau : true,
         type :"JS",
         },
+        {
+            nom : "Centrer une image" ,
+            definition : [ "1/ La déclarer comme un block (car img est un element inline à la base",
+            "et mettre les marges en auto centrera hrztlmt",
+                        "2/ avec flex : align-items et justify-content",
+                        "3/en mettant ds un container aux dimensions fixes et en position relative",
+                        "et l'image avec top et left à 50% et transform: translate(-50%, -50%)"
+                    ] ,
+            example : [ "1/ display : block ; margin : auto",
+            "2/ display: flex \;justify-content\: center\;align\-items\: center\;",
+            "3/    position: absolute;top : 50% ;left : 50% ;transform: translate(-50%, -50%); "
+                        
+        ],
+            type : "CSS"
+        } ,
     {
         nom : "Grid /Simplifié" ,
         definition : [ "Avec Grid, les area ont des dimensions fixes prédéterminées != flex",
