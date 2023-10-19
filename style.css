@@ -340,9 +340,9 @@ img{
     display: none;
 }
 
-#left-menu-span:hover+div{
+/* #left-menu-span:hover+div{
     display: flex;
-}
+} */
 
 /* .leftMenuLink:hover{
     display: none;
