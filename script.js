@@ -41,14 +41,14 @@ const datas = [
         datas : [{"Array.from(tabl/obj) /Array.of(x)/ Array.isArray(variable)":"Meth.statiques"},
                 {"at(x)":"Rvoie l'élément du tableau à l'indice x(x<ou>0"},
                 {"concat(x) ":"Rvoie un nv tabl avec x étant un tabl.ou valeurs"},
-                {"copyWithin(a, x, yf)":"copie les élemts de x à y en a"},
+                {"copyWithin(a, x, yf)":"copie les élemts de x à y exclus en a"},
                 {"entries()/keys()/values()":"Rvoie un tabl itérator avec paires clé/valeur ou clés ou valeurs"},
                 {"every/some(cond)":"Rvoie true si ts/au moins un les éléments répondent à la condition"},
-                {"fill(a,x,yf) ":"Remplit de a de x à y"},
+                {"fill(a,x,yf) ":"Remplit de a de x à y exclus"},
                 {"filter(fct)":"Rvoie nv tabl avec éléments pour qui la fct a rvoyé true"},
                 {"find(cond)":"Rvoie l'élémt qui répd à la cond, sinon undefined"},
                 {"findIndex(cond)":"Rvoie l'index de l'élémt qui répd à la cond, sinon -1"},
-                {"flat()":"Rvoie un nvv tabl avec les aut tablx de dedans concaténés"},
+                {"flat()":"Rvoie un nv tabl avec les aut tablx de dedans concaténés"},
                 {"flatMap()":"Crrspd à Map() puis flat()-cpliqué:(-"},
                 {"forEach(fct)":"Applique la fct à chq élémt du tabl"},
                 {"includes(x)":"Rvoie true si tabl ctient x sinon false"},
@@ -58,8 +58,8 @@ const datas = [
                 {"push/unshift/pop/shift(x)":"rajoute à la fin/ au déb / enlève à la fin/au déb "},
                 {"reduce/reduceRight(fct(acc,val,ind,initVal)=> acc)":"Pour réduire le tabl à une seule valeur"},
                 {"reverse() /sort(fct)": "inverser ou classer"},
-                {"slice(x,yf)": "Rvoie nv tabl de x à la fin ou de x à y"},
-                {"splice(a,xf,yf)": "enlève/rplace a sur xf items par yf"},
+                {"slice(x,yf)": "Rvoie nv tabl de x à la fin ou de x à y exclus"},
+                {"splice(a,xf,yf)": "enlève/rplace l'item à l'index a sur xf items par yf"},
                 {"toString()/toLocaleString()": "Pas bien compris ce que c'était ...;("},
             ],
             tableau : true,
@@ -95,6 +95,25 @@ const datas = [
                 tableau : true,
             type :"JS",
             },
+            {
+                nom : "Drag and Drop ATERMINER" ,
+                definition : [ "1/Dans l'HTML, définir l'attribut \"draggable=true\" pour l\'élément à glisser ",
+                            "2/ Dans le JS, utiliser dragStart sur l\'élément et dragEnd et drop sur la dropzone ",
+                            "3/ Inhiber le cprtmt par défaut qui est de ne pas accepter le drop, sur la dropzone",
+                            "4/ Créer la fonction lancée sur dragStart de l'élément=>qLs data st transférées",
+                            "5/Créer les fonctions lancées sur drop et dragEnd  ",
+                            "NB : il y a 8 events drag( drag,dragend,dragenter,dragexit,dragleave,dragover,dragstart et drop. "
+                        ] ,
+                example : [ "3/ sur la dropzone :function onDragOver(event) {event.preventDefault();}",
+                            "4/ sur l\'élément :function onDragStart(event) {event.dataTransfer.setData('text/plain', event.target.id);}",
+                            "5/ sur la dropzone :function onDrop(event) {const id = event.dataTransfer.getData('text');",
+                            "5/b const draggableElement = document.getElementById(id); }",
+                            "5c/ const dropzone = event.target;",
+                            "5c/ dropzone.appendChild(draggableElement);",
+                            "5d/ event.dataTransfer.clearData();"                
+            ],
+                type : "JS"
+            } ,
         {
             nom : "Centrer une image" ,
             definition : [ "1/ La déclarer comme un block (car img est un element inline à la base",
@@ -110,6 +129,24 @@ const datas = [
         ],
             type : "CSS"
         } ,
+    {
+        nom : "Shuffle - Fisher-Yates Sorting Algorithm" ,
+        definition : [ "On crée une boucle for qui va nous permettre de permuter",
+                    " les éléments en commençant par le dernier",
+                    " avec un élément tiré au hasard",
+                    " On utilise la déstructuration pour permuter",
+                ] ,
+        example : [ "const shuffle = (array) => { ",
+                    "for (let i = array.length - 1; i > 0; i--) { ",
+                    "const j = Math.floor(Math.random() * (i + 1)); ",
+                    "[array[i], array[j]] = [array[j], array[i]]; ",
+                    " } return array; }"
+    ],
+        type : "CSS"
+    } ,
+
+
+
     {
         nom : "Grid /Simplifié" ,
         definition : [ "Avec Grid, les area ont des dimensions fixes prédéterminées != flex",
