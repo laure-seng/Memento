@@ -244,7 +244,8 @@ const datas = [
             {"sudo -i":"su "},
             {"chmod -777 <nomdufichier>":"donne ts les droits au ficier qui suit"},
             {"En vrac ": "pwd, ls, mkdir, cd,touch, cp, mv, rm"},
-            {"En vrac 2 ": "clear, echo, history, zip, tar, sudo, cat,man"}
+            {"En vrac 2 ": "clear, echo, history, zip, tar, sudo, cat,man"},
+            {"ln -s nomDufFichier ": "crée un lien symbolique}
         ],
         tableau : true,
         type :"LINUX",
