@@ -1,16 +1,14 @@
 //commentaire pour du beurre
-// essai pour toggler la classlistsur filtre de kewords pas fctnel
+//probleme avec affichage du menu
+// reformuler les element.style.prop par ajout/toggle classlisst
 // POURQUOI JE N4ARRIVE PAS A creer le bouton COLLER specifique à chaque carte?
 // ==> utilsier la fonctin dans une classe ? méthode de classes ?
 
-//Créer des liens à partir des keywords
 
-//Filtrer les data selon les langages
 
 // ne pas prendre l'erreu à la légère concernant le pb du copy2clipboard c peut etre ça le pb !!!
 // Idees de fctionnalites en plus : mettre en favoris / création de sa propre carte en rajoutant via un formulaire
 
-// cpléter les datats  et faire marcher les liens des filtres
 
 
 //rajouter le langage aux data de type tableau
@@ -770,7 +768,7 @@ displayCard(filtered)
 generateKeywords(filtered)
 }    
 
-HTMLfilterLink.addEventListener("click",()=>{this.classList.toggle("activeFilter") ; filter("HTML")})
+HTMLfilterLink.addEventListener("click",()=>{filter("HTML")})
 CSSfilterLink.addEventListener("click",()=>filter("CSS"))
 JSfilterLink.addEventListener("click",()=>filter("JS"))
 LINUXfilterLink.addEventListener("click",()=>filter("LINUX"))
