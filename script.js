@@ -49,16 +49,8 @@ const datas = [
 
     // {
     //     nom : "TRAME ITEM CLASSIQUE" ,
-    //     definition : [ "1/ La déclarer comme un block (car img est un element inline à la base",
-    //     "et mettre les marges en auto centrera hrztlmt",
-    //                 "2/ avec flex : align-items et justify-content",
-    //                 "3/en mettant ds un container aux dimensions fixes et en position relative",
-    //                 "et l'image avec top et left à 50% et transform: translate(-50%, -50%)"
-    //             ] ,
-    //     example : [ "1/ display : block ; margin : auto",
-    //     "2/ display: flex \;justify-content\: center\;align\-items\: center\;",
-    //     "3/    position: absolute;top : 50% ;left : 50% ;transform: translate(-50%, -50%); "
-                    
+    //     definition : [ "", "", "", "",] ,
+    //     example : [ "","","",
     // ],
     //     type : "CSS"
     // } 
@@ -76,6 +68,7 @@ const datas = [
                 nom : "SERVEUR /PORTS ATTRIBUES" ,
                 datas : [{"mysql":"3306"},
                         {"apache":"80"},
+                        {"https":"443"},
                         {"http://127.0.0.1:8000/":""},
                         {"sudo netstat -tlnpu ":"voir les ports ouverts"},
                         {"sudo lsof -nP -iTCP -sTCP:LISTEN":"voir les ports utilisés"},
@@ -125,6 +118,23 @@ const datas = [
     ],
         type : "PHP"
     } ,
+    {
+            nom : "LARAVEL ELOQUENT RELATIONSHIPS One to One" ,
+            definition : [ "Soit un model Phone et un model User, Phone ayant une colonne User_id", 
+            "Un utilisateur a un téléphone et réciproque",
+            "1/ Dans le model User, on crée la method phone() utilisant hasOne()", 
+            "2/ On récupère la propriété phone automatiqmt dans User ", 
+            "3/On peut récupérer l'utilisateur d'un téléphone  en créant la méthode user() dans le model Phone en utilisant belongsTo()",
+            "4/ On récupère la propriété user automatiqmt dans Phone"
+            ] ,
+            example : [ "1/public function phone(): HasOne{return $this->hasOne(Phone::class);}",
+                "2/$phone = User::find(1)->phone;",
+                "3/ public function user(): BelongsTo{return $this->belongsTo(User::class);}",
+                ""
+
+        ],
+            type : "PHP"
+        } ,
     {
         nom : "DOCKER-Commandes de base" ,
         datas : [{"Démarrer un conteneur":"docker run nom-du-conteneur-sur-dockerhub(httpd par exemple"},
@@ -410,10 +420,21 @@ const datas = [
     nom : "Shell bases" ,
     datas : [{"history":" !ID permet d'exécuter la cmd retrouvée ds l'historique "},
             {"sudo -i":"su "},
-            {"chmod -777 <nomdufichier>":"donne ts les droits au ficier qui suit"},
-            {"En vrac ": "pwd, ls, mkdir, cd,touch, cp, mv, rm"},
-            {"En vrac 2 ": "clear, echo, history, zip, tar, sudo, cat,man"},
+            {"chmod -777 <nomdufichier>":"donne ts les droits au fichier qui suit"},
+            {"chmod u/g/o suivi de +/-/= rwx <nomdufichier>":"autre manière de changer les droits"},
+            {"rm -rf nomDeDossier ":" tout effacer dossier + fichiers"},
+            {"ctrl + L clear":"effacer "},
+            {"ll ou ls -al ":"voir ts les fichiers et les droits utilisateurs "},
+            {"env":"voir les variables d'environnement "},
+            {"crontab -e":"automatisation de scripts"},
+            {"sed":"donne ts les droits au fichier qui suit"},
             {"ln -s nomDufFichier ": "crée un lien symbolique"},
+            {"| ":"le pipe transmet le résultat de la commande à la prochaine commande  "},
+            {"!!":" reprend toute la commande"},
+            {"!$":" reprend le dernier argument"},
+            {"crontab -e":"automatisation de scripts"},
+            {"En vrac ": "pwd, ls, mkdir, cd,touch, cp, mv, rm"},
+            {"En vrac 2 ": "remplacer (cf doc)"},
         ],
         tableau : true,
         type :"LINUX",
