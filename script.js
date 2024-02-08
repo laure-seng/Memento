@@ -61,7 +61,70 @@ const datas = [
                     
     // ],
     //     type : "CSS"
-    // } ,
+    // } 
+    {
+            nom : "PHP en ligne de commande" ,
+            datas : [{"php -m ":"quesl modules sont chargés ?"},
+                    {"php -a":"mode interactif"},
+                    {"php -f":"lancer un script ds le terminal"},
+                    {"":""},
+                    ],
+            tableau : true,
+            type : "PHP"
+            },
+            {
+                nom : "SERVEUR /PORTS ATTRIBUES" ,
+                datas : [{"mysql":"3306"},
+                        {"apache":"80"},
+                        {"http://127.0.0.1:8000/":""},
+                        {"sudo netstat -tlnpu ":"voir les ports ouverts"},
+                        {"sudo lsof -nP -iTCP -sTCP:LISTEN":"voir les ports utilisés"},
+                        {"php -S localhost:8080 ":""},
+                        {"php -S 0.0.0.0:8080 -t public frontend":""},
+                        ],
+                tableau : true,
+                type : "HEBERGEMENT"
+                },
+                {
+                    nom : "API" ,
+                    definition : ["Interface entre front et données, c un service Web, ça renvoie du JSON",
+                            "pour voir les requetes http : utiliser lextension Rest API",
+                            "ou insomnia ou PostMan",
+                            "N'importe quel client pouvant faire des requêtes http pourra appeler une API",
+                            ],
+                            example : "",
+                    type : "HEBERGEMENT"
+                    },
+    
+
+    {
+            nom : "LARAVEL PREMIERS PAS" ,
+            definition : [ "-Soit on crée un projet avec la commande create de composer",
+                        "-Soit on récupère un repo et on suit les étapes ci-dessous :",
+                        "Remplir le fichier .env",
+                        "Installer les dépendances avec composer install de préférence sinon update mais pas recommandé",
+                        "Générer la clé et lancer le serveur ds le dossier du projet Laravel"
+                        ],
+            example : [ "composer create-project laravel/laravel nomDuDossierDuProjetBack ",
+                    "php artisan key:generate",
+                    "php artisan serve"
+    ],
+        type : "PHP"
+    } ,
+    {
+        nom : "LARAVEL BASES A SAVOIR VRAC" ,
+        definition : [ "-Les logs sont dans storage/logs  ",
+        "APP_ENV local outils de debug laravel",
+                    "laravel ide helper =extension pour voir les noms des colonnes des tables dans vscode",
+                    "Normes des models : table au pluriel, id, created_at et updated_at avec timestamp",
+                    "On peut créer utilser larrvel en ligne de commande avec artisan=>seeder=script pour remplir les tables"
+                ] ,
+        example : [ "comoser require --dev barry larave ide helper",
+                    "php artisan make:model Task",
+                    "php artisan make:controller Task",
+    ],
+        type : "PHP"
+    } ,
     {
         nom : "DOCKER-Commandes de base" ,
         datas : [{"Démarrer un conteneur":"docker run nom-du-conteneur-sur-dockerhub(httpd par exemple"},
@@ -130,7 +193,9 @@ const datas = [
                     "=> Les bind mounts vers les bons volumes",
                     "=> les variables d'environnement",
                     "=>On y charge la bdd",
-                    "=> Des variables d'environnement si elles sont lues par le logiciel (Laravel le fait)"
+                    "=> Des variables d'environnement si elles sont lues par le logiciel (Laravel le fait)",
+                    "=>On démarre ts les conteneurs avec docker compose up -d ",
+                    "=>On arrête avec docker compose down"
                 ] ,
         example : [ "docker login",
                     "docker image tag nom-de-limage PSEUDO-DH/nom-de-limage:latest",
