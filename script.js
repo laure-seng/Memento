@@ -28,12 +28,117 @@ let  keywordLinks=""
 const HTMLfilterLink=document.getElementById("HTMLfilter")
 const CSSfilterLink=document.getElementById("CSSfilter")
 const JSfilterLink=document.getElementById("JSfilter")
+const PHPfilterLink=document.getElementById("PHPfilter")
+const HOSTINGfilterLink=document.getElementById("HOSTINGfilter")
 const LINUXfilterLink=document.getElementById("LINUXfilter")
 const NEWSfilterLink=document.getElementById("NEWSfilter")
 const OTHERSfilterLink=document.getElementById("OTHERSfilter")
 const ALLfilterLink=document.getElementById("ALLfilter")
 
 const datas = [
+    // {
+    //     nom : "TRAME TABLEAU" ,
+    //     datas : [{"vide":"vide"},
+    //             {"item2":"item2"},
+    //             {"item3":"item3"},
+    //             {"item4":"item4"},
+    //             ],
+    //     tableau : true,
+    //     type : "NEWS"
+    //     },
+
+    // {
+    //     nom : "TRAME ITEM CLASSIQUE" ,
+    //     definition : [ "1/ La déclarer comme un block (car img est un element inline à la base",
+    //     "et mettre les marges en auto centrera hrztlmt",
+    //                 "2/ avec flex : align-items et justify-content",
+    //                 "3/en mettant ds un container aux dimensions fixes et en position relative",
+    //                 "et l'image avec top et left à 50% et transform: translate(-50%, -50%)"
+    //             ] ,
+    //     example : [ "1/ display : block ; margin : auto",
+    //     "2/ display: flex \;justify-content\: center\;align\-items\: center\;",
+    //     "3/    position: absolute;top : 50% ;left : 50% ;transform: translate(-50%, -50%); "
+                    
+    // ],
+    //     type : "CSS"
+    // } ,
+    {
+        nom : "DOCKER-Commandes de base" ,
+        datas : [{"Démarrer un conteneur":"docker run nom-du-conteneur-sur-dockerhub(httpd par exemple"},
+                {"en tâche de fond":"-d"},
+                {"voir les conteneurs lancés ":"docker ps , si on rajoute -a pour voir les stoppés"},
+                {"arrêter":"docker stop id_ou_nom_du_conteneur"},
+                {"nommer le conteneur":"docker run -d --name monApache httpd"},
+                {"rediriger le port 8000 de l'ordinateur hôte vers le port 80 du conteneur":"-p 8000:80"},
+                {"EN RESUME":"docker run -dp 8000:80 --name apache httpd"},
+                {"supprimer":"docker rm nom1 nom2 nom3 etc... avec -f pour forcer sans stopper au préalable"},
+                {"supprimer tout":"docker container prune"},
+                {"relancer":"docker start"},
+                {"voir les images stockées localement":"docker images ou docker image ls"},
+                {"supprimer l'image":"docker image rm nomDeLImage"},
+                {"supprime ttes les images inutilisées":"docker image prune -a"}
+                ],
+        tableau : true,
+        type : "HOSTING"
+    },
+
+    {
+        nom : "DOCKER BIND MOUNTS" ,
+        definition : [ "=>monter des dossiers accessibles sur l'hôte et sur le conteneur ",
+                    "=> ça peut donc servir pour se créer un environnement de dév local",
+                    "On peut utiliser --volume /-v ou --mount(plus complexe",
+                    "Avec -v, 2 chemins séparés par :"
+                ] ,
+        example : [ "docker run -dp 8000:80 --name apache -v ./front:/usr/local/apache2/htdocs/ httpd",
+                    "/usr/local/apache2/htdocs  c'est le documentRoot utilisé avec l'image httpd",
+                    "docker run -dp 8001:80 --name mon-env-de-dev-php -v ./demo-php:/var/www/html php:8.2-apache"
+    ],
+        type : "HOSTING"
+    } ,
+    {
+        nom : "EXECUTER DES COMMANDES BASH AVEC DOCKER " ,
+        definition : [ "=>On peut utiliser exec mais pour une commande, et les changements nepersistent pas après suppression de l'image Docker ",
+                    "=> Avec l'argument -it on a un terminal complet",
+                    "=> Mais bon si on veut refaire ça pour chaque image, c'estpas pratique",
+                    "D'où l'intérêt ds DockerFile !"
+                ] ,
+        example : [ "docker exec monConteneur bash -c \"echo '<?php phpinfo();' > /var/www/html/index.php\"",
+                    "docker exec -it monConteneur bash",
+                ],
+        type : "HOSTING"
+    } ,
+    {
+        nom : "DOCKERFILE " ,
+        definition : [ "=>Il permet de créer sa propre image depuis une image existante",
+                    "=> Il doit s'appeler Dockerfile",
+                    "=> Si c'est pour le back par exemple, il faut le mettre ds le dossier back",
+                    "=> depuis ce dossier on la crée : docker build -t nom-de-l-image",
+                    "=>Puis on pt démarrer un conteneur depuis cette nouvelle image : docker run -dp 8080:80 pomodoro-backend-laravel",
+                    "Si on a un compte dockerHub, on peut la mettre en ligne cf ci-dessous"
+                ] ,
+        example : [ "docker login",
+                    "docker image tag nom-de-limage PSEUDO-DH/nom-de-limage:latest",
+                    "docker push PSEUDO-DH/nom-de-limage:latest",
+                    "docker run -dp 8080:80 PSEUDO-DH/nom-de-limage:latest"
+                ],
+        type : "HOSTING"
+    } ,
+    {
+        nom : "DOCKER COMPOSE" ,
+        definition : [ "=>On crée un fichier compose.yaml",
+                    "=> Il contient la version de docker, les services=images des applications",
+                    "=> Les bind mounts vers les bons volumes",
+                    "=> les variables d'environnement",
+                    "=>On y charge la bdd",
+                    "=> Des variables d'environnement si elles sont lues par le logiciel (Laravel le fait)"
+                ] ,
+        example : [ "docker login",
+                    "docker image tag nom-de-limage PSEUDO-DH/nom-de-limage:latest",
+                    "docker push PSEUDO-DH/nom-de-limage:latest",
+                    "docker run -dp 8080:80 PSEUDO-DH/nom-de-limage:latest"
+                ],
+        type : "HOSTING"
+    } ,
     {
         nom : "Array Methods_Array.prototype. " ,
         datas : [{"Array.from(tabl/obj) /Array.of(x)/ Array.isArray(variable)":"Meth.statiques"},
@@ -771,6 +876,8 @@ generateKeywords(filtered)
 HTMLfilterLink.addEventListener("click",()=>{filter("HTML")})
 CSSfilterLink.addEventListener("click",()=>filter("CSS"))
 JSfilterLink.addEventListener("click",()=>filter("JS"))
+PHPfilterLink.addEventListener("click",()=>filter("PHP"))
+HOSTINGfilterLink.addEventListener("click",()=>filter("HOSTING"))
 LINUXfilterLink.addEventListener("click",()=>filter("LINUX"))
 NEWSfilterLink.addEventListener("click",()=>filter("NEWS"))
 OTHERSfilterLink.addEventListener("click",()=>filter("OTHERS"))
