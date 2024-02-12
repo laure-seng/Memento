@@ -328,15 +328,32 @@ const datas = [
     {
         nom : "Grid /Simplifié" ,
         definition : [ "Avec Grid, les area ont des dimensions fixes prédéterminées != flex",
-                    " grid-template-areas va définir une grille avec les différents items",
                     " grid-template-columns va définir la taille des colonnes",
                     " grid-template-rows va définir la taille des lignes",
+                    "On peut se servir des repères pour positionner chaque élément (3 manières différentes a/b/c/)",
+                    " Méth.synthétique : grid-template-areas va définir une grille avec les noms des différents items",
                 ] ,
         example : [ "Dans le container :",
-                    "grid-template-areas: \"head head\"\"nav  main\"\"nav  foot\";",
+                    "display :grid ;",
                     "grid-template-columns: repeat(2,20dvw)",
                     "grid-template-rows: 50px 1fr 30px;",
-                    " Dans chaque item : grid-area : head ; "
+                    "grid-template-areas: \"head head\"\"nav  main\"\"nav  foot\";",
+                    " Dans chaque item,nom de l'area' : grid-area : head ; ",
+                    " a/ Dans chaque item,de la méth. la + longue à la + courte :",
+                    " grid-colum-start : 2 ; ",
+                    " grid-colum-end : 4 ; ",
+                    " grid-row-start : 1 ; ",
+                    " grid-row-end : 3 ; ",
+                    "b/équivaut à :",
+                    " grid-colum : 2 /4 ; ",
+                    " grid-row : 1/3 ; ",
+                    "c/équivaut à :",
+                    " grid-area : 1 /2/3/4; =>[rowStrt,colStrt,rowEnd,colEnd]",
+
+
+
+
+                    
     ],
         type : "CSS"
     } ,
