@@ -29,6 +29,7 @@ const HTMLfilterLink=document.getElementById("HTMLfilter")
 const CSSfilterLink=document.getElementById("CSSfilter")
 const JSfilterLink=document.getElementById("JSfilter")
 const PHPfilterLink=document.getElementById("PHPfilter")
+const SYMFONYfilterLink=document.getElementById("SYMFONYfilter")
 const HOSTINGfilterLink=document.getElementById("HOSTINGfilter")
 const LINUXfilterLink=document.getElementById("LINUXfilter")
 const NEWSfilterLink=document.getElementById("NEWSfilter")
@@ -55,6 +56,87 @@ const datas = [
     //     type : "CSS"
     // } 
     {
+        nom : "Symfony - TWIG -Bases" ,
+        definition : ["1/Installer Twig.",
+                "Par défaut, on va mettre les tpl dans /templates",
+                "Le fichier base.html.twig sert de patron, on y met le corps commun (header ... footer)",
+                "2/ On définit des blocs ds le base.html.twig, il sera remplacé ds les aut twig",
+                "3/Les tpl peuvent hériter d'un autre, on réutilise les blocs avec d'autres textes",
+                "Ds le controller, on va pouvoir utiliser la méth. render() pour renvoyer des tpl",
+                "IL faut bien que le controller hérite de l'AbstractController pour cela.",
+                "Un tpl peut être aussi parent d'un autre cf doc.; on pt faire des include de tpl",
+                "4/ 2 types de balises : {{texte à afficher}} {% instructions en PHPLike%}",
+                "Utilisatin de fonctions prédéfinies avec le pipeline | ;",
+                "Fcts natives comme endswith(), match()",
+                "Les variables st par défaut échappées pour éviter les injections mais on pt y remédier si on vt"
+            ],
+                example : [ 
+                "1/ Ds le term : composer require twig",
+                "2/{% block NomduBloc %} Mon texte par défaut {% endblock %}",
+                "3/ Au début du tpl enfant : {% extends 'base.html.twig' %}",
+                "4/ {{foo.bar}} affichera la propriété bar de $foo",
+                "Autres : ~ pour concaténer",
+                "Intégrer vardumper à Twig : composer require --dev symfony/debug-bundle"
+                ,
+                ],
+        type : "SYMFONY"
+        },
+    {
+        nom : "Symfony - Routes" ,
+        definition : ["Il y a différentes manières de créer son tableau des routes",
+                "La plus simple est de créer la route directement ds le controller associé",
+                "1/On peut préciser leur nom, la méthode HTTP les paramètres et le type des paramètres(requirements)",
+                "ça peut se faire avec les regex ;on peut mettre des valeurs par défaut $id=1 ;",
+                "2/On rappelle le type ndu param ds la méthode qui utilise le param",
+                "3/ On peut générer les url avec path() pour les liens et ça facilitera les éventuels changements",
+                "4/ Pour debugguer les routes : via la console ou via la variable app"
+            ],
+                example : [ 
+                "1/#[Route('/movie/{id}/',name: 'movie/{id}', requirements: ['id' => '\d+'],methods: ['POST'] )]",
+                "2/public function show(int $id): Response",
+                "2/public function demo(int $monparam, string $mondeuxiemeParam): Response",
+                "1/#[Route('/blog/{page<\d+>}', name: 'blog_list')] <= plus concis",
+                "3/<a href=\"{\{ path('app_homepage') }}\" </a>",
+                "Ds le term : bin/console debug:router",
+                ,
+                ],
+        type : "SYMFONY"
+        },
+        {
+            nom : "Symfony - Composants principaux" ,
+            datas : [{"skeleton":"squelette du projet"},
+                    {"flex":"concerne la config et les dépendances, exécute les recettes"},
+                    {"bin/console":"console intégrée"},
+                    {"twig":"affichage de l'html"},
+                    {"Web debug toolbar" :"composer require symfony/profiler-pack"},
+                    {"Attention à lemettre dans une balise body??" :"voir requetes et histoirique ??"},
+                    {"Variable app":"Pour voir des infos de debug aussi "},
+                    {"HTTP FOUNDATION":"Pour avoir les objets Request et Response qui vt faciliter le travail avec nos requetes http"}
+                    ],
+            tableau : true,
+            type : "SYMFONY"
+            },
+        {
+        nom : "Installer Symfony" ,
+        definition : ["Créer un projet avec le Skeleton 1/plus léger 2/plus complet",
+                "Déplacer les fichiers créés à la racine",
+                "Lancer le serveur php",
+                "Si on passe par Apache, installer la dépendance nécessaire",
+                "Si pb avec le cache-> changer les droits de /var/",
+                "Les assets dvt être ds /public/",
+            ],
+                example : [ 
+                "composer create-project symfony/skeleton nomDuProjet",
+                "composer create-project symfony/website-skeleton my-project",
+                "mv sous-dossier/* sous-dossier/.* .",
+                "php -S 0.0.0.0:8000 -t public",
+                "composer require apache-pack",
+                "sudo chmod -R 777 var"
+                ,
+                ],
+        type : "SYMFONY"
+        },
+        {
             nom : "PHP en ligne de commande" ,
             datas : [{"php -m ":"quesl modules sont chargés ?"},
                     {"php -a":"mode interactif"},
@@ -980,6 +1062,8 @@ HTMLfilterLink.addEventListener("click",()=>{filter("HTML")})
 CSSfilterLink.addEventListener("click",()=>filter("CSS"))
 JSfilterLink.addEventListener("click",()=>filter("JS"))
 PHPfilterLink.addEventListener("click",()=>filter("PHP"))
+SYMFONYfilterLink.addEventListener("click",()=>filter("SYMFONY"))
+
 HOSTINGfilterLink.addEventListener("click",()=>filter("HOSTING"))
 LINUXfilterLink.addEventListener("click",()=>filter("LINUX"))
 NEWSfilterLink.addEventListener("click",()=>filter("NEWS"))
