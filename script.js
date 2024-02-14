@@ -55,6 +55,47 @@ const datas = [
     // ],
     //     type : "CSS"
     // } 
+    {   nom : "NPM NVM install" ,
+        definition : ["Installer npm avec nvm et verifier la version ",
+        "Et là où il est installé",
+        ],
+        example : [ 
+        "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash\n",
+        "node --version",
+        "which node ",
+        "which npm ",
+        "nvm --version",
+        "nvm ls",
+        "nvm install 20",
+        ],
+        type : "LINUX"
+    },
+    {   nom : "HISTORY" ,
+        definition : ["Ihistory | grep sass",
+        "history et le numéro de la commande",
+        ],
+        example : [ 
+        "",
+        ],
+        type : "LINUX"
+    },
+    {   nom : "SASS" ,
+        definition : [
+        "1/ Installer Sass",
+        "2/ Créer un dossier style et aller dedans",
+        "3/ Créer un dossier sass et un dossier css",
+        "4/ Lancer le serveur sass",
+        "5/ Les odifications faites dans le fichier style.scss se répercuera sur style.css" ,
+        ],
+        example : [ 
+        "npm install -g sass",
+        "take style",
+        "mkdir sass",
+        "mkdir css",
+        "sass --watch sass:css"
+        ],
+        type : "LINUX"
+    },
     {
         nom : "Symfony - TWIG -Bases" ,
         definition : ["1/Installer Twig.",
