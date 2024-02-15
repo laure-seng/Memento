@@ -155,7 +155,8 @@ const datas = [
             "On pt boucler",
             "On utilise la syntaxe pointée pour accéder aux propriétés.",] ,
             example : [
-            "{% for currentMovie in movieList %}",
+            "{% for currentMovie in movieList %} ... {% endfor %}",
+            "{% for currentId, currentMovie in movieList %}",
             "public function list(): Response",
             "{$allMovies = Data::getAllShows();",
             "return $this->render('movie/list.html.twig'",
@@ -194,7 +195,7 @@ const datas = [
                 "6/ <img src=\"{{ asset('images/logo.png') }}\" alt=\"Symfony!\" />",
                 "7/{{ dump(app.session.get('favorite_movies')) }}",
                 " {% if favorite_movies[currentId] is defined  %} <html>",
-                "{% else %} <html>"
+                "{% else %} <html>",
                 ],
         type : "SYMFONY"
         },
@@ -221,7 +222,7 @@ const datas = [
                 "3/<a href=\"{\{ path('app_homepage') }}\" </a>",
                 "Path avec param {{ path('app_movie_show', {id: currentId}) }}",
                 "4/Ds le term : bin/console debug:router",
-                "5/#[Route('/movie', name: 'app_movie_')]",
+                "5/#[Route('/racineDeLURL', name: 'racineDeLURL_NomDeLaview_')]  <= à experimenter plus",
                 "6/return $this->redirectToRoute('nomDeLaRoute');",
                 ,
                 ],
