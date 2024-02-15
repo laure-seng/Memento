@@ -162,7 +162,7 @@ const datas = [
             "['movieList' => $allMovies]);}"
             ],
             type : "SYMFONY"
-        } 
+        } ,
     {
         nom : "Symfony - TWIG -Bases" ,
         definition : ["1/Installer Twig.",
