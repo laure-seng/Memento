@@ -97,6 +97,73 @@ const datas = [
         type : "LINUX"
     },
     {
+        nom : "SYMFONY ERRORS" ,
+        definition : [ 
+        "1/ On pt renvoyer une exception avec createNotFoundException", 
+        "Attention à passer en mode prod dans le fichier .env pour voir les 404",
+        "Sinon en mode dev il faut aller à http://127.0.0.1:8000/_error/404",
+        "2/Pour faire ses pages erreurs perso : créer l'arborescence ci-dessous :"
+        ] ,
+        example : [
+        "if (empty($movie))",
+        "{throw $this->createNotFoundException('Le film demandé n\'existe pas');}",
+        "dans templates : bundles/TwigBundle/Exception/",
+        "les fichiers : error404.html.twig,error403.html.twig, error.html.twig "
+        ],
+        type : "SYMFONY"
+    },
+    {
+        nom : "SYMFONY FLASH MESSAGE" ,
+        definition : [ "C'est un message qui apparait et disparait dés lecture", 
+
+        "A creuser cf doc ou notes ??",
+        ] ,
+        example : [
+        "$this->addFlash('success', 'Le film ' . $movie['title'] . ' a été ajouté avec succès');",
+        ""
+        ],
+        type : "SYMFONY"
+    },
+    {
+        nom : "SYMFONY SESSIONS" ,
+        definition : [ "Une session est un tableau protégé par un code", 
+        "les infos seront enregistrées ds les cookies",
+        "En PHP, $_SESSION et session start()",
+        "En Symfo, i lfaut avoir le composant httpfoundations",
+        "Car on a besoin de Request",
+        "1/Ds le controller, c simple, il suffit d'utiliser Request en param",
+        "2/On pt enregistrer en session tout type de variable",
+        "3/Et récupérer via les clés",
+        "4/Supprimer une paire clé valeur",
+        "5/Ou tout"
+        ] ,
+        example : [
+        "1/public function hello(string $name, Request $request): Response{",
+        "1/$session = $request->getSession(); <= on récupère Request etc..." ,
+        "2/$session->set('name', $name);",
+        "3/$name = $session->get('name','nomParDéfaut');",
+        "4/ unset($moviesInSession[$id]);",
+        "5/remove()",
+        ],
+        type : "SYMFONY"
+    } ,
+    {
+            nom : "SYMFONY recupérer des données" ,
+            definition : [ "On récupère les données avec self::mapropriété", 
+            "dans le controller, on va récupérer la data et envoyer",
+            "les données en param de render(view,données) via un tabl asso",
+            "On pt boucler",
+            "On utilise la syntaxe pointée pour accéder aux propriétés.",] ,
+            example : [
+            "{% for currentMovie in movieList %}",
+            "public function list(): Response",
+            "{$allMovies = Data::getAllShows();",
+            "return $this->render('movie/list.html.twig'",
+            "['movieList' => $allMovies]);}"
+            ],
+            type : "SYMFONY"
+        } 
+    {
         nom : "Symfony - TWIG -Bases" ,
         definition : ["1/Installer Twig.",
                 "Par défaut, on va mettre les tpl dans /templates",
@@ -109,16 +176,25 @@ const datas = [
                 "4/ 2 types de balises : {{texte à afficher}} {% instructions en PHPLike%}",
                 "Utilisatin de fonctions prédéfinies avec le pipeline | ;",
                 "Fcts natives comme endswith(), match()",
-                "Les variables st par défaut échappées pour éviter les injections mais on pt y remédier si on vt"
+                "Les variables st par défaut échappées pour éviter les injections mais on pt y remédier si on vt",
+                "5/Partials ; créer un dossier partials ds le dossier des twig concernés",
+                "et nommer les fichiers avec un _devant, on fait include dans les .twig, include accepte des params",
+                "6/ Asset() retrouve directement les fichiers du dossier Public",
+                "7/ récupérer les données en session ds twig"
             ],
                 example : [ 
                 "1/ Ds le term : composer require twig",
                 "2/{% block NomduBloc %} Mon texte par défaut {% endblock %}",
                 "3/ Au début du tpl enfant : {% extends 'base.html.twig' %}",
                 "4/ {{foo.bar}} affichera la propriété bar de $foo",
-                "Autres : ~ pour concaténer",
-                "Intégrer vardumper à Twig : composer require --dev symfony/debug-bundle"
-                ,
+                "Autres : ~ pour concaténer, {# commentaires #}",
+                "Intégrer vardumper à Twig : composer require --dev symfony/debug-bundle",
+                "5/{% include('movie/_partials/_favorite_button.html.twig') %}",
+                "5/avec param {{ include('movie/_partials/_favorite_button.html.twig', {currentId: movie.id}) }}",
+                "6/ <img src=\"{{ asset('images/logo.png') }}\" alt=\"Symfony!\" />",
+                "7/{{ dump(app.session.get('favorite_movies')) }}",
+                " {% if favorite_movies[currentId] is defined  %} <html>",
+                "{% else %} <html>"
                 ],
         type : "SYMFONY"
         },
@@ -130,7 +206,12 @@ const datas = [
                 "ça peut se faire avec les regex ;on peut mettre des valeurs par défaut $id=1 ;",
                 "2/On rappelle le type ndu param ds la méthode qui utilise le param",
                 "3/ On peut générer les url avec path() pour les liens et ça facilitera les éventuels changements",
-                "4/ Pour debugguer les routes : via la console ou via la variable app"
+                "4/ Pour debugguer les routes : via la console ou via la variable app",
+                "5/On pt définir des racines aux routes en mettant une ligne juste avant class MonController",
+                "routes.yaml",
+                "6/Redirection avec redirectToRoute()",
+                "Chercher la route ds le dum avec CTRL+f",
+                "Récupérer la route de l apage courante avec app.request.get('_route') ou app.current_route  "
             ],
                 example : [ 
                 "1/#[Route('/movie/{id}/',name: 'movie/{id}', requirements: ['id' => '\d+'],methods: ['POST'] )]",
@@ -138,7 +219,10 @@ const datas = [
                 "2/public function demo(int $monparam, string $mondeuxiemeParam): Response",
                 "1/#[Route('/blog/{page<\d+>}', name: 'blog_list')] <= plus concis",
                 "3/<a href=\"{\{ path('app_homepage') }}\" </a>",
-                "Ds le term : bin/console debug:router",
+                "Path avec param {{ path('app_movie_show', {id: currentId}) }}",
+                "4/Ds le term : bin/console debug:router",
+                "5/#[Route('/movie', name: 'app_movie_')]",
+                "6/return $this->redirectToRoute('nomDeLaRoute');",
                 ,
                 ],
         type : "SYMFONY"
@@ -152,7 +236,11 @@ const datas = [
                     {"Web debug toolbar" :"composer require symfony/profiler-pack"},
                     {"Attention à lemettre dans une balise body??" :"voir requetes et histoirique ??"},
                     {"Variable app":"Pour voir des infos de debug aussi "},
-                    {"HTTP FOUNDATION":"Pour avoir les objets Request et Response qui vt faciliter le travail avec nos requetes http"}
+                    {"HTTP FOUNDATION":"Pour avoir les objets Request et Response qui vt faciliter le travail avec nos requetes http"},
+                    {"composer require http-foundation" :""},
+                    {"maker" :"composer require --dev symfony/maker-bundle"} , 
+                    {"bin/console make:controller nomDuController" :"pour générer un controller"} , 
+                    {"bin/console cache:clear effacer le cache" : "effacer le cache"}
                     ],
             tableau : true,
             type : "SYMFONY"
@@ -168,10 +256,10 @@ const datas = [
             ],
                 example : [ 
                 "composer create-project symfony/skeleton nomDuProjet",
-                "composer create-project symfony/website-skeleton my-project",
+                "",
                 "mv sous-dossier/* sous-dossier/.* .",
                 "php -S 0.0.0.0:8000 -t public",
-                "composer require apache-pack",
+                "composer require symfony/apache-pack",
                 "sudo chmod -R 777 var"
                 ,
                 ],
