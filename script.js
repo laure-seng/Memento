@@ -30,6 +30,7 @@ const CSSfilterLink=document.getElementById("CSSfilter")
 const JSfilterLink=document.getElementById("JSfilter")
 const PHPfilterLink=document.getElementById("PHPfilter")
 const SYMFONYfilterLink=document.getElementById("SYMFONYfilter")
+const BDDfilterLink=document.getElementById("BDDfilter")
 const HOSTINGfilterLink=document.getElementById("HOSTINGfilter")
 const LINUXfilterLink=document.getElementById("LINUXfilter")
 const NEWSfilterLink=document.getElementById("NEWSfilter")
@@ -55,6 +56,52 @@ const datas = [
     // ],
     //     type : "CSS"
     // } 
+    {
+            nom : "CARDINALITES" ,
+            definition : [ "Soit deux entités A et B", 
+            "Le schéma suivant A-(0,1)-- contient--(0,n)-B",
+            "Se traduit en", 
+            "1 A est contenu par de 0 à 1 B",
+            "1 B contient par de 0 à n A",
+            ] ,
+            example : [ "","","",
+        ],
+            type : "BDD"
+    },
+    {   nom : "SQL BASES " ,
+        definition : ["SELECT FROM INNER JOIN ON WHERE ",
+        "WHERE LIKE '%STRING%'",
+        "LIMIT=5 OFFSET=10",
+        "ORDER BY colonne DESC",
+        "AVG(colonne)"
+        ],
+        example : [ 
+        "SELECT `table1`.`*`,`table2`.`name`AS alias",
+        "FROM table1",
+        "INNER JOIN table2",
+        "ON table1.table2_id = table2.id",
+        "WHERE item_id=3",
+        "WHERE YEAR(`release_date`) LIKE '1992'"
+        ],
+        type : "BDD"
+    },
+    {   nom : "MOCODO-Créer son MCD" ,
+        definition : ["Entité Attribut Association",
+        "l'attribut1 est par défaut l'identifiant/discriminant',il sera souligné. ",
+        "Il faut un champ discriminant par entité",
+        "On rajoute un _ devant un attribut pour le souligner",
+        "On écrit l'association sur une ligne",
+        "Attention l'ordre compte, le faire comme sur le dessin",
+        "Table de liaison=table de relation=table pivot"
+        
+
+        ],
+        example : [ 
+        "Entité : attribut1,attribut2 , etc",
+        "Association, cardMinCardMax Entité2,cardMinCardMax Entité1 :attribut de l'association'",
+        ],
+        type : "BDD"
+    },
     {   nom : "NPM NVM install" ,
         definition : ["Installer npm avec nvm et verifier la version ",
         "Et là où il est installé",
@@ -84,15 +131,18 @@ const datas = [
         "1/ Installer Sass",
         "2/ Créer un dossier style et aller dedans",
         "3/ Créer un dossier sass et un dossier css",
-        "4/ Lancer le serveur sass",
+        "4/ Lancer le serveur sass depuis le dossier style",
         "5/ Les odifications faites dans le fichier style.scss se répercuera sur style.css" ,
+        "& fait référence à l'élément parent'"
         ],
         example : [ 
         "npm install -g sass",
         "take style",
         "mkdir sass",
         "mkdir css",
-        "sass --watch sass:css"
+        "sass --watch sass:css sass est le dossier où y a le sass, css où y a le css",
+        "&:hover {",
+        "@mixin pour mettre le responsiveà l'intér de l'élément"
         ],
         type : "LINUX"
     },
@@ -120,7 +170,7 @@ const datas = [
         ] ,
         example : [
         "$this->addFlash('success', 'Le film ' . $movie['title'] . ' a été ajouté avec succès');",
-        ""
+        "    {% for message in app.flashes('success') %}"
         ],
         type : "SYMFONY"
     },
@@ -135,7 +185,8 @@ const datas = [
         "2/On pt enregistrer en session tout type de variable",
         "3/Et récupérer via les clés",
         "4/Supprimer une paire clé valeur",
-        "5/Ou tout"
+        "5/Ou tout",
+        "6/Récupérer la variable session partout"
         ] ,
         example : [
         "1/public function hello(string $name, Request $request): Response{",
@@ -144,6 +195,8 @@ const datas = [
         "3/$name = $session->get('name','nomParDéfaut');",
         "4/ unset($moviesInSession[$id]);",
         "5/remove()",
+        "{% if app.session.get('favorite_city') %}",
+        "{% set favorite_city = app.session.get('favorite_city') %}",
         ],
         type : "SYMFONY"
     } ,
@@ -178,10 +231,11 @@ const datas = [
                 "Utilisatin de fonctions prédéfinies avec le pipeline | ;",
                 "Fcts natives comme endswith(), match()",
                 "Les variables st par défaut échappées pour éviter les injections mais on pt y remédier si on vt",
-                "5/Partials ; créer un dossier partials ds le dossier des twig concernés",
+                "5/Partials ; créer un dossier _partials ds le dossier des twig concernés",
                 "et nommer les fichiers avec un _devant, on fait include dans les .twig, include accepte des params",
-                "6/ Asset() retrouve directement les fichiers du dossier Public",
-                "7/ récupérer les données en session ds twig"
+                "6/ Asset() retrouve directement les fichiers du dossier Public(vérifier qu'il est installé",
+                "7/ récupérer les données en session ds twig",
+                "8/Le pipe sert à récupérer les données ds une fonction"
             ],
                 example : [ 
                 "1/ Ds le term : composer require twig",
@@ -195,7 +249,9 @@ const datas = [
                 "6/ <img src=\"{{ asset('images/logo.png') }}\" alt=\"Symfony!\" />",
                 "7/{{ dump(app.session.get('favorite_movies')) }}",
                 " {% if favorite_movies[currentId] is defined  %} <html>",
-                "{% else %} <html>",
+                "{% else %} <html> {% endif %}",
+                "{% for %}...  {% else %}... {% endfor %} le else va tester le cas où le tabl n'existe pas",
+                "8/{{ **currentData.date|slice(0, 5)** }}"
                 ],
         type : "SYMFONY"
         },
@@ -215,14 +271,14 @@ const datas = [
                 "Récupérer la route de l apage courante avec app.request.get('_route') ou app.current_route  "
             ],
                 example : [ 
-                "1/#[Route('/movie/{id}/',name: 'movie/{id}', requirements: ['id' => '\d+'],methods: ['POST'] )]",
+                "1/#[Route('/movie/{id}/',name: 'movie/{id}', requirements: ['id' => '\d+'],methods: ['POST'] )]  ou /movie/{id<\d+>}",
                 "2/public function show(int $id): Response",
                 "2/public function demo(int $monparam, string $mondeuxiemeParam): Response",
                 "1/#[Route('/blog/{page<\d+>}', name: 'blog_list')] <= plus concis",
                 "3/<a href=\"{\{ path('app_homepage') }}\" </a>",
                 "Path avec param {{ path('app_movie_show', {id: currentId}) }}",
                 "4/Ds le term : bin/console debug:router",
-                "5/#[Route('/racineDeLURL', name: 'racineDeLURL_NomDeLaview_')]  <= à experimenter plus",
+                "5/#[Route('/racineDeLURL', name: 'prefixeDuNomDeLaview_')]  <= à experimenter plus",
                 "6/return $this->redirectToRoute('nomDeLaRoute');",
                 ,
                 ],
@@ -278,7 +334,7 @@ const datas = [
             },
             {
                 nom : "SERVEUR /PORTS ATTRIBUES" ,
-                datas : [{"mysql":"3306"},
+                datas : [{"mySQL":"3306"},
                         {"apache":"80"},
                         {"https":"443"},
                         {"http://127.0.0.1:8000/":""},
@@ -1193,7 +1249,7 @@ CSSfilterLink.addEventListener("click",()=>filter("CSS"))
 JSfilterLink.addEventListener("click",()=>filter("JS"))
 PHPfilterLink.addEventListener("click",()=>filter("PHP"))
 SYMFONYfilterLink.addEventListener("click",()=>filter("SYMFONY"))
-
+BDDfilterLink.addEventListener("click",()=>filter("BDD"))
 HOSTINGfilterLink.addEventListener("click",()=>filter("HOSTING"))
 LINUXfilterLink.addEventListener("click",()=>filter("LINUX"))
 NEWSfilterLink.addEventListener("click",()=>filter("NEWS"))
