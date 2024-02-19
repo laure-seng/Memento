@@ -57,6 +57,70 @@ const datas = [
     //     type : "CSS"
     // } 
     {
+        nom : "DOCTRINE Présentation" ,
+        definition : [ "C'est un ORM data mapper",
+        "Contrairement à Eloquent qui suit l'Active Record, les méth. ne st pas ds les Model",
+        "On a le trio Entity Migration et BDD", 
+        "",] ,
+        example : [ "","","",
+    ],
+        type : "SYMFONY"
+    },
+    {
+        nom : "DOCTRINE Installation" ,
+        definition : [ "1/ Installation de l'ORM pack",
+        "2/ On précise si on veut ou non utiliser les recettes de Docker",
+        "3/ On modifie le .env", 
+        "NB la bonne pratique est de créer un userpar DB",
+        "4/Voir toutes les commandes de Doctrine"] ,
+        example : [ "1/ composer require symfony/orm-pack",
+        "3/DATABASE_URL=\"mysql://login:mdp@127.0.0.1:3306/nomDeLaBDD?serverVersion=10.11.6-MariaDB&charset=utf8mb4",
+        "mysql --version pour avoir la version de notre mysql/mariadb",
+        "4/bin/console doctrine",
+    ],
+        type : "SYMFONY"
+    },  
+    {
+        nom : "DOCTRINE BDD 1/2" ,
+        definition : [ "1/Créer une BDD(le nom sera celui précisé ds le .env)",
+        "2/a On crée une Entite.php à la main ou via la console c'est mieux",
+        "Pour les propriétés 'unique', il faut le faire à la main ds le fichier",
+        "La class EntiteRepository(comme elle hérite du serviceEntityRepository)", 
+        "possède les méthodes find(), findAll(),findBy(),findOneBy()",
+        "2/b On précise le nom, les colonnes et les types et on vérifie",
+        "Les noms des propmriétés st en CamelCase en PHP ms seront transcrites en snakeCase ds les tables automatiqmt",
+        "2/c On applique la migration",
+        "2/d On transfère à la BDD"
+        ] ,
+        example : [ "1/ bin/console doctrine:database:create",
+        "2/a bin/console make:entity => créera le fichier Entite.php et EntiteRepository.php",
+        "2/b doctrine:schema:validate",
+        "2/c bin/console make:migration",
+        "2/d bin/console doctrine:migrations:migrate"
+    ],
+        type : "SYMFONY"
+    },
+    {
+        nom : "DOCTRINE BDD CRUD 2/2" ,
+        definition : [ 
+            "1/ Create : ds le controller, on crée une instance de l'entityManagerInterface", 
+            "pour utilier persist() et flush()",
+            "2/Read : Les méth.de l'entityRepository ns renverront les résultats sinon"
+            
+        ] ,
+        example : [ 
+            "1/ public function doctrine(EntityManagerInterface $entityManager): Response{",
+            "$genre = new Genre();",
+            "$genre->setName(uniqid('genre-'));",
+            "$entityManager->persist($genre);",
+            "$entityManager->flush();",
+            "2/ public function list(PostRepository $postRepository): Response",
+            "$articles=$postRepository->findAll()",
+            "",
+    ],
+        type : "SYMFONY"
+    },
+    {
             nom : "CARDINALITES" ,
             definition : [ "Soit deux entités A et B", 
             "Le schéma suivant A-(0,1)-- contient--(0,n)-B",
@@ -118,7 +182,7 @@ const datas = [
         type : "LINUX"
     },
     {   nom : "HISTORY" ,
-        definition : ["Ihistory | grep sass",
+        definition : ["history | grep sass",
         "history et le numéro de la commande",
         ],
         example : [ 
@@ -297,6 +361,8 @@ const datas = [
                     {"composer require http-foundation" :""},
                     {"maker" :"composer require --dev symfony/maker-bundle"} , 
                     {"bin/console make:controller nomDuController" :"pour générer un controller"} , 
+                    {"bin console/autowiring": "pour voir les services"},
+                    {"Services = ttes les Class sf Entites et controllers":"instanciables grâce au gestionnaire de service exp: Request"},
                     {"bin/console cache:clear effacer le cache" : "effacer le cache"}
                     ],
             tableau : true,
