@@ -145,7 +145,11 @@ const datas = [
         "INNER JOIN table2",
         "ON table1.table2_id = table2.id",
         "WHERE item_id=3",
-        "WHERE YEAR(`release_date`) LIKE '1992'"
+        "WHERE YEAR(`release_date`) LIKE '1992'",
+        "GROUP BY -- si on a utilisé des fonctions d'aggrégations",
+        "HAVING -- permet de faire des conditions sur les fonctions d'aggrégations",
+        "ORDER BY -- pour ordonner les résultats",
+        "LIMIT -- pour limiter le nombre de résultats OFFSET --à  partir de"
         ],
         type : "BDD"
     },
