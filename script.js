@@ -57,6 +57,25 @@ const datas = [
     //     type : "CSS"
     // } 
     {
+        nom : "DOCTRINE Many To Many" ,
+        definition : [ "=>On a 1/n ou 0/n de chaque côté de la relation.",
+        "Dans Doctrine, le \"owner\" de la relation est important",
+        "1/ Avec la console, va créer la propriété crrspdt au nom de la 2e entité au pluriel dans l'entité 1",
+        "On met type=ManyToMany",
+        "On répond oui aux questions, on récupérera facilement entite1.entite2s et entite2.entite1s",
+        "2/Dans entite.php,on reconnait le owner par 'inversedBy',l'autre c'est 'mappedBy' ",
+        "ça crée une table pivot entite1_entite2", 
+        "3/ Ds le controller, on pourra utiliser les méth addEntite2,removeEntite2, et la même pour entite1",
+        "NB : on ne pt pas changer le owner facilement",
+        "Cas particulier : s'il y a des attributs à la relation, il faut passer par une entite intermédiaire classique et les relations one to Many corrspondantes"
+
+    
+    ] ,
+        example : [ "1/ bin/console make:entity ","2/","3/ addGenre($genre) ; addShow($show) ;removeGenre($genre) ","",
+    ],
+        type : "SYMFONY"
+    },
+    {
         nom : "DOCTRINE Présentation" ,
         definition : [ "C'est un ORM data mapper",
         "Contrairement à Eloquent qui suit l'Active Record, les méth. ne st pas ds les Model",
@@ -70,7 +89,7 @@ const datas = [
         nom : "DOCTRINE Installation" ,
         definition : [ "1/ Installation de l'ORM pack",
         "2/ On précise si on veut ou non utiliser les recettes de Docker",
-        "3/ On modifie le .env", 
+        "3/ On copie le .env en .env.local", 
         "NB la bonne pratique est de créer un userpar DB",
         "4/Voir toutes les commandes de Doctrine"] ,
         example : [ "1/ composer require symfony/orm-pack",
@@ -86,7 +105,7 @@ const datas = [
         "2/a On crée une Entite.php à la main ou via la console c'est mieux",
         "Pour les propriétés 'unique', il faut le faire à la main ds le fichier",
         "La class EntiteRepository(comme elle hérite du serviceEntityRepository)", 
-        "possède les méthodes find(), findAll(),findBy(),findOneBy()",
+        "possède les méthodes find(), findAll(),findBy(),findOneBy(), ça sert aux SELECT",
         "2/b On précise le nom, les colonnes et les types et on vérifie",
         "Les noms des propmriétés st en CamelCase en PHP ms seront transcrites en snakeCase ds les tables automatiqmt",
         "2/c On applique la migration",
@@ -104,7 +123,7 @@ const datas = [
         nom : "DOCTRINE BDD CRUD 2/2" ,
         definition : [ 
             "1/ Create : ds le controller, on crée une instance de l'entityManagerInterface", 
-            "pour utilier persist() et flush()",
+            "pour utiliser persist() et flush(),l'EMI sert à écrire ds la BDD",
             "2/Read : Les méth.de l'entityRepository ns renverront les résultats sinon"
             
         ] ,
@@ -303,7 +322,9 @@ const datas = [
                 "et nommer les fichiers avec un _devant, on fait include dans les .twig, include accepte des params",
                 "6/ Asset() retrouve directement les fichiers du dossier Public(vérifier qu'il est installé",
                 "7/ récupérer les données en session ds twig",
-                "8/Le pipe sert à récupérer les données ds une fonction"
+                "8/Le pipe sert à récupérer les données ds une fonction",
+                "Activer l'autocompletion du html ds Twig ds VScode : Préférences->Paramètres->",
+                "Extensions -> Emmet -> Include Languages puis Ajouter l'élément clé = twig / valeur = html"
             ],
                 example : [ 
                 "1/ Ds le term : composer require twig",
