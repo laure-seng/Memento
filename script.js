@@ -57,6 +57,17 @@ const datas = [
     //     type : "CSS"
     // } 
     {
+        nom : "ADMINER Tips" ,
+        definition : [ "1/ Penser à créer un user par BDD",
+        "2/ On peut changer le style via un fichier adminer.css",
+        "3/ On peut voir le schéma de la BDD et déplacer les entités à la souris :) ",
+        "4/ On pt voir l'historique des requêtes SQL tapées", 
+        "",] ,
+        example : [ "","","",
+    ],
+        type : "BDD"
+    },
+    {
         nom : "DOCTRINE Many To Many" ,
         definition : [ "=>On a 1/n ou 0/n de chaque côté de la relation.",
         "Dans Doctrine, le \"owner\" de la relation est important",
@@ -72,6 +83,16 @@ const datas = [
     
     ] ,
         example : [ "1/ bin/console make:entity ","2/","3/ addGenre($genre) ; addShow($show) ;removeGenre($genre) ","",
+    ],
+        type : "SYMFONY"
+    },
+    {
+        nom : "DOCTRINE Migrations Debugguer" ,
+        definition : [ "1/Relire le fichier de migrations et regarder quel requête n'est pas passée",
+        "2/La modifier et l'exécuter dans Adminer et la copier dans le fichier de migration",
+        "3/ Cocher dans adminer comme quoi la migration a été exécutée now()" ,
+        "On peut se déplacer dsles migrations avec + - up down ",] ,
+        example : [ "creuser plus tard","","",
     ],
         type : "SYMFONY"
     },
@@ -109,13 +130,15 @@ const datas = [
         "2/b On précise le nom, les colonnes et les types et on vérifie",
         "Les noms des propmriétés st en CamelCase en PHP ms seront transcrites en snakeCase ds les tables automatiqmt",
         "2/c On applique la migration",
-        "2/d On transfère à la BDD"
+        "2/d On transfère à la BDD",
+        "XXX/ ATTENTION : Au cas où, pour virer une BDD "
         ] ,
         example : [ "1/ bin/console doctrine:database:create",
         "2/a bin/console make:entity => créera le fichier Entite.php et EntiteRepository.php",
-        "2/b doctrine:schema:validate",
+        "2/b bin/console doctrine:schema:validate",
         "2/c bin/console make:migration",
-        "2/d bin/console doctrine:migrations:migrate"
+        "2/d bin/console doctrine:migrations:migrate",
+        "XXX/ bin/console doctrine:database:drop"
     ],
         type : "SYMFONY"
     },
@@ -1102,6 +1125,12 @@ const datas = [
     example : ["<section> </section>"] ,
     type : "HTML"
     } ,
+    {   
+        nom : "Small" ,
+        definition : ["=>Balise HTML pour texte de mondre importance"] ,
+        example : ["<small> </small>"] ,
+        type : "HTML"
+        } ,
     {
     nom : "Set" ,
     definition : ["=>Unique set of data"] ,
