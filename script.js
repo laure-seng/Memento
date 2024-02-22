@@ -62,14 +62,16 @@ const datas = [
         "1/ Installer le bundle",
         "2/ ça va créer AppFixtures.php dans /DataFixtures",
         "3/ Dedans, dans la méthode load(), on rajoute nos setters pour nos objets",
+        "3/b/ on informe l'entité manager qu'il y a une nouvelle entité à insérer en BDD",
         "4/ On applique avec flush()", 
-        "5/ On les charge mais attention ça vide toute la BDD ! rajouter --append sinon (à tester)"
+        "5/ On les execute mais attention ça vide toute la BDD ! rajouter --append sinon (à tester)"
         ] ,
         example : [         
         "1/ composer require --dev orm-fixtures",
         "3/for ($i = 0; $i < 20; $i++) {",
         "$product = new Product();" ,
         "$product->setName('product '.$i); etc...",
+        "3/b/ $manager->persist($show);",
         "4/$manager->flush();", 
         "5/bin/console doctrine:fixtures:load"
     ],
@@ -127,10 +129,10 @@ const datas = [
     },
     {
         nom : "PHP qqs fonctions natives en vrac" ,
-        datas : [{"in_array":"quesl modules sont chargés ?"},
-                {"shuffle":"mode interactif"},
+        datas : [{"in_array":"cherche si l'item est ds le tableau "},
+                {"shuffle($tableau)":"melange le tableau"},
                 {"curl ou file_gets_contents":"récupérer à partir de requetes http comme fetch en JS"},
-                {"":""},
+                {"$pieces = explode(' ', $pizza);":"coupe le string en mots"},
                 ],
         tableau : true,
         type : "PHP"
@@ -159,7 +161,8 @@ const datas = [
         definition : [ "1/ On crée la relation via make:entity",
         "On choisit le nom de l'entité principale et on lui rajoute une propriété",
         "On choisit comme type 'relation' puis on choisit quelle relation c'est",
-        "Le nom ds la table doit être au pluriel si c une many",
+        "NE PAS OUBLIER LA MAJUSCULE QUAND ON DIT SUR QUELLE ENTITE SE PORTE LA RELATION",
+        "Le nom du champ ds la table doit être au pluriel si c une many",
         "En cas de doute, ne pas mettre yes à delete orphans",
         "ça va créer automatiqmt la propriété du côté du 1 de la relation", 
         "2/ On crée et on applique la migration",
@@ -177,6 +180,7 @@ const datas = [
         definition : [ "1/Relire le fichier de migrations et regarder quel requête n'est pas passée",
         "2/La modifier et l'exécuter dans Adminer et la copier dans le fichier de migration",
         "3/ Cocher dans adminer comme quoi la migration a été exécutée now()" ,
+        "Pour modifier la bdd, modifier d'ab l'entité.php et la migration, créer la migration mais ne pas l'appliquer ??",
         "On peut se déplacer dsles migrations avec + ,- , les méthodes up() et down() ",] ,
         example : [ "creuser plus tard","","",
     ],
