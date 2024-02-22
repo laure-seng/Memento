@@ -57,6 +57,64 @@ const datas = [
     //     type : "CSS"
     // } 
     {
+        nom : "DOCTRINE Fixtures 1/3 - Cas simple" ,
+        definition : [ 
+        "1/ Installer le bundle",
+        "2/ ça va créer AppFixtures.php dans /DataFixtures",
+        "3/ Dedans, dans la méthode load(), on rajoute nos setters pour nos objets",
+        "4/ On applique avec flush()", 
+        "5/ On les charge mais attention ça vide toute la BDD ! rajouter --append sinon (à tester)"
+        ] ,
+        example : [         
+        "1/ composer require --dev orm-fixtures",
+        "3/for ($i = 0; $i < 20; $i++) {",
+        "$product = new Product();" ,
+        "$product->setName('product '.$i); etc...",
+        "4/$manager->flush();", 
+        "5/bin/console doctrine:fixtures:load"
+    ],
+        type : "SYMFONY"
+    },
+    {
+        nom : "DOCTRINE Fixtures 2/3 - Plusieurs fichiers" ,
+        definition : [ 
+        "1/ Dans AppFixtures, on rajoute 'implements DependentFixtureInterface'",
+        "2/ Et la méthode getDependencies()",
+        "A revoir ??",
+
+        ] ,
+        example : [         
+        "class AppFixtures extends Fixture implements DependentFixtureInterface",
+        "public function getDependencies(){",
+        "return [ GenreFixtures::class,];}",
+        "" ,
+
+    ],
+        type : "SYMFONY"
+    },
+    {
+        nom : "DOCTRINE Fixtures 3/3 - Utilisation d'un faker" ,
+        definition : [ 
+            "1/ On installe la dépendance faker",
+            "On a déjà des formatters pour les types de données", 
+            "2/ Mais on peut installer un faker provider selon le thème des données qu'on veut (exp : films) ",
+            "3/ Dans le load() de l'AppFixtures, on crée un objet Faker ",
+            "3bis/ On peut choisir le grain pour avoir tjrs le même random de données",
+            "4/ Si on a utilise un Provider, on le rajoute",
+            "5/ On crée l'objet et on lui set des propriétés de faker"
+        ] ,
+        example : [         
+            "1/ composer require fakerphp/faker",
+            "2/ Exp : composer require xylis/faker-cinema-providers",
+            "3/ $faker = Factory::create();",
+            "3bis/$faker->seed(1234);",
+            "4/ $faker->addProvider(new \Xylis\FakerCinema\Provider\Movie($faker));", 
+            "5/ $show = new Show(); $show->setDuration($faker->numberBetween(90,240)); ",
+            "5/ $show->addGenre($faker->randomElement($genreList)); etc..."
+    ],
+        type : "SYMFONY"
+    },
+    {
         nom : "ADMINER Tips" ,
         definition : [ "1/ Penser à créer un user par BDD",
         "2/ On peut changer le style via un fichier adminer.css",
@@ -68,7 +126,17 @@ const datas = [
         type : "BDD"
     },
     {
-        nom : "DOCTRINE Many To Many" ,
+        nom : "PHP qqs fonctions natives en vrac" ,
+        datas : [{"in_array":"quesl modules sont chargés ?"},
+                {"shuffle":"mode interactif"},
+                {"curl ou file_gets_contents":"récupérer à partir de requetes http comme fetch en JS"},
+                {"":""},
+                ],
+        tableau : true,
+        type : "PHP"
+    }, 
+    {
+        nom : "DOCTRINE RELATIONS 2/2 Many To Many" ,
         definition : [ "=>On a 1/n ou 0/n de chaque côté de la relation.",
         "Dans Doctrine, le \"owner\" de la relation est important",
         "1/ Avec la console, va créer la propriété crrspdt au nom de la 2e entité au pluriel dans l'entité 1",
@@ -79,10 +147,28 @@ const datas = [
         "3/ Ds le controller, on pourra utiliser les méth addEntite2,removeEntite2, et la même pour entite1",
         "NB : on ne pt pas changer le owner facilement",
         "Cas particulier : s'il y a des attributs à la relation, il faut passer par une entite intermédiaire classique et les relations one to Many corrspondantes"
-
-    
     ] ,
-        example : [ "1/ bin/console make:entity ","2/","3/ addGenre($genre) ; addShow($show) ;removeGenre($genre) ","",
+        example : [ "1/ bin/console make:entity ",
+        "2/",
+        "3/ addGenre($genre) ; addShow($show) ;removeGenre($genre) ","",
+    ],
+        type : "SYMFONY"
+    },
+    {
+        nom : "DOCTRINE RELATIONS 1/2 " ,
+        definition : [ "1/ On crée la relation via make:entity",
+        "On choisit le nom de l'entité principale et on lui rajoute une propriété",
+        "On choisit comme type 'relation' puis on choisit quelle relation c'est",
+        "Le nom ds la table doit être au pluriel si c une many",
+        "En cas de doute, ne pas mettre yes à delete orphans",
+        "ça va créer automatiqmt la propriété du côté du 1 de la relation", 
+        "2/ On crée et on applique la migration",
+        "3/ On récupère les données ds les views avec la notation pointée",] ,
+        example : [ "1/ bin/console make:entity",
+        "2/bin/console make:migration",
+        "2/bin/console doctrine:migrations:migrate",
+        "{{ post.author.firstName }} {{ post.author.lastName }}",
+        "% for currentComment in post.comments %}",
     ],
         type : "SYMFONY"
     },
@@ -91,7 +177,7 @@ const datas = [
         definition : [ "1/Relire le fichier de migrations et regarder quel requête n'est pas passée",
         "2/La modifier et l'exécuter dans Adminer et la copier dans le fichier de migration",
         "3/ Cocher dans adminer comme quoi la migration a été exécutée now()" ,
-        "On peut se déplacer dsles migrations avec + - up down ",] ,
+        "On peut se déplacer dsles migrations avec + ,- , les méthodes up() et down() ",] ,
         example : [ "creuser plus tard","","",
     ],
         type : "SYMFONY"
