@@ -942,11 +942,16 @@ const datas = [
     },
     {
         nom : "Shell script bash" ,
-        definition : ["1/soit on tape bash(ou autre shell) nom_du_script",
+        definition : ["1/soit on tape bash(ou autre shell) nom_du_script ds le dossier contenant le script",
             "2/ soit chmod +x nom_du_script pour rendre exécutable",
-            "2/b puis on exécute avec ./nom_du_script",
+            "2/b puis on exécute avec ./nom_du_script ds son dossier",
+            "3/ le mieux c'est de le rendre exécutable de partout :",
+            "4/a il faut qu'il soit ds un dossier du $PATH (cf..bashrc $PATH)",
+            "4/b On pourra le lancer juste avec nom_du_script  de partout"
         ] ,
-        example : [ ""] ,
+        example : [ "2/chmod +x nom_du_script ",
+        "4/a export PATH=$HOME/bin:/usr/local/bin:$HOME/scriptsshell:$PATH"
+    ] ,
         type : "LINUX"
         } ,
     {
