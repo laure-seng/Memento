@@ -935,6 +935,7 @@ const datas = [
             {"En vrac ": "pwd, ls, mkdir, cd,touch, cp, mv, rm"},
             {"En vrac 2 ": "remplacer (cf doc)"},
             {"En vrac 3 ": "read reponse ; echo $reponse ;"},
+            {"alias": "alias monalias='commandes'"}
 
         ],
         tableau : true,
