@@ -108,7 +108,7 @@ const datas = [
         example : [         
             "1/ composer require fakerphp/faker",
             "2/ Exp : composer require xylis/faker-cinema-providers",
-            "3/ $faker = Factory::create();",
+            "3/ $faker = Factory::create('fr_FR'); en francais" ,
             "3bis/$faker->seed(1234);",
             "4/ $faker->addProvider(new \Xylis\FakerCinema\Provider\Movie($faker));", 
             "5/ $show = new Show(); $show->setDuration($faker->numberBetween(90,240)); ",
@@ -133,6 +133,7 @@ const datas = [
                 {"shuffle($tableau)":"melange le tableau"},
                 {"curl ou file_gets_contents":"récupérer à partir de requetes http comme fetch en JS"},
                 {"$pieces = explode(' ', $pizza);":"coupe le string en mots"},
+                {"random_int(min, max)":"entier entre min et max"}
                 ],
         tableau : true,
         type : "PHP"
@@ -487,7 +488,7 @@ const datas = [
         type : "SYMFONY"
         },
         {
-            nom : "Symfony - Composants principaux" ,
+            nom : "Symfony - Composants principaux - Commandes de base - Concepts" ,
             datas : [{"skeleton":"squelette du projet"},
                     {"flex":"concerne la config et les dépendances, exécute les recettes"},
                     {"bin/console":"console intégrée"},
@@ -501,7 +502,9 @@ const datas = [
                     {"bin/console make:controller nomDuController" :"pour générer un controller"} , 
                     {"bin console/autowiring": "pour voir les services"},
                     {"Services = ttes les Class sf Entites et controllers":"instanciables grâce au gestionnaire de service exp: Request"},
-                    {"bin/console cache:clear effacer le cache" : "effacer le cache"}
+                    {"bin/console cache:clear effacer le cache" : "effacer le cache"},
+                    {"Response ":"on en a besoin ds le controller parce qu'un controller renvoie un obj de la classe Response'"},
+                    {"Param converter":"récupère l'obj directmt grâce à (Objet $objet),ça va même gérer les 404;Exp:function show(Post $post)"},
                     ],
             tableau : true,
             type : "SYMFONY"
@@ -792,7 +795,7 @@ const datas = [
                     "[array[i], array[j]] = [array[j], array[i]]; ",
                     " } return array; }"
     ],
-        type : "CSS"
+        type : "JS"
     } ,
 
 
@@ -821,11 +824,7 @@ const datas = [
                     " grid-row : 1/3 ; ",
                     "c/équivaut à :",
                     " grid-area : 1 /2/3/4; =>[rowStrt,colStrt,rowEnd,colEnd]",
-
-
-
-
-                    
+          
     ],
         type : "CSS"
     } ,
@@ -838,6 +837,17 @@ const datas = [
                 ] ,
         example : [ "div { width:100px ; transition: width 2s; }",
                     " div:hover {width : 300px ;}"
+    ],
+        type : "CSS"
+    } ,
+    {
+        nom : "Tips CSS en vrac" ,
+        definition : [" Pour user du 100% dimensions du parent, le parent dt avoir une dimension !",
+                    "",
+                    "", 
+                ] ,
+        example : [ 
+                    "",
     ],
         type : "CSS"
     } ,
