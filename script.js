@@ -939,6 +939,23 @@ const datas = [
         type :"LINUX",
     },
     {
+        nom : "Shell script bash" ,
+        definition : ["",
+        ] ,
+        example : [ ""] ,
+        type : "LINUX"
+        } ,
+    {
+        nom : "Shell enchainer des commandes" ,
+        datas : [{";":"enchaîne, que ça réussisse ou non"},
+                {"&&":"enchaîne que si ça réussit "},
+                {"commande1 || commande2 && commande3":"exécute 2 si 1 échoue, 3 si 1 réussit"},
+                {"":""},
+            ],
+            tableau : true,
+            type :"LINUX",
+        },
+    {
         nom : "CSS news 2023" ,
         datas : [{"Nested CSS":""},
                 {"Scoped CSS":""},
