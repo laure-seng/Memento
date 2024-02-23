@@ -934,13 +934,17 @@ const datas = [
             {"crontab -e":"automatisation de scripts"},
             {"En vrac ": "pwd, ls, mkdir, cd,touch, cp, mv, rm"},
             {"En vrac 2 ": "remplacer (cf doc)"},
+            {"En vrac 3 ": "read reponse ; echo $reponse ;"},
+
         ],
         tableau : true,
         type :"LINUX",
     },
     {
         nom : "Shell script bash" ,
-        definition : ["",
+        definition : ["1/soit on tape bash(ou autre shell) nom_du_script",
+            "2/ soit chmod +x nom_du_script pour rendre exécutable",
+            "2/b puis on exécute avec ./nom_du_script",
         ] ,
         example : [ ""] ,
         type : "LINUX"
