@@ -1060,7 +1060,7 @@ const datas = [
         } ,
     {
     nom : "ForEach()" ,
-    definition : ["Methode qui prend en paramètre une fonction qui accepte 1 à 3 arguments "] ,
+    definition : ["Methode qui prd en paramètre une fonction qui accepte 1 à 3 arguments "] ,
     example : [ "tableau.forEach(function(value, index,array){",
     "console.log(`${value} est au rang numéro ${index}`)})"] ,
     type : "JS"
