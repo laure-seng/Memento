@@ -56,6 +56,19 @@ const datas = [
     // ],
     //     type : "CSS"
     // } 
+     {
+        nom : "RESPONSIVE FONTS" ,
+        definition : [ "1/ Utiliser des rem pour les fonts ->fixer ms fr mediaquery avec un RFS comme bootstrap ",
+         "2/a techniq on définit la varres en vmin , la vmin est côté le +petit de l'écran", 
+         "2/b puis utiliser cette unité",
+        "3e tech fct clamp (valeur min,valeur intermediaire,valeur max)",] ,
+        example : [ "1/font-size:calc(25px+3.3vw)",
+        "2/a  html {--res : calc(10% *0.01vmin)",
+        "2/b font-size : calc(64*var(--res) ",
+        "3/clamp (35px,5vw,70px)"
+    ],
+        type : "CSS"
+    } 
     {
         nom : "DOCTRINE Fixtures 1/3 - Cas simple" ,
         definition : [ 
@@ -103,7 +116,8 @@ const datas = [
             "3/ Dans le load() de l'AppFixtures, on crée un objet Faker ",
             "3bis/ On peut choisir le grain pour avoir tjrs le même random de données",
             "4/ Si on a utilise un Provider, on le rajoute",
-            "5/ On crée l'objet et on lui set des propriétés de faker"
+            "5/ On crée l'objet et on lui set des propriétés de faker",
+            "NB Si on utilise le random de faker, l'utiliser partout pour avoir tjrs les mêmes données"
         ] ,
         example : [         
             "1/ composer require fakerphp/faker",
@@ -112,7 +126,8 @@ const datas = [
             "3bis/$faker->seed(1234);",
             "4/ $faker->addProvider(new \Xylis\FakerCinema\Provider\Movie($faker));", 
             "5/ $show = new Show(); $show->setDuration($faker->numberBetween(90,240)); ",
-            "5/ $show->addGenre($faker->randomElement($genreList)); etc..."
+            "5/ $show->addGenre($faker->randomElement($genreList)); etc...",
+            "NB : $show->addGenre($faker->randomElement($genreList));"
     ],
         type : "SYMFONY"
     },
@@ -131,9 +146,15 @@ const datas = [
         nom : "PHP qqs fonctions natives en vrac" ,
         datas : [{"in_array":"cherche si l'item est ds le tableau "},
                 {"shuffle($tableau)":"melange le tableau"},
+                {"":"  "},
+                {"ceil(), floor(),round()":"arrondir"},
+
+
+                {array_rand($tableau, nbDElements): "un ou plusieurs items d'un tableau au hasard"},
                 {"curl ou file_gets_contents":"récupérer à partir de requetes http comme fetch en JS"},
                 {"$pieces = explode(' ', $pizza);":"coupe le string en mots"},
-                {"random_int(min, max)":"entier entre min et max"}
+                {"random_int(min, max)":"entier entre min et max"},
+                {"usort()":"usort($films, function($filmA, $filmB) {return $filmA['year'] - $filmB['year'];})"}
                 ],
         tableau : true,
         type : "PHP"
@@ -293,7 +314,9 @@ const datas = [
         "On rajoute un _ devant un attribut pour le souligner",
         "On écrit l'association sur une ligne",
         "Attention l'ordre compte, le faire comme sur le dessin",
-        "Table de liaison=table de relation=table pivot"
+        "Table de liaison=table de relation=table pivot",
+        "sauter une ligne pour passer à la ligne suivante dans le schéma",
+        ": sur une ligne pour laisser la « case » vide "
         
 
         ],
