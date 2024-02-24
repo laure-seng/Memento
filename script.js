@@ -163,7 +163,7 @@ const datas = [
         nom : "DOCTRINE RELATIONS 2/2 Many To Many" ,
         definition : [ "=>On a 1/n ou 0/n de chaque côté de la relation.",
         "Dans Doctrine, le \"owner\" de la relation est important",
-        "1/ Avec la console, va créer la propriété crrspdt au nom de la 2e entité au pluriel dans l'entité 1",
+        "1/ Avec la console, ça va créer la propriété crrspdt au nom de la 2e entité au pluriel dans l'entité 1",
         "On met type=ManyToMany",
         "On répond oui aux questions, on récupérera facilement entite1.entite2s et entite2.entite1s",
         "2/Dans entite.php,on reconnait le owner par 'inversedBy',l'autre c'est 'mappedBy' ",
