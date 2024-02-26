@@ -56,6 +56,37 @@ const datas = [
     // ],
     //     type : "CSS"
     // } 
+    {
+        nom : "FORMULAIRE SYMFONY" ,
+        definition : [ "4 étapes côté serveur : 1/ récupération des data, 2/validation sinon réaffichage du form",
+        "3/traitement des données (voire enregistremt),4/ redirection (avec un flash message éventuellement) 5/affichage",
+        "En symfo, le form est svt relié à une entité", 
+        "A/ Installation du composant form B/ création du EntiteType.php, une class étendue de Form", 
+        "1/a/ Ds le ctroller, on crée une route en GET et en POST pour afficher et envoyer le form",
+        "1/b/ On crée le formulaire avec createForm(classDuForm::class, $entitéLiée), on pt le modifier, lui rajouter des champs",
+        "1/c/ Rajouter les params à add('nomDeLaColonne',type(attr,data...), options ds un tableau)",
+        "1/c/ 'choice_label' => 'getFullName', permet de choisir une méth custom de l'entité",
+        "1/d/ On le trsmet à la vue",
+        "2/ Rajouter des contraintes a/dans le formType b/ds l'entité  Acompleter dcf notes bvalidation  episoded §8",
+        "5/a/b/c/ Ds twig, on l'importe 3 manières abc",
+        "3/Ds le ctroller, handleRequest($request) préremplit les obj;",
+        "si le form est pas valid, les erreurs vt ê réaffichées avec le form",
+        "NB : Pour tester en php, il faudra desactiver la validation coté html novalidate"
+    ] ,
+        example : [ 
+            "A/ composer require symfony/form ",
+            "B/ bin/console make:form -> nommer machinType.php et dire à qL entité c lié",
+            "1/a #[Route('/add2', name: 'add2', methods:'GET','POST'])",
+            "1/b/$form = $this->createForm(PostType::class, $post);",
+            "1/c/ $builder->->add('title', TextType::class, ['label' => 'Titre'])",
+            "1/d/ return $this->render('post/add2.html.twig', ['formPost' => $form]);",
+            "2/a/{{ form(formPost) }} b/ {{form_start(formPost)}}{{form_row(formPost.title)}}{{ form_end(formPost)}} ",
+            "2/c/ https://symfony.com/doc/current/form/form_customization.html",
+            "3/ $form->handleRequest($request);",
+            "NB :{{ form_start(formPost, {'attr' : {'novalidate' : 'novalidate'}}) }}"
+    ],
+        type : "CSS"
+    } ,
      {
         nom : "RESPONSIVE FONTS" ,
         definition : [ "1/ Utiliser des rem pour les fonts ->fixer ms fr mediaquery avec un RFS comme bootstrap ",
@@ -68,7 +99,35 @@ const datas = [
         "3/clamp (35px,5vw,70px)"
     ],
         type : "CSS"
-    } 
+    } ,
+    {
+        nom : "SYMFONY NELMIO/ALICE FAKER" ,
+        definition : [ "1/ Installation",
+        "2/ verifier dans /packages/config/framework.yaml que property access est true sinon copier la ligne",
+        ] ,
+        example : [         
+        "1/ composer require --dev nelmio/alice" ,
+        "2/ property_access:enabled:true",
+        "",
+        "",
+        "",
+    ],
+        type : "SYMFONY"
+    },
+    {
+        nom : "SYMFONY Récupération d'un projet" ,
+        definition : [ 
+        ""
+        ] ,
+        example : [         
+        "composer install" ,
+        "bin/console doctrine:database:drop",
+        "bin/console doctrine:database:create",
+        "bin/console doctrine:migrations:migrate",
+        "bin/console doctrine:fixtures:load",
+    ],
+        type : "SYMFONY"
+    },
     {
         nom : "DOCTRINE Fixtures 1/3 - Cas simple" ,
         definition : [ 
