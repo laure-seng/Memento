@@ -207,9 +207,7 @@ const datas = [
                 {"shuffle($tableau)":"melange le tableau"},
                 {"":"  "},
                 {"ceil(), floor(),round()":"arrondir"},
-
-
-                {array_rand($tableau, nbDElements): "un ou plusieurs items d'un tableau au hasard"},
+                {"array_rand($tableau, nbDElements)": "un ou plusieurs items d'un tableau au hasard"},
                 {"curl ou file_gets_contents":"récupérer à partir de requetes http comme fetch en JS"},
                 {"$pieces = explode(' ', $pizza);":"coupe le string en mots"},
                 {"random_int(min, max)":"entier entre min et max"},
