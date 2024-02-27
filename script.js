@@ -64,28 +64,34 @@ const datas = [
         "A/ Installation du composant form B/ création du EntiteType.php, une class étendue de Form", 
         "1/a/ Ds le ctroller, on crée une route en GET et en POST pour afficher et envoyer le form",
         "1/b/ On crée le formulaire avec createForm(classDuForm::class, $entitéLiée), on pt le modifier, lui rajouter des champs",
-        "1/c/ Rajouter les params à add('nomDeLaColonne',type(attr,data...), options ds un tableau)",
-        "1/c/ 'choice_label' => 'getFullName', permet de choisir une méth custom de l'entité",
+        "1/c/ Ds le formType, rajouter les params à add('nomDeLaColonne',type(attr,data...), options ds un tableau)",
+        "https://symfony.com/doc/current/reference/forms/types.html",
+        "1/c/ Exp : 'choice_label' => 'getFullName', permet de choisir une méth custom de l'entité",
         "1/d/ On le trsmet à la vue",
         "2/ Rajouter des contraintes a/dans le formType b/ds l'entité  Acompleter dcf notes bvalidation  episoded §8",
+        "https://symfony.com/doc/current/reference/constraints.html",
         "5/a/b/c/ Ds twig, on l'importe 3 manières abc",
-        "3/Ds le ctroller, handleRequest($request) préremplit les obj;",
+        "3/Ds le ctroller, handleRequest($request) préremplit les obj;fait le lien entre la requete et le form",
         "si le form est pas valid, les erreurs vt ê réaffichées avec le form",
-        "NB : Pour tester en php, il faudra desactiver la validation coté html novalidate"
+        "NB : Pour tester en php, il faudra desactiver la validation coté html novalidate",
+        "NB2 :Utiliser BS pour le form : rajouter ds config/packages/twig.yaml "
     ] ,
         example : [ 
             "A/ composer require symfony/form ",
             "B/ bin/console make:form -> nommer machinType.php et dire à qL entité c lié",
-            "1/a #[Route('/add2', name: 'add2', methods:'GET','POST'])",
-            "1/b/$form = $this->createForm(PostType::class, $post);",
-            "1/c/ $builder->->add('title', TextType::class, ['label' => 'Titre'])",
+            "1/a #[Route('/add2', name: 'add2', methods:['GET','POST'])]",
+            "1/a $post=new Post(); ",
+            "1/b/ $form = $this->createForm(PostType::class, $post);",
+            "1/b/ rajouter l'option dans le add()'mapped' => false pour rajouter un chp qui n'est pas ds l'entité",
+            "1/c/ $builder->add('title', TextType::class, ['label' => 'Titre'], \"attr\" => [\"placeholder\" => \"Jambon du 34\"]\")",
             "1/d/ return $this->render('post/add2.html.twig', ['formPost' => $form]);",
-            "2/a/{{ form(formPost) }} b/ {{form_start(formPost)}}{{form_row(formPost.title)}}{{ form_end(formPost)}} ",
-            "2/c/ https://symfony.com/doc/current/form/form_customization.html",
+            "5/a/{{ form(formPost) }} b/ {{form_start(formPost)}}{{form_row(formPost.title)}}{{form_end(formPost)} end affiche le reste du form cf form_rest aussi} ",
+            "5/c/ https://symfony.com/doc/current/form/form_customization.html",
             "3/ $form->handleRequest($request);",
-            "NB :{{ form_start(formPost, {'attr' : {'novalidate' : 'novalidate'}}) }}"
+            "NB1 :{{ form_start(formPost, {'attr' : {'novalidate' : 'novalidate'}}) }}",
+            "NB2 : twig:form_themes: ['bootstrap_5_layout.html.twig']"
     ],
-        type : "CSS"
+        type : "SYMFONY"
     } ,
      {
         nom : "RESPONSIVE FONTS" ,
@@ -563,6 +569,7 @@ const datas = [
                 "4/Ds le term : bin/console debug:router",
                 "5/#[Route('/racineDeLURL', name: 'prefixeDuNomDeLaview_')]  <= à experimenter plus",
                 "6/return $this->redirectToRoute('nomDeLaRoute');",
+                "6 bis/ avec param return $this->redirectToRoute('app_movie_show', ['id' => $show->getId()]);",
                 ,
                 ],
         type : "SYMFONY"
