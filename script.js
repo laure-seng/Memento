@@ -68,13 +68,16 @@ const datas = [
         "https://symfony.com/doc/current/reference/forms/types.html",
         "1/c/ Exp : 'choice_label' => 'getFullName', permet de choisir une méth custom de l'entité",
         "1/d/ On le trsmet à la vue",
-        "2/ Rajouter des contraintes a/dans le formType b/ds l'entité  Acompleter dcf notes bvalidation  episoded §8",
+        "2/ Rajouter des contraintes a/dans le formType b/ds l'entité, avant chq propriété (C mieux)",
         "https://symfony.com/doc/current/reference/constraints.html",
         "5/a/b/c/ Ds twig, on l'importe 3 manières abc",
+        "5/b/ le row comprend The form_label(), form_widget() (the HTML input), form_help() and form_errors()",
+        "https://symfony.com/doc/current/form/form_customization.html",
         "3/Ds le ctroller, handleRequest($request) préremplit les obj;fait le lien entre la requete et le form",
         "si le form est pas valid, les erreurs vt ê réaffichées avec le form",
         "NB : Pour tester en php, il faudra desactiver la validation coté html novalidate",
-        "NB2 :Utiliser BS pour le form : rajouter ds config/packages/twig.yaml "
+        "NB2 :Utiliser BS pour le form : rajouter ds config/packages/twig.yaml ",
+        "composer require symfony translation pour traduire les mes d'erruers automatiqmt"
     ] ,
         example : [ 
             "A/ composer require symfony/form ",
@@ -85,6 +88,7 @@ const datas = [
             "1/b/ rajouter l'option dans le add()'mapped' => false pour rajouter un chp qui n'est pas ds l'entité",
             "1/c/ $builder->add('title', TextType::class, ['label' => 'Titre'], \"attr\" => [\"placeholder\" => \"Jambon du 34\"]\")",
             "1/d/ return $this->render('post/add2.html.twig', ['formPost' => $form]);",
+            "2/b/ #[Assert\\NotBlank]#[Assert\\Length(min: 2)] ",
             "5/a/{{ form(formPost) }} b/ {{form_start(formPost)}}{{form_row(formPost.title)}}{{form_end(formPost)} end affiche le reste du form cf form_rest aussi} ",
             "5/c/ https://symfony.com/doc/current/form/form_customization.html",
             "3/ $form->handleRequest($request);",
@@ -524,7 +528,8 @@ const datas = [
                 "7/ récupérer les données en session ds twig",
                 "8/Le pipe sert à récupérer les données ds une fonction",
                 "Activer l'autocompletion du html ds Twig ds VScode : Préférences->Paramètres->",
-                "Extensions -> Emmet -> Include Languages puis Ajouter l'élément clé = twig / valeur = html"
+                "Extensions -> Emmet -> Include Languages puis Ajouter l'élément clé = twig / valeur = html",
+                "Twig language 2 extension vsCOde pour compléter les if for etc... "
             ],
                 example : [ 
                 "1/ Ds le term : composer require twig",
