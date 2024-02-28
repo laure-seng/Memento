@@ -84,7 +84,7 @@ const datas = [
             "B/ bin/console make:form -> nommer machinType.php et dire à qL entité c lié",
             "1/a #[Route('/add2', name: 'add2', methods:['GET','POST'])]",
             "1/a $post=new Post(); ",
-            "1/b/ $form = $this->createForm(PostType::class, $post);",
+            "1/b/ $form = $this->createForm(PostType::class, $post=obj qui aura les valeurs recues ds le form);",
             "1/b/ rajouter l'option dans le add()'mapped' => false pour rajouter un chp qui n'est pas ds l'entité",
             "1/c/ $builder->add('title', TextType::class, ['label' => 'Titre'], \"attr\" => [\"placeholder\" => \"Jambon du 34\"]\")",
             "1/d/ return $this->render('post/add2.html.twig', ['formPost' => $form]);",
@@ -186,6 +186,8 @@ const datas = [
             "3bis/ On peut choisir le grain pour avoir tjrs le même random de données",
             "4/ Si on a utilise un Provider, on le rajoute",
             "5/ On crée l'objet et on lui set des propriétés de faker",
+            "6/ Pour set une date en immutable et sur une pèriode limitée",
+            "7/ Créer son provider, c juste une class AppProvider ds le dossier des fixtures",
             "NB Si on utilise le random de faker, l'utiliser partout pour avoir tjrs les mêmes données"
         ] ,
         example : [         
@@ -196,6 +198,8 @@ const datas = [
             "4/ $faker->addProvider(new \Xylis\FakerCinema\Provider\Movie($faker));", 
             "5/ $show = new Show(); $show->setDuration($faker->numberBetween(90,240)); ",
             "5/ $show->addGenre($faker->randomElement($genreList)); etc...",
+            "6/ $show->setWatchedAt(DateTimeImmutable::createFromMutable($faker->dateTimeBetween('-30 days')))",
+            "7/ puis on setMachin($faker->randomElements($faker->getReactions()))",
             "NB : $show->addGenre($faker->randomElement($genreList));"
     ],
         type : "SYMFONY"
@@ -326,7 +330,8 @@ const datas = [
         definition : [ 
             "1/ Create : ds le controller, on crée une instance de l'entityManagerInterface", 
             "pour utiliser persist() et flush(),l'EMI sert à écrire ds la BDD",
-            "2/Read : Les méth.de l'entityRepository ns renverront les résultats sinon"
+            "2/Read : Les méth.de l'entityRepository ns renverront les résultats sinon",
+            "4/Pour effacer : utiliser l'EMI"
             
         ] ,
         example : [ 
@@ -337,7 +342,8 @@ const datas = [
             "$entityManager->flush();",
             "2/ public function list(PostRepository $postRepository): Response",
             "$articles=$postRepository->findAll()",
-            "",
+            "2/bis typeHint (Show $show) récupérera le show de l'id concerné",
+            "4/$em->remove($item); puis $em->flush();",
     ],
         type : "SYMFONY"
     },
@@ -443,7 +449,11 @@ const datas = [
         "1/ On pt renvoyer une exception avec createNotFoundException", 
         "Attention à passer en mode prod dans le fichier .env pour voir les 404",
         "Sinon en mode dev il faut aller à http://127.0.0.1:8000/_error/404",
-        "2/Pour faire ses pages erreurs perso : créer l'arborescence ci-dessous :"
+        "2/Pour faire ses pages erreurs perso : créer l'arborescence ci-dessous :",
+        "Si ds le fichier .env on se met en mode prod, on pt mettre une jolie 404, pour l'utilisateur",
+        "templates/bundles/TwigBundle/Exception/error404.html.twig error404.html.twig et 500 etc",
+        "on a acces à la var {{ exception.message }}",
+        "tester sa page d'erreur http://127.0.0.1:8000/_error/404"
         ] ,
         example : [
         "if (empty($movie))",
@@ -565,7 +575,7 @@ const datas = [
                 "Récupérer la route de l apage courante avec app.request.get('_route') ou app.current_route  "
             ],
                 example : [ 
-                "1/#[Route('/movie/{id}/',name: 'movie/{id}', requirements: ['id' => '\d+'],methods: ['POST'] )]  ou /movie/{id<\d+>}",
+                "1/#[Route('/movie/{id}/',name: 'movie', requirements: ['id' => '\d+'],methods: ['POST'] )]  ou /movie/{id<\d+>}",
                 "2/public function show(int $id): Response",
                 "2/public function demo(int $monparam, string $mondeuxiemeParam): Response",
                 "1/#[Route('/blog/{page<\d+>}', name: 'blog_list')] <= plus concis",
