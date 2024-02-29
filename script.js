@@ -55,7 +55,86 @@ const datas = [
     //     example : [ "","","",
     // ],
     //     type : "CSS"
-    // } 
+    // }
+
+
+    //RAJOUTER LE TRUC POUR FR SOB PROVIDER CUSTOM ET AUSSI DATE IMMUTABLE
+
+    {
+        nom : "REQUETE CUSTOMAVEC LE QUERYBUILDER" ,
+        definition : [ "On pt dynamiser plus facilement ses requêtes avec", 
+        "On crée la méthode ds le repository qui va fr le select sur l'entité concernée",
+        "On utilise la première lettre de l'entité comme alias (convention)",
+        "si on veut select les éléments de brand il faut bien ajouter le addSelect" ,
+        "lance la requete et recupere les résultat"
+        ,],
+        example : [ "public function findCarWithBrand(): array",
+        "{return $this->createQueryBuilder('c')",
+        "->innerJoin('c.brand', 'b')",
+        "->addSelect('b')",
+        "->getQuery()",
+        "->getResult();}",
+        "",
+    ],
+        type : "SYMFONY"
+    }
+    {
+        nom : "SECURITE AUTHENTIFICATION " ,
+        definition : [ "1/Installer le bundle",
+        "Ds le fichier security.yaml, ça configure le user, le firewall et l'access control", 
+        "2/Il ft créer une entité User particulière avec les propriétés password,role", 
+        "On utilise généralemt l'email comme discriminant",
+        "3/Ne pas oublier le migrate",
+        "L'access control va contenir les routes autorisées, attention à l'ordre",
+        "Le role est toujours ROLE_USER d'office ; on écrit les rôles en majuscule par convention",
+        "4/ On crée le form pour se connecter en cas d'interdiction",
+        "403 interdiction, 401 manque d'authentification",
+        "Il y a même un remember me avec",
+        "On pt activer le logout cf doc",
+        "5/ On pt hasher le mdp via la console",
+        "On va pouvoir fr de laffichage conditionnel en fonction de app.user",
+        "6/ La fct is_granted() de twig est pratique pour cela",
+        "https://symfony.com/doc/current/security.html#checking-to-see-if-a-user-is-logged-in"
+    ] ,
+        example : [ "1/ composer require symfony/security-bundle",
+        "2/ bin/console make:user",
+        "3/ - { path: ^/admin, roles: ROLE_ADMIN } ttes les routes commençant par /admin",
+        "4/ bin/console make:security:form-login -> crée le securityController et les tpl",
+        "5/ bin/console security:hash-password",
+        "6/ {% if is_granted('IS_AUTHENTICATED_FULLY') %} <div du menu de connexion>",
+        "",
+    ],  
+        type : "SYMFONY"
+    } ,
+    {
+        nom : "EASY ADMIN" ,
+        definition : [ "Composant pour créer un backOffice",
+        "On choisit la mise en forme ds le DashBoardController", 
+        "Il y a un CrudController aussi",
+        "3/ On paramètre les fields de l'interface",
+        ] ,
+        example : [ "composer require easycorp/easyadmin-bundle",
+        "bin/console make:admin:dashboard",
+        "3/ public function configureFields(string $pageName): iterable etc...",
+        "", 
+        "",
+        "",
+    ],
+        type : "SYMFONY"
+    }
+    {
+        nom : "BOOTSTRAP" ,
+        definition : [ "Cf site copier les lignes pour inclure BS", 
+        "Mettre ds un class='container' pour améliorer le rendu",
+        "1/pour utiliser bootstrap avec twig, rajouter dans twig.yaml :",
+        "https://bootswatch.com/ thèmes pour"
+        , "",] ,
+        example : [ "1/twig:file_name_pattern: '*.twig'",
+        "1/form_themes: ['bootstrap_5_layout.html.twig']",
+        "","",
+    ],
+        type : "SYMFONY"
+    } ,
     {
         nom : "FORMULAIRE SYMFONY" ,
         definition : [ "4 étapes côté serveur : 1/ récupération des data, 2/validation sinon réaffichage du form",
@@ -67,6 +146,8 @@ const datas = [
         "1/c/ Ds le formType, rajouter les params à add('nomDeLaColonne',type(attr,data...), options ds un tableau)",
         "https://symfony.com/doc/current/reference/forms/types.html",
         "1/c/ Exp : 'choice_label' => 'getFullName', permet de choisir une méth custom de l'entité",
+        "Attention si on a des valeurs qu'on vt null, rajouter 'empty_data' => '' ",
+        "Si on veut une option du select vide, rajouter une option 'placeholder' => 'choisissez'",
         "1/d/ On le trsmet à la vue",
         "2/ Rajouter des contraintes a/dans le formType b/ds l'entité, avant chq propriété (C mieux)",
         "https://symfony.com/doc/current/reference/constraints.html",
@@ -77,7 +158,8 @@ const datas = [
         "si le form est pas valid, les erreurs vt ê réaffichées avec le form",
         "NB : Pour tester en php, il faudra desactiver la validation coté html novalidate",
         "NB2 :Utiliser BS pour le form : rajouter ds config/packages/twig.yaml ",
-        "composer require symfony translation pour traduire les mes d'erruers automatiqmt"
+        "composer require symfony translation pour traduire les mes d'erruers automatiqmt",
+        "FakeFiller Extension pour remplir les forms pour test",
     ] ,
         example : [ 
             "A/ composer require symfony/form ",
@@ -88,7 +170,7 @@ const datas = [
             "1/b/ rajouter l'option dans le add()'mapped' => false pour rajouter un chp qui n'est pas ds l'entité",
             "1/c/ $builder->add('title', TextType::class, ['label' => 'Titre'], \"attr\" => [\"placeholder\" => \"Jambon du 34\"]\")",
             "1/d/ return $this->render('post/add2.html.twig', ['formPost' => $form]);",
-            "2/b/ #[Assert\\NotBlank]#[Assert\\Length(min: 2)] importer en haut 'use Symfony\Component\Validator\Constraints as Assert;'",
+            "2/b/ #[Assert\\NotBlank]#[Assert\\Length(min: 2)] #[Assert\\DateTime] importer en haut 'use Symfony\Component\Validator\Constraints as Assert;'",
             "5/a/{{ form(formPost) }} b/ {{form_start(formPost)}}{{form_row(formPost.title)}}{{form_end(formPost)}} end affiche le reste du form cf form_rest aussi} ",
             "5/c/ https://symfony.com/doc/current/form/form_customization.html",
             "3/ $form->handleRequest($request);",
@@ -188,6 +270,7 @@ const datas = [
             "5/ On crée l'objet et on lui set des propriétés de faker",
             "6/ Pour set une date en immutable et sur une pèriode limitée",
             "7/ Créer son provider, c juste une class AppProvider ds le dossier des fixtures",
+            "$faker->unique() pour avoir une valeur unique",
             "NB Si on utilise le random de faker, l'utiliser partout pour avoir tjrs les mêmes données"
         ] ,
         example : [         
@@ -331,7 +414,8 @@ const datas = [
             "1/ Create : ds le controller, on crée une instance de l'entityManagerInterface", 
             "pour utiliser persist() et flush(),l'EMI sert à écrire ds la BDD",
             "2/Read : Les méth.de l'entityRepository ns renverront les résultats sinon",
-            "4/Pour effacer : utiliser l'EMI"
+            "4/Pour effacer : utiliser l'EMI",
+            "NB le persist n'est pas obligé sur un update"
             
         ] ,
         example : [ 
@@ -535,9 +619,10 @@ const datas = [
                 "5/Partials ; créer un dossier _partials ds le dossier des twig concernés",
                 "et nommer les fichiers avec un _devant, on fait include dans les .twig, include accepte des params",
                 "6/ Asset() retrouve directement les fichiers du dossier Public(vérifier qu'il est installé",
-                "7/ récupérer les données en session ds twig",
+                "7/ récupérer les données en session ds twig grâce à app()",
+                "App Global Variable permet d'accéder à app.user, app.session, app.flashes etcc ",
                 "8/Le pipe sert à récupérer les données ds une fonction",
-                "Activer l'autocompletion du html ds Twig ds VScode : Préférences->Paramètres->",
+                "Autres trucs  : Activer l'autocompletion du html ds Twig ds VScode : Préférences->Paramètres->",
                 "Extensions -> Emmet -> Include Languages puis Ajouter l'élément clé = twig / valeur = html",
                 "Twig language 2 extension vsCOde pour compléter les if for etc... "
             ],
@@ -555,7 +640,7 @@ const datas = [
                 " {% if favorite_movies[currentId] is defined  %} <html>",
                 "{% else %} <html> {% endif %}",
                 "{% for %}...  {% else %}... {% endfor %} le else va tester le cas où le tabl n'existe pas",
-                "8/{{ **currentData.date|slice(0, 5)** }}"
+                "8/{{currentData.date|slice(0, 5)}} ou bien {{movie.watchedAt|date('Y')}}"
                 ],
         type : "SYMFONY"
         },
@@ -563,6 +648,7 @@ const datas = [
         nom : "Symfony - Routes" ,
         definition : ["Il y a différentes manières de créer son tableau des routes",
                 "La plus simple est de créer la route directement ds le controller associé",
+                "CREER LES ROUTES EN FRANCAIS !!",
                 "1/On peut préciser leur nom, la méthode HTTP les paramètres et le type des paramètres(requirements)",
                 "ça peut se faire avec les regex ;on peut mettre des valeurs par défaut $id=1 ;",
                 "2/On rappelle le type ndu param ds la méthode qui utilise le param",
@@ -619,10 +705,11 @@ const datas = [
                 "Si on passe par Apache, installer la dépendance nécessaire",
                 "Si pb avec le cache-> changer les droits de /var/",
                 "Les assets dvt être ds /public/",
+                "NB : on pt copier le composer.json d'un projet similaire et faire composer update",
+                "NB 2 : si on récupère un projet existant, 1/drop la DB et 2/la recréer, 3/migrate et 4/load fixture"
             ],
                 example : [ 
                 "composer create-project symfony/skeleton nomDuProjet",
-                "",
                 "mv sous-dossier/* sous-dossier/.* .",
                 "php -S 0.0.0.0:8000 -t public",
                 "composer require symfony/apache-pack",
