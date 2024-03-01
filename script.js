@@ -59,6 +59,7 @@ const datas = [
 
 
     //RAJOUTER LE TRUC POUR FR SOB PROVIDER CUSTOM ET AUSSI DATE IMMUTABLE
+// Fiche PHP new DateTimeImmutable pour créer une date et format () pour formater la date
 
     {
         nom : "REQUETE CUSTOMAVEC LE QUERYBUILDER" ,
@@ -77,7 +78,7 @@ const datas = [
         "",
     ],
         type : "SYMFONY"
-    }
+    },
     {
         nom : "SECURITE AUTHENTIFICATION " ,
         definition : [ "1/Installer le bundle",
@@ -102,7 +103,7 @@ const datas = [
         "4/ bin/console make:security:form-login -> crée le securityController et les tpl",
         "5/ bin/console security:hash-password",
         "6/ {% if is_granted('IS_AUTHENTICATED_FULLY') %} <div du menu de connexion>",
-        "",
+        "6/ {% if is_granted('ROLE_USER'') %}",
     ],  
         type : "SYMFONY"
     } ,
@@ -121,7 +122,7 @@ const datas = [
         "",
     ],
         type : "SYMFONY"
-    }
+    },
     {
         nom : "BOOTSTRAP" ,
         definition : [ "Cf site copier les lignes pour inclure BS", 
