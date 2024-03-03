@@ -49,17 +49,116 @@ const datas = [
     //     type : "NEWS"
     //     },
 
-    // {
-    //     nom : "TRAME ITEM CLASSIQUE" ,
-    //     definition : [ "", "", "", "",] ,
-    //     example : [ "","","",
-    // ],
-    //     type : "CSS"
-    // }
+//     {
+//         nom : "TAILWIND POST CSS" ,
+//         definition : [ 
+//         "", 
+//         "", 
+//         "", 
+//         "",] ,
+//         example : [ 
+//         "",
+//         "",
+//         "",
+//     ],
+//         type : "CSS"
+// },
 
 
     //RAJOUTER LE TRUC POUR FR SOB PROVIDER CUSTOM ET AUSSI DATE IMMUTABLE
 // Fiche PHP new DateTimeImmutable pour créer une date et format () pour formater la date
+
+{
+            nom : "TAILWIND OPTIMISER" ,
+            definition : [ 
+            "Vider les classespurge css ", 
+            "", 
+            "", 
+            "",] ,
+            example : [ 
+            "",
+            "",
+            "",
+        ],
+            type : "CSS"
+    },
+    
+        {
+        nom : "TAILWIND : créer des class perso TAILWIND CLI 1/2" ,
+        definition : [ 
+        "1/ Installer Tailwind pour le dev cf doc", 
+        "2/ Ds style.css on rajoute les 3 lignes ", 
+        "3/On crée le fichier de config de tailwind qui contient toutes les couleurs préférences etc...", 
+        "4/ On génére son css",
+        "5/ Ainsi ds le css on pourra a/créer des classes qu'on utiisera b/ds les balises des élements",
+        "6/ NB Pour les règles avec : (a/pseudoclass, b/responsive...), il faut le faire ds le css directemt"
+    ] ,
+        example : [ 
+        "2/ @tailwind base; @tailwind components; @tailwind utilities ",
+        "3/npx tialwind init --full",
+        "4/npx tailwind build fichier_de_css fichier_de_sortie",
+        "5/ a/ .maClass {@apply classesTailwind} b/ class='maClass'",
+        "6/a/ .maClass:hover",
+        "6/b/ @screen md => on ale nested CSS qui fctne ??"
+        ],
+        type : "TAILWIND"
+        },
+
+        {
+            nom : "TAILWIND : créer des class perso avec POST CSS 2/2" ,
+            definition : [ 
+            "1/ Installer Tailwind et les pulgins nécessaires"    ,
+            "2/ Créer un fichier postcss.config.js pour importer les plugin", 
+            "3/ Pour compiler on va utiliser parcel-bundler?? ", 
+            "4/ Ds le html on va linker le fichier css des sources à la place du CDN",
+            "5/ On va builder avec parcel => le css va être généré",
+            "6/ Pour voir la page on lance le serveur de parcel"
+        ] ,
+            example : [ 
+
+            "1/ npm install -D tailwindcss@latest postcss@latest autoprefixer@latest",
+            "2/ modules.exports = { plugins : [ require('autoprefixer'),require('tailwindcss')]}",
+            "voir doc car pas à jour??",
+            "5/ npx parcel build index.html",
+            "6/ npx parcel index.html"
+            ],
+            type : "TAILWIND"
+            },
+        {
+        nom : "TAILWIND CLASSES EN VRAC " ,
+        datas : [
+            {"Tailles possibles(variable)":"xs sm md lg xl 2xl 3xl 4xl 5xl 6xl full"},
+            {"background":"bg-couleur-luminosité(100 200 etc)"},
+            {"texte taille":"text-xs, text-lg etcc "},
+            {"texte font":"font-bold text-gray-800"},
+            {"ombre portée ":"shadow-lg / shadow-inner(intér.) /shadow-outline "},
+            {"border":"border border-gray-300 rounded"},
+            {"largeur max":"max-w-lg"},
+            {"height /width":"h-4(cà dire 1rem)/12(cà dire 3rem)/16/+4...64/auto/px/full/screen"},
+            {"marges":"mx(hrztal)-auto , mt(top)-4, p-4, my-2(vertical)"},
+            {"display block":"block"},
+            {"display flex conteneur":"flex content-center/start/end/between/around justify-center/etc/ +déterminer la height "},
+            {"display flex direction":"flex-col flex-row etc..."},
+            {"flexbox item":"déterminer la taille de l'img avec object-fit : object-cover/  self-start"},
+            {"Pseudo-classes on met : ":"focus:shadow-outline hover: "},
+            {"Responsive-4 breakpoints":"sm md lg xl Exple : lg:'class à appliquer'"},
+            {"flex-basis pour ne pas agrandit le séléments sur l'item:":"flex-1"},
+
+                ],
+        tableau : true,
+        type : "TAILWIND"
+        },
+    {
+        nom : "TAILWIND " ,
+        definition : [ 
+            "Classes utilitaires", 
+        "On pt utiliser le CDN (facile)", 
+        "ou des préprocesseurs CSS comme POSTCSS", "",] ,
+        example : [ "","","",
+    ],
+        type : "TAILWIND"
+    },
+
     {
         nom : "SECURITE AUTHENTIFICATION - VOTER 3/3" ,
         definition : [ "Il sert à fr des permissions selon des conditions précises",
@@ -70,12 +169,15 @@ const datas = [
         "2/NB/$attribute=> tabl.des différentes permissions du projet, $subject l'entité concernée récupérée automatiqmt, $token pour récupérer l'user",
         "2/b/ Ds supports() on vérifie si les $attribute st appelés et si le $subject est lié à l'entité concernée",
         "2/c/ Ds voteOnAttribute(), on met la logique de restrictions.",
-        "On pt créer des propriétés privées pour chq fct pour que ca soit plus maintenable.",] ,
+        "On pt créer des propriétés privées pour chq fct pour que ca soit plus maintenable.",
+        "3/Pour récupérer les rôles ds le voter, on peut importer le security via le cstructeur du Voter puis isGranted()",
+        ""] ,
         example : [ "1/ bin/console make:voter => crée un voter ds le dossier Security",
         "2/a/ const EDIT = 'edit';",
         "2/NB/ $user = $token->getUser();",
         "$post = $subject;",
-        "","",
+        "3/ use Symfony\Component\Security\Core\Security;",
+        "if ($this->security->isGranted('ROLE_SUPER_ADMIN'))","",
     ],
         type : "SYMFONY"
     },
