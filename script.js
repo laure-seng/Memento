@@ -469,7 +469,7 @@ const datas = [
         "1/ Avec la console, ça va créer la propriété crrspdt au nom de la 2e entité au pluriel dans l'entité 1",
         "On met type=ManyToMany",
         "On répond oui aux questions, on récupérera facilement entite1.entite2s et entite2.entite1s",
-        "2/Dans entite.php,on reconnait le owner par 'inversedBy',l'autre c'est 'mappedBy' ",
+        "2/Dans entite.php,on reconnait le owner=maitre par 'inversedBy',l'autre c'est celui qui a le 'mappedBy' ",
         "ça crée une table pivot entite1_entite2", 
         "3/ Ds le controller, on pourra utiliser les méth addEntite2,removeEntite2, et la même pour entite1",
         "NB : on ne pt pas changer le owner facilement",
@@ -564,7 +564,7 @@ const datas = [
             "pour utiliser persist() et flush(),l'EMI sert à écrire ds la BDD",
             "2/Read : Les méth.de l'entityRepository ns renverront les résultats sinon",
             "4/Pour effacer : utiliser l'EMI",
-            "NB le persist n'est pas obligé sur un update"
+            "NB le persist n'est pas obligé sur un update, il est nécessaire qd on crée qqch"
             
         ] ,
         example : [ 
@@ -765,8 +765,9 @@ const datas = [
                 "Utilisatin de fonctions prédéfinies avec le pipeline | ;",
                 "Fcts natives comme endswith(), match()",
                 "Les variables st par défaut échappées pour éviter les injections mais on pt y remédier si on vt",
-                "5/Partials ; créer un dossier _partials ds le dossier des twig concernés",
+                "5/a/ Partials ; créer un dossier _partials ds le dossier des twig concernés",
                 "et nommer les fichiers avec un _devant, on fait include dans les .twig, include accepte des params",
+                "5/b/ Pour passer une variable ds un partial, on le rajouter en deuxième param",
                 "6/ Asset() retrouve directement les fichiers du dossier Public(vérifier qu'il est installé",
                 "7/ récupérer les données en session ds twig grâce à app()",
                 "App Global Variable permet d'accéder à app.user, app.session, app.flashes etcc ",
@@ -839,12 +840,14 @@ const datas = [
                     {"composer require http-foundation" :""},
                     {"maker" :"composer require --dev symfony/maker-bundle"} , 
                     {"bin/console make:controller nomDuController" :"pour générer un controller"} , 
-                    {"bin console/autowiring": "pour voir les services"},
+                    {"bin/console debug:autowiring --all": "pour voir les services"},
                     {"Services = ttes les Class sf Entites et controllers":"instanciables grâce au gestionnaire de service exp: Request"},
                     {"bin/console cache:clear effacer le cache" : "effacer le cache"},
                     {"Response ":"on en a besoin ds le controller parce qu'un controller renvoie un obj de la classe Response'"},
-                    {"Param converter":"récupère l'obj directmt grâce à (Objet $objet),ça va même gérer les 404;Exp:function show(Post $post)"},
-                    ],
+                    {"Param converter":"on récupère l'obj directmt grâce à lui en type hint (Objet $objet),il va même gérer les 404;Exp:function show(Post $post)"},
+                    {"AbstractController" :"il permet de fr bcp de choses courantes ds les controllers comme récupérer le user avec $this->getUser()"},
+                    {"Penser à regarder ses méthodes qd besoin de qqch":""}
+                ],
             tableau : true,
             type : "SYMFONY"
             },
@@ -874,7 +877,7 @@ const datas = [
             datas : [{"php -m ":"quesl modules sont chargés ?"},
                     {"php -a":"mode interactif"},
                     {"php -f":"lancer un script ds le terminal"},
-                    {"":""},
+                    {"php -m":"voir les modules installés"},
                     ],
             tableau : true,
             type : "PHP"
