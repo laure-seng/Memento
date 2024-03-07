@@ -69,18 +69,126 @@ const datas = [
 // Fiche PHP new DateTimeImmutable pour créer une date et format () pour formater la date
 
 {
-            nom : "TAILWIND OPTIMISER" ,
+        nom : "DATES AVEC PHP Strings date() 1/2" ,
+        datas : [{"Avoir la date du jour en string ":"date(('Y-m-d') => 2023-03-14" },
+                {"Avoir la date du jour en string ":"date('l, F j, Y') =>  Tuesday, March 14, 2023"},
+                {"Changer la timezone avant de date()":"date_default_timezone_set"},
+                {"time()":"rvoie le current TimeStamp => cvertir en date string avec gmdate() "},
+                {"gmdate() est similaire ) date() ms tjrs sur UTC timezone":""},
+                {"Meth.utiles pour la localisation":"setlocale() ,strftime()"},
+
+                ],
+        tableau : true,
+        type : "PHP"
+        },
+        {
+            nom : "DATES AVEC PHP Object DateTime() 1/2" ,
+            datas : [{"Avoir la date du jour en objet ":" new DateTime('now');" },
+                    {"On pt le formater avec format() en string ":"$date->format('Y-m-d') => 2023-03-14"},
+                    {"Cf comme précédemment":"->format('l, F j, Y');  =>  =>  Tuesday, March 14, 2023"},
+                    {"Changer la timezone sur DateTime() avec setTimezone() )":"$date->setTimezone(new DateTimeZone('UTC'));"},
+                    {"Changer la timezone sur DateTime() en passt en 2nd arg un timezone str ou DateTimeZone obj":"$date = new DateTime('now', new DateTimeZone('UTC'));"},
+                    {"Meth.utiles de Datetime()":"createFromFormat(),add(), sub(), diff()"},
+                    {"Ajouter un jour" :"$date->modify('+1 day'); "},
+                    {"On pt comparer 2 DateTime avec opérateurs":"< > <= >="}
+                    ],
+            tableau : true,
+            type : "PHP"
+            },
+    
+
+{
+            nom : "AUTOMATISATION DE TACHES ds SYMFONY A COMPLETER" ,
             definition : [ 
-            "Vider les classespurge css ", 
-            "", 
-            "", 
+            "1/ On pt créer ses propres commandes du style bin/console macommande qui extends Command", 
+            "2/ On l'appelle app:maCommande pour la disitnguer des commandes de Sf", 
+            "ça crée le fichier maCommande.php ds le dossier Command", 
             "",] ,
             example : [ 
-            "",
+            "Pour les voir toutes : bin/console list",
+            "1/ bin/console make:command",
             "",
             "",
         ],
-            type : "CSS"
+            type : "SYMFONY"
+    },
+    
+{
+            nom : "REQUETES HTTP API" ,
+            definition : [ 
+            "Pour fr des requêtes client en PHP, on a la lib Guzzle", 
+            "Sf a créé le composant httpClient( qui utilise guzzle)", 
+            "Pour cet exemple on a créé un service custom",
+            "On déclare le HttpClientInterface et la clé en propriétés du cstructeur  ",
+            "On met sa clé API ds le .env pour que notre service custom l'utilise", 
+            "On précise l'existce de notre service ds le yaml",
+            "1/a On crée la méthode fetch(par exemple) pour créer une $response qui aura bcp de méth dt getContent()",
+            "1/b L'url sera ds une variable ",
+            "1/c query permet de rajouter des paramas en queyparams cf ds la querystring ?clé=valeur...",
+            "1/d/ conversion du Json en tableau asso avec toArray()",
+            "",
+            ] ,
+            example : [ 
+            "composer require symfony/http-client",
+            "1/apublic function fetch(string $title)",
+            "1/b/c/$response = $this->HCI->request('GET',self::URL,['query' => ['apiKey' => $this->apiKey,'t' => $title]]);",
+            "1/d/ $content = $response->toArray();",
+            "return $content;"
+            ],
+            type : "SYMFONY"
+    },
+{
+    nom : "Service dans Symfony " ,
+    definition : [ 
+    "C une classe avec des fonctionnalités", 
+    "On l'injecte grâce au service container ds nos controllers ou ds le constructeur de nos entités", 
+    "ça sert à rendre notre code plus lisible et maintenable(factoriser)",
+    "Il y en a bcp intégrés à Symfo ms on pt créer les nôtres A/B/C/",
+    "1/pour les lister",
+    "A/ Créer un fichier MonService.php avec son namespace ds dossier src/Service ",
+    "B/ Ds ce fichier créer le constructeur et injecter les services qu'il utilise(éventuellemt) ",
+    "C/ pour que le service st reconnu, le déclarer ds services.yaml",
+    "C/1 son fQCN et C/2 les argumts =>variable ds fichier.env",
+    "qd le cteneur de service va instancier MonService, il va voir ds servyaml qu'il ft aller ds le.env récupérer la var",
+    "ds le .env"
+] ,
+    example : [ "1/ php bin/console debug:autowiring --all",
+    "B/ Exple : public function __construct(private MailerInterface $mailer) {...}",
+    "C/1 Exp : App\\Service\\MailerService:",
+    "C/2 $ownerMail: '%env(OWNER_EMAIL)%'", 
+    "D/ OWNER_EMAIL=...@gmail.com","",
+],
+    type : "SYMFONY"
+},
+
+{
+            nom : "MAILER DE SYMFO" ,
+            definition : [ 
+            "1/a installer le composant mailer", 
+            "1/b installer le transporteur ici Mailjet", 
+            "2configs 1/ serveur SMTP=> plus simple ou 2/API", 
+            "2/ Préciser ses clés public et privée ds le .env",
+            "3/ds le ctroller,typeHinter MailerInterface $mailerinterf",
+            "4/ds la méth qu'on vt créer un Email et l'envoyer avec send()",
+            "bien mettre $mailerinterface en use",
+            "5/ Pour fr un email avec intégration de twig, remplacer Email par TemplatedEmail",
+            "et au lieu de ->html() on utilise ->htmlTemplate()",
+            "on lui passe des variables avec -->context",
+            "Mettre un lien avec absolute_url() sinon ça va l'afficher:)",
+            "6/ Css inline ou bundle twig à installer"
+        ],
+            example : [ 
+            "1/a composer require symfony/mailer",
+            "1/b composer require symfony/mailjet-mailer",
+            "2/ MAILER_DSN=mailjet+smtp://36df9657ba32d60bc9fd67c67ed54112:PRIVATE_KEY@in-v3.mailjet.com",
+            "4/ $email = (new Email())",
+            "->from('')->to('')",
+            "->html('<h1>Un film a été crée</h1> <p>info du film TODO</p>');",
+            "$mailer->send($email);",
+            "5/ <a href=\"{{absolute_url(path('app_movie_show',{id:show.id}))}}\">cliquez ici",
+            "6/composer require twig/extra-bundle twig/cssinliner-extra"
+        ],
+            type : "SYMFONY"
     },
     
         {
@@ -465,15 +573,22 @@ const datas = [
     {
         nom : "DOCTRINE RELATIONS 2/2 Many To Many" ,
         definition : [ "=>On a 1/n ou 0/n de chaque côté de la relation.",
-        "Dans Doctrine, le \"owner\" de la relation est important",
+        "Dans Doctrine, le \"owner\" de la relation est important, c'est celui sur leqL on fait make:entity",
+        "il pt y avoir des bugs car doctrine regarde l'état de la table maitre qd on flush",
         "1/ Avec la console, ça va créer la propriété crrspdt au nom de la 2e entité au pluriel dans l'entité 1",
         "On met type=ManyToMany",
         "On répond oui aux questions, on récupérera facilement entite1.entite2s et entite2.entite1s",
         "2/Dans entite.php,on reconnait le owner=maitre par 'inversedBy',l'autre c'est celui qui a le 'mappedBy' ",
-        "ça crée une table pivot entite1_entite2", 
+        "ça crée une table pivot entite1/owner_entite2", 
         "3/ Ds le controller, on pourra utiliser les méth addEntite2,removeEntite2, et la même pour entite1",
+        "Cas particulier : s'il y a des attributs à la relation, il faut passer par une entite intermédiaire classique et les relations one to Many corrspondantes",
+        "Les méthodes Collection pvt ê utiles comme clear() pour tout vider",
         "NB : on ne pt pas changer le owner facilement",
-        "Cas particulier : s'il y a des attributs à la relation, il faut passer par une entite intermédiaire classique et les relations one to Many corrspondantes"
+        "Au cas où on s'est trompé, virer tt ce qui concerne la relation",
+        "et l'autre entité ds chq entité,make:migrate et refaire la relation correctmt",
+        "",
+        "",
+   
     ] ,
         example : [ "1/ bin/console make:entity ",
         "2/",
@@ -546,14 +661,16 @@ const datas = [
         "Les noms des propmriétés st en CamelCase en PHP ms seront transcrites en snakeCase ds les tables automatiqmt",
         "2/c On applique la migration",
         "2/d On transfère à la BDD",
-        "XXX/ ATTENTION : Au cas où, pour virer une BDD "
+        "XXX/ ATTENTION : Au cas où, pour virer une BDD ",
+        "NB pour rajouter une propriété,on pt aussi le faire direct ds l'entité puis utiliser regenerate()"
         ] ,
         example : [ "1/ bin/console doctrine:database:create",
         "2/a bin/console make:entity => créera le fichier Entite.php et EntiteRepository.php",
         "2/b bin/console doctrine:schema:validate",
         "2/c bin/console make:migration",
         "2/d bin/console doctrine:migrations:migrate",
-        "XXX/ bin/console doctrine:database:drop"
+        "XXX/ bin/console doctrine:database:drop",
+        "NB bin/console make:entity --regenerate"
     ],
         type : "SYMFONY"
     },
@@ -791,13 +908,14 @@ const datas = [
                 " {% if favorite_movies[currentId] is defined  %} <html>",
                 "{% else %} <html> {% endif %}",
                 "{% for %}...  {% else %}... {% endfor %} le else va tester le cas où le tabl n'existe pas",
+                "{% if movie in collectionDeMovie%}",
                 "8/{{currentData.date|slice(0, 5)}} ou bien {{movie.watchedAt|date('Y')}}",
                 "9/ {% set favorite_movies = app.session.get('favorite_movies') %}"
                 ],
         type : "SYMFONY"
         },
     {
-        nom : "Symfony - Routes" ,
+        nom : "Symfony - Routes +trucs sur url" ,
         definition : ["Il y a différentes manières de créer son tableau des routes",
                 "La plus simple est de créer la route directement ds le controller associé",
                 "CREER LES ROUTES EN FRANCAIS !!",
@@ -810,7 +928,10 @@ const datas = [
                 "routes.yaml",
                 "6/Redirection avec redirectToRoute()",
                 "Chercher la route ds le dum avec CTRL+f",
-                "Récupérer la route de l apage courante avec app.request.get('_route') ou app.current_route  "
+                "Récupérer la route de l apage courante avec app.request.get('_route') ou app.current_route",
+                "7/ Si on vt le lien absolu vers l'url, utiliser absolute_url(path(nomDeRoute))",
+                "8/a/ Request va ns perm de retrouver la page précédente avec $referer",
+                "8/b/ Ensuite on redirige vers une url avec ->redirect() "
             ],
                 example : [ 
                 "1/#[Route('/movie/{id}/',name: 'movie', requirements: ['id' => '\d+'],methods: ['POST'] )]  ou /movie/{id<\d+>}",
@@ -823,12 +944,15 @@ const datas = [
                 "5/#[Route('/racineDeLURL', name: 'prefixeDuNomDeLaview_')]  <= à experimenter plus",
                 "6/return $this->redirectToRoute('nomDeLaRoute');",
                 "6 bis/ avec param return $this->redirectToRoute('app_movie_show', ['id' => $show->getId()]);",
+                "7/ <a href=\"{{absolute_url(path('app_movie_show',{id:show.id}))}}\">",
+                "8/a $referer = $request->headers->get('referer');",
+                "8/b return $this->redirect($referer);"
                 ,
                 ],
         type : "SYMFONY"
         },
         {
-            nom : "Symfony - Composants principaux - Commandes de base - Concepts" ,
+            nom : "Symfony - Composants principaux - Commandes de base - Concepts -trucs en vrac à classer" ,
             datas : [{"skeleton":"squelette du projet"},
                     {"flex":"concerne la config et les dépendances, exécute les recettes"},
                     {"bin/console":"console intégrée"},
@@ -846,7 +970,10 @@ const datas = [
                     {"Response ":"on en a besoin ds le controller parce qu'un controller renvoie un obj de la classe Response'"},
                     {"Param converter":"on récupère l'obj directmt grâce à lui en type hint (Objet $objet),il va même gérer les 404;Exp:function show(Post $post)"},
                     {"AbstractController" :"il permet de fr bcp de choses courantes ds les controllers comme récupérer le user avec $this->getUser()"},
-                    {"Penser à regarder ses méthodes qd besoin de qqch":""}
+                    {"Penser à regarder ses méthodes qd besoin de qqch":""},
+                    {"Si on a des méth qui st pas détectées par VSCODe,rajouter au dessus pour rajouter l'entité":" Exp /** @var \\App\\Entity\\User $user */"},
+                    {"Les méthodes Collection pvt ê utiles comme clear() pour tout vider":"$user->getShows()->clear();"},
+                    {"Nvelle syntaxe PHP8 d'injection ds constructeur":"public function __construct(private MailerInterface $mailer,private $ownerMail) {}"}
                 ],
             tableau : true,
             type : "SYMFONY"
