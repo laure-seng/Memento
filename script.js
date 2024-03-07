@@ -67,7 +67,26 @@ const datas = [
 
     //RAJOUTER LE TRUC POUR FR SOB PROVIDER CUSTOM ET AUSSI DATE IMMUTABLE
 // Fiche PHP new DateTimeImmutable pour créer une date et format () pour formater la date
-
+{
+            nom : "TRUCS A PENSER A NE PAS OUBLIER /A TESTER SYMFONY  " ,
+            definition : [ 
+            "Quand on crée des propriétés ds une entité, mettre les contraintes de validation, les null, les valeurs par défaut", 
+            "C mieux de créer une requete personnalisée pour l'appeler dans la comande personnalisée que de fr trop de requetes sql'", 
+            "Eviter de fr des requetes pour rien", 
+            "NB si on vt mettre des elements aléatoirement null utiliser if (mt_rand(0, 1)) {",
+            "A/ on pt utiliser l'em pour recuperer les entites, qd y a bcp d'entités à traiter dc trop de repository à injecter",
+            "B/ nvelle syntaxe d'injection 'ds constructeur",
+            "Si on a plusieurs choses à tester, les mettre ds un tableau associatif pour éviter de faire plein de if (cf episode 16 symfo)",
+            "C/si je protege un truc côté front le protéger coté back Si j'ai enlevé le form en front=> enpecher de le créer en back",
+        ] ,
+            example : [ 
+            "",
+            "A/ $shows = $this->entityManager->getRepository(Show::class)->findAll();",
+            "B/ public function __construct(private MailerInterface $mailer,private $ownerMail) {}",
+            "C/if (!$question->isActive()) {throw $this->createAccessDeniedException('La question est bloqué');}"
+        ],
+            type : "AUTRES"
+    },
 {
         nom : "DATES AVEC PHP Strings date() 1/2" ,
         datas : [{"Avoir la date du jour en string ":"date(('Y-m-d') => 2023-03-14" },
@@ -98,17 +117,26 @@ const datas = [
     
 
 {
-            nom : "AUTOMATISATION DE TACHES ds SYMFONY A COMPLETER" ,
+            nom : "CREER UNE COMMANDE CUSTOM AVEC SYMFONY" ,
             definition : [ 
             "1/ On pt créer ses propres commandes du style bin/console macommande qui extends Command", 
             "2/ On l'appelle app:maCommande pour la disitnguer des commandes de Sf", 
             "ça crée le fichier maCommande.php ds le dossier Command", 
-            "",] ,
+            "Plusieurs parties ds le fichier ABCD :",
+            "A/ Rajouter le constructeur si nécessaire pour injecter les services",
+            "B/ configure() ctient des params, la description(--help) etc..",
+            "C/ execute() les commandes à exécuter",
+            "NB pour les erreurs il suffit de mettre throw new Exception pour interrompre la commande",
+            "D/ Pour styliser on a $io, qui hérite du SymfonyStyle et a plein de propriétés cf doc",
+            "3/On pt rajouter des arguments (mot espacé d'un espace et ds l'ordre) et dse options(--machin)",
+            "B/",
+            
+
+        ] ,
             example : [ 
-            "Pour les voir toutes : bin/console list",
-            "1/ bin/console make:command",
-            "",
-            "",
+            "app:maCOmmande argument1 argument2 --option",
+            "D/ $io->success,->error,->title",
+            "throw new Exception('actions valids are 'activate' or 'deactivate'');",
         ],
             type : "SYMFONY"
     },
@@ -436,6 +464,26 @@ const datas = [
     ],
         type : "SYMFONY"
     },
+    {
+        nom : "AUTRE EXEMPLE REQUETE CUSTOM AVEC LE QUERYBUILDER" ,
+        definition : [ "Par défaut les requetes faites avec le querybuilder st ds select", 
+        "Si on vt faire un update, il faut rajouter -->update et getResult() par execute()",
+        "On va lier les paramètres avec ->setParameter ",
+        "si on veut select les éléments de brand il faut bien ajouter le addSelect" ,
+        "lance la requete et recupere les résultat"
+        ,],
+        example : [ "public function deactivateOutdated($delay = 7){",
+        "return $this->createQueryBuilder('q')",
+        "->update()",
+        "->where('q.updatedAt < :delay')",
+        "->orWhere('q.updatedAt is NULL and q.createdAt < :delay')",
+        "->setParameter('delay', new DateTime('-$delay days'))",
+        "->set('q.active', 0)",
+        "->getQuery()",
+        "->execute();}",
+    ],
+        type : "SYMFONY"
+    },
      {
         nom : "RESPONSIVE FONTS" ,
         definition : [ "1/ Utiliser des rem pour les fonts ->fixer ms fr mediaquery avec un RFS comme bootstrap ",
@@ -485,7 +533,8 @@ const datas = [
         "3/ Dedans, dans la méthode load(), on rajoute nos setters pour nos objets",
         "3/b/ on informe l'entité manager qu'il y a une nouvelle entité à insérer en BDD",
         "4/ On applique avec flush()", 
-        "5/ On les execute mais attention ça vide toute la BDD ! rajouter --append sinon (à tester)"
+        "5/ On les execute mais attention ça vide toute la BDD ! rajouter --append sinon (à tester)",
+        "NB si on vt mettre des elements aléatoirement null utiliser if (mt_rand(0, 1)) {"
         ] ,
         example : [         
         "1/ composer require --dev orm-fixtures",
