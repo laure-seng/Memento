@@ -60,6 +60,9 @@ const datas = [
 //         "",
 //         "",
 //         "",
+//         "",
+//         "",
+//         "",
 //     ],
 //         type : "CSS"
 // },
@@ -87,6 +90,50 @@ const datas = [
         ],
             type : "AUTRES"
     },
+    {
+                nom : "EVENTS DS SYMFONY - Events de Doctrine 2/2" ,
+                definition : [ 
+                "Les events Doctrine, aussi appelés LifeCycles Events, st lancés durant la vie des entités", 
+                "Il y a prePersist/postPersist, preUpdate/postUpdate, preFlush-attention-)", 
+                "3 manières de les écouter : 1/ Lifecycle callbacks 2/Entity listeners 3/ Lifecycle listeners", 
+                "1/ public methods ds l'entité ccernée",
+                "2/ ccerne une entité",
+                "3/ pour ttes les entités, si besoin de partager cette logic entre les entités",
+                "1/a ",
+                "2/a Créer le service et copier la doc et préciser les propriétés event entity et method",
+                "",
+            
+            ] ,
+                example : [ 
+                "2/a",
+                "name: 'doctrine.orm.entity_listener'event: 'prePersist' entity: 'App\\Entity\\Show'method:'slugifyTitle'",
+                "",
+                "",
+                "",
+                "",
+            ],
+                type : "CSS"
+        },
+    {
+                nom : "EVENTS DS SYMFONY - Events du kernel 1/2" ,
+                definition : [ 
+                "2 moyens de les lancer :1/ event listener 2/subscriber", 
+                "1/ service, à déclarer ds le serv.yml,", 
+                "2/ réutilisable comme il ctient la descript de l'event", 
+                "2/a/ créer avec le maker",
+                "2/b/ choisir l'event auquel on se branche==etape avant qu'on écoute",
+                "2/c/ mettre la logique ds onKernelController ",
+                "2/d/ si on a besoin d'envoyer des variables à twig,met en param du constructeur du subscriber",
+                "2/f/ et rdre la var globale",
+                ],
+                example : [ 
+                "2/a bin/console make:subscriber",
+                "2/b/ kernel.controller,exception,request,repsonse, vue,",
+                "2/d/ private Environment $twig ",
+                "2/f/ $this->twig->addGlobal('nomDelavar', saValeur);"
+            ],
+                type : "SYMFONY"
+        },
 {
         nom : "DATES AVEC PHP Strings date() 1/2" ,
         datas : [{"Avoir la date du jour en string ":"date(('Y-m-d') => 2023-03-14" },
