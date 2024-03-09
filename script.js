@@ -3,12 +3,9 @@
 // reformuler les element.style.prop par ajout/toggle classlisst
 // POURQUOI JE N4ARRIVE PAS A creer le bouton COLLER specifique à chaque carte?
 // ==> utilsier la fonctin dans une classe ? méthode de classes ?
-
-
-
 // ne pas prendre l'erreu à la légère concernant le pb du copy2clipboard c peut etre ça le pb !!!
 // Idees de fctionnalites en plus : mettre en favoris / création de sa propre carte en rajoutant via un formulaire
-
+//Factoriser les langages
 
 
 //rajouter le langage aux data de type tableau
