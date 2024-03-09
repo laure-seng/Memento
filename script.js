@@ -28,6 +28,7 @@ let  keywordLinks=""
 const HTMLfilterLink=document.getElementById("HTMLfilter")
 const CSSfilterLink=document.getElementById("CSSfilter")
 const JSfilterLink=document.getElementById("JSfilter")
+const TAILWINDfilterLink=document.getElementById("TAILWINDfilter")
 const PHPfilterLink=document.getElementById("PHPfilter")
 const SYMFONYfilterLink=document.getElementById("SYMFONYfilter")
 const BDDfilterLink=document.getElementById("BDDfilter")
@@ -90,8 +91,32 @@ const datas = [
         ],
             type : "AUTRES"
     },
+        {
+        nom : "CREERUNE API AVEC SYMFONY 1/2" ,
+        definition : [ 
+        "1/Il faut avoir des routes exprès avec des endpoints donc on va créer un controller particulier, sans tpl", 
+        "Il sera ds le dossier API. Les routes seront nommées par cvention app_api...et reverront du JSON", 
+        "Par souci d'ordre, ranger les endpoints par entité ds insomnia/postman", 
+        "2/Il faut normaliser les entités ayant des relations pour récupérer les infos->composant serializer",
+        "3/ Pb des références circulaires ds le cas des relations : on va utiliser les groupes",
+        "4/a Pour chaque entité on va créer un groupe(rajouter la ligne au dessus de Class) et ",
+        "4/b à l'intérieur des sous groupes pour chq propriété sf les relations ",
+        "5/ On recuperera que les groupes ds l'entité"
+    
+    ] ,
+        example : [ 
+        "1/make:controller --no-template",
+        "2/composer require symfony/serializer-pack",
+        "use Symfony\Component\Serializer\Annotation\Groups;",
+        "4/a #[Groups(['show'])]",
+        "4/b/ #[Groups(['showLinked'])]",
+        "5/return $this->json($showRepository->findAll(), Response::HTTP_OK, [], [",
+        "5/'groups' => ['show', 'castingLinked', 'reviewLinked', 'userLinked', 'seasonLinked', 'genreLinked']]);",
+    ],
+        type : "CSS"
+},
     {
-                nom : "EVENTS DS SYMFONY - Events de Doctrine 2/2" ,
+                nom : "EVENTS DS SYMFONY - Events de Doctrine 2/2 à compléter" ,
                 definition : [ 
                 "Les events Doctrine, aussi appelés LifeCycles Events, st lancés durant la vie des entités", 
                 "Il y a prePersist/postPersist, preUpdate/postUpdate, preFlush-attention-)", 
@@ -2060,6 +2085,7 @@ generateKeywords(filtered)
 HTMLfilterLink.addEventListener("click",()=>{filter("HTML")})
 CSSfilterLink.addEventListener("click",()=>filter("CSS"))
 JSfilterLink.addEventListener("click",()=>filter("JS"))
+TAILWINDfilterLink.addEventListener("click",()=>filter("TAILWIND"))
 PHPfilterLink.addEventListener("click",()=>filter("PHP"))
 SYMFONYfilterLink.addEventListener("click",()=>filter("SYMFONY"))
 BDDfilterLink.addEventListener("click",()=>filter("BDD"))
@@ -2075,7 +2101,6 @@ wrapper.appendChild(cards)
 displayCard(datas)})
 //afficher toutes les cartes si filtrées pour accéder à la carte demandée 
 document.querySelector("a").addEventListener("click",()=>{
-
 wrapper.removeChild(cards)
 cards=document.createElement("div")
 cards.setAttribute("id","cards")
