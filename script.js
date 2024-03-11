@@ -88,17 +88,120 @@ const datas = [
         ],
             type : "AUTRES"
     },
+    {
+            nom : "CODES  HTTP" ,
+            datas : [{"200":"vide"},
+                    {"201":"item2"},
+                    {"204":"item3"},
+                    {"400":"bad Request== le client a mal rempli sa requete"},
+
+                    {"401":"item4"},
+                    {"403":"item3"},
+                    {"422":"erreurs sémantiques sur l'entité"},
+                    {"500":"erreur serveur"},
+
+                    ],
+
+            tableau : true,
+            type : "NEWS"
+            },
         {
-        nom : "CREERUNE API AVEC SYMFONY 1/2" ,
+        nom : "Créer un JSON WEB TOKEN JWT avec Symfony" ,
+        definition : [ 
+        "C'est plus sécurisé qu'une clé API", 
+        "1/ Composant LexikJWT-cf doc https://github.com/lexik/LexikJWTAuthenticationBundle/blob/3.x/Resources/doc/index.rst#getting-started ", 
+        "2/Créer une paire de clés qui seront ds /config/jwt", 
+        "Par défaut la durée de la clé est de 3600b secondes",
+        "3/ Paramétrage de l'app, copier la doc : ds a/security.yaml puis ds b/routes.yaml->ça crée une route api/login check",
+        ""
+    ] ,
+        example : [ 
+        "1/ composer require lexik/jwt-authentication-bundle",
+        "2/ bin/console lexik:jwt:generate-keypair",
+        "",
+        "",
+        "",
+        "",
+    ],
+        type : "SYMFONY"
+    },
+    {
+        nom : "CORS error et Symfony" ,
+        definition : [ 
+        "La CORS c'est qd un nom de domaine vt accéder à un autre nom de domaine", 
+        "1/ ds certs cas, on va vouloir enlever cette restriction. On va dc utiliser le nelmio CORS bundle ", 
+        "ca a rajouté le fichier package/nelmioCOrs.yaml", 
+        "2/ On y spécifiera les domaines à accepter en rajoutant",
+        "",
+    ] ,
+        example : [ 
+        "1/ composer require nelmio/cors-bundle",
+        "2/ paths:'^/': # allow_origin: ['*']",
+        "2/ paths:'^/': # allow_origin: ['nom_de_domaine_autorisé']",
+
+    ],
+        type : "SYMFONY"
+    },
+    {
+        nom : "CREER UNE API AVEC SYMFONY - Approfondir 3/3" ,
+        definition : [ 
+        "1/ Renvoyer un json d'erreur en cas d'absence de l'item recherché: on rd la propriété nullable", 
+        "", 
+        "", 
+        "",] ,
+        example : [ 
+        "1/ Exp ds le param de la méth Genre $genre = null ",
+        "1/ et ds ->json(['error' => ['message' => 'Genre inexistant']],Response::HTTP_NOT_FOUND);}",
+        "",
+        "",
+        "",
+        "",
+        ],
+        type : "SYMFONY"
+        },
+        {
+        nom : "CREER UNE API AVEC SYMFONY - Create /3" ,
+        definition : [ 
+        "1/a/ Précisions sur la syntaxe de ->json(): le 2e param est un code HTTP", 
+        "1/b/ le 3e est la redirection, on l'utilse notamment pour les créations", 
+        "2/ Méthodo pour le create() : a/ ds PostMan mettre raw->json ", 
+        "2/b Rentrer le Json ds postMan et le récupérer avec getContent() ",
+        "2/c Le deserialiser ",
+        "2/d verifier la recup d'un json ",
+        "3/ Validation ds données: on récupère les erreurs avec la méth validate() du service Validator, à importer en param ",
+        "4/S'il y a des erreurs, on crée un tabl asso avec la propriété en clé et le message en valeur ",
+        "5/On persiste et on flush."
+    ] ,
+        example : [ 
+        "1/Response::HTTP_OK ou200 / Response::HTTP_BAD_REQUEST ou 400/ 500",
+        "2/b $data = $request->getContent();",
+        "2/c/$movie = $serializer->deserialize($data, Show::class, 'json => format de départ de la data'); ",
+        "2/d/ try {$show = $serializer->deserialize($data, Show::class, 'json');}",
+        "catch (NotEncodableValueException $exception) {return", 
+        "$this->json(['error' =>['message' => $exception->getMessage()]],",
+        " Response::HTTP_BAD_REQUEST);}",
+        "3/ ValidatorInterface $validator - $errors = $validator->validate($show);",
+        "4/ if (count($errors) > 0) {$dataErrors = [];",
+        "foreach ($errors as $error) {",
+        "$dataErrors[$error->getPropertyPath()] = $error->getMessage();}",
+        "return $this->json(['error' => ['message' => $dataErrors]], Response::HTTP_UNPROCESSABLE_ENTITY);}",
+        ],
+        type : "SYMFONY"
+        },
+        {
+        nom : "CREER UNE API AVEC SYMFONY 1/3" ,
         definition : [ 
         "1/Il faut avoir des routes exprès avec des endpoints donc on va créer un controller particulier, sans tpl", 
-        "Il sera ds le dossier API. Les routes seront nommées par cvention app_api...et reverront du JSON", 
-        "Par souci d'ordre, ranger les endpoints par entité ds insomnia/postman", 
-        "2/Il faut normaliser les entités ayant des relations pour récupérer les infos->composant serializer",
-        "3/ Pb des références circulaires ds le cas des relations : on va utiliser les groupes",
+        "1/a/ Il sera ds le dossier API. Les routes seront nommées par cvention app_api.../collection/{id}/sousCollection et renverront du JSON(->json(de l'aBstractController) cf exp5/", 
+        "On n'oubliera pas la méthode ds la déf de la route",
+        "1/b/Par souci d'ordre, ranger les endpoints par entité ds insomnia/postman", 
+        "2/Il faut normaliser les entités ayant des relations pour récupérer les infos, on a le composant serializer",
+        "3/ Pb des références circulaires ds le cas des relations : 4/5/6/ on pt utiliser les groupes 7/ou ignorer les attributs des relations",
         "4/a Pour chaque entité on va créer un groupe(rajouter la ligne au dessus de Class) et ",
-        "4/b à l'intérieur des sous groupes pour chq propriété sf les relations ",
-        "5/ On recuperera que les groupes ds l'entité"
+        "4/b pour chq propriété, à l'intérieur, des sous groupes sf pour les relations ",
+        "5/ On recuperera que les groupes ds l'entité",
+        "6/ C'est pratique aussi pour récupérer ts les items liés à une autre entité, exp ts les films d'un genre",
+        "",
     
     ] ,
         example : [ 
@@ -109,6 +212,9 @@ const datas = [
         "4/b/ #[Groups(['showLinked'])]",
         "5/return $this->json($showRepository->findAll(), Response::HTTP_OK, [], [",
         "5/'groups' => ['show', 'castingLinked', 'reviewLinked', 'userLinked', 'seasonLinked', 'genreLinked']]);",
+        "6/#[Route('/api/genres/{id}/shows', name: 'app_api_genres_getShows', methods: ['GET'], requirements: ['id' => '\d+'])]",
+        "... return $this->json($genre, Response::HTTP_OK, [], ['groups' => ['genre', 'showLinked']]);",
+        "7/return $this->json($genreRepository->findAll(), 200, [], [AbstractNormalizer::IGNORED_ATTRIBUTES ['shows']])",
     ],
         type : "SYMFONY"
 },
