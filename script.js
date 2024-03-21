@@ -89,21 +89,27 @@ const datas = [
             type : "AUTRES"
     },
     {
-            nom : "CODES  HTTP" ,
-            datas : [{"200":"vide"},
-                    {"201":"item2"},
-                    {"204":"item3"},
-                    {"400":"bad Request== le client a mal rempli sa requete"},
-
-                    {"401":"item4"},
-                    {"403":"item3"},
+            nom : "CODES HTTP SYMFONY RESPONSE" ,
+            datas : [{"200":"HTTP_OK"},
+                    {"201":"HTTP_CREATED"},
+                    {"204":"HTTP_NO_CONTENT"},
+                    {"302":"HTTP_FOUND"},
+                    {"204":"HTTP_NO_CONTENT"},
+                    {"400":"HTTP_BAD_REQUEST"},
+                    {"401":"HTTP_UNAUTHORIZED"},
+                    {"403":"HTTP_FORBIDDEN"},
+                    {"403":"HTTP_FORBIDDEN"},
+                    {"404":"HTTP_NOT_FOUND"},
+                    {"405":"HTTP_METHOD_NOT_ALLOWED"},
                     {"422":"erreurs sémantiques sur l'entité"},
                     {"500":"erreur serveur"},
+                    {"504":"HTTP_GATEWAY_TIMEOUT"},
+
 
                     ],
 
             tableau : true,
-            type : "NEWS"
+            type : "SYMFONY"
             },
         {
         nom : "Créer un JSON WEB TOKEN JWT avec Symfony" ,
@@ -160,7 +166,7 @@ const datas = [
         type : "SYMFONY"
         },
         {
-        nom : "CREER UNE API AVEC SYMFONY - Create /3" ,
+        nom : "CREER UNE API AVEC SYMFONY - Create 2/3" ,
         definition : [ 
         "1/a/ Précisions sur la syntaxe de ->json(): le 2e param est un code HTTP", 
         "1/b/ le 3e est la redirection, on l'utilse notamment pour les créations", 
@@ -201,13 +207,13 @@ const datas = [
         "4/b pour chq propriété, à l'intérieur, des sous groupes sf pour les relations ",
         "5/ On recuperera que les groupes ds l'entité",
         "6/ C'est pratique aussi pour récupérer ts les items liés à une autre entité, exp ts les films d'un genre",
-        "",
+        "8/exp d'url de l'API ",
     
     ] ,
         example : [ 
         "1/make:controller --no-template",
         "2/composer require symfony/serializer-pack",
-        "use Symfony\Component\Serializer\Annotation\Groups;",
+        "use Symfony\\Component\\Serializer\\Annotation\\Groups;",
         "4/a #[Groups(['show'])]",
         "4/b/ #[Groups(['showLinked'])]",
         "5/return $this->json($showRepository->findAll(), Response::HTTP_OK, [], [",
@@ -215,6 +221,7 @@ const datas = [
         "6/#[Route('/api/genres/{id}/shows', name: 'app_api_genres_getShows', methods: ['GET'], requirements: ['id' => '\d+'])]",
         "... return $this->json($genre, Response::HTTP_OK, [], ['groups' => ['genre', 'showLinked']]);",
         "7/return $this->json($genreRepository->findAll(), 200, [], [AbstractNormalizer::IGNORED_ATTRIBUTES ['shows']])",
+        "http://localhost:8000/products/ ou "
     ],
         type : "SYMFONY"
 },
@@ -1203,24 +1210,24 @@ const datas = [
                 {"skeleton":"composer create-project symfony/skeleton nomDuProjet"},
                 {"flex":"est installé avec le skeleton"},
                 {"bin/console":"est installé avec le skeleton"},
-                {"twig":"composer require twig"},
+                {"twig":"composer require twig/twig"},
                 {"Intégrer vardumper à Twig" : "composer require --dev symfony/debug-bundle"},
                 {"Web debug toolbar" :"composer require symfony/profiler-pack"},
                 {"HTTP FOUNDATION" :"composer require http-foundation"},
+                {"API - Http Client":"composer require symfony/http-client"},
                 {"maker" :"composer require --dev symfony/maker-bundle"} , 
                 {"pour générer un controller":"bin/console make:controller nomDuController"} , 
                 {"pour voir les services":"bin/console debug:autowiring --all"},
                 {"effacer le cache": "bin/console cache:clear" },
                 {"affichage des routes ds la console":"bin/console debug:router"},
-                {"bundle fixtures":"composer require --dev orm-fixtures"},
                 {"ORM pack(Doctrine)":"composer require symfony/orm-pack"},
+                {"bundle fixtures":"composer require --dev orm-fixtures"},
                 {"Faker":"composer require fakerphp/faker"},
                 {"Form":"composer require symfony/form"},
                 {"EasyAdmin":"composer require easycorp/easyadmin-bundle"},
                 {"SecurityBundle":"composer require symfony/security-bundle"},
                 {"Mailer":"composer require symfony/mailer"},
                 {"Mailjet Transporteur ":"composer require symfony/mailjet-mailer"},
-                {"API - Http Client":"composer require symfony/http-client"},
                 {"Les méthodes Collection pvt ê utiles comme clear() pour tout vider":"$user->getShows()->clear();"},
                 ],
                 tableau : true,
@@ -1653,7 +1660,8 @@ const datas = [
             {"En vrac ": "pwd, ls, mkdir, cd,touch, cp, mv, rm"},
             {"En vrac 2 ": "remplacer (cf doc)"},
             {"En vrac 3 ": "read reponse ; echo $reponse ;"},
-            {"alias": "alias monalias='commandes'"}
+            {"alias": "alias monalias='commandes'"},
+            {"désinstaller":"apt remove php8.1"}
 
         ],
         tableau : true,

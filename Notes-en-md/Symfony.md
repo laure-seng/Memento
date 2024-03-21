@@ -2,10 +2,10 @@ doctrine .env
 DATABASE_URL="mysql://explorateur:6q595XmCKm@127.0.0.1:3306/cinema?serverVersion=10.11.6-MariaDB&charset=utf8mb4""
 
 ===================
-#pour avoir les derniers composants installés
+# pour avoir les derniers composants installés
 composer install 
 
-# mise à jour de la BDD
+## mise à jour de la BDD
 bin/console doctrine:database:drop
 bin/console doctrine:database:create
 bin/console doctrine:migrations:migrate
@@ -60,7 +60,10 @@ vscode redo ctrl shift z
 
 
 
-#============================Episode 20 MISE EN PROD===
+============================Episode 20 MISE EN PROD===
+Script d 'install de Ben
+https://github.com/O-clock-Jelly/installation-serveur
+
 LWS hebergeur de ben
 **Serveur mututalisé** : on va avoir php souvent mais pour les gros projets ça va être pas adapté, pour une page simple ok
 On va passer par le ftp, y a plus qu'à drag and drop'
@@ -406,8 +409,8 @@ final class ExceptionListener
 => le pb qd on vt recuperer le genre, c que le deserializer ne va pas vérifier si on en a déjà un en BDD
 
 
-**custom normalizer**
-=>les **normalizer trasformt les objets en json out aut**
+## custom normalizer
+=>les **normalizer trasformt les objets en json out aut**=> d'après chatgpt c pas ça , c en tableau'
 => on **denormalise pour passer du json à aut**
 => on va dc créer notre propré normalisedr pour récupérer nos genres et en faire un json
 => la fct normalize va transformer l'objet symfo en json ou autre md nou on veut l'inverse
@@ -435,7 +438,8 @@ le but c de récupérer l'id ds la fct 1 pour pouvoir récupérer le bon genre d
 c'est à dire find(entite, id)'
 
 ===========================
-**DENORMALISER MADE IN BEN**=> à se mettre dans un repo :)
+
+## DENORMALISER MADE IN BEN  => à se mettre dans un repo :)
 
 <?php
 
