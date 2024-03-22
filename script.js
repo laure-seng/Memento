@@ -6,6 +6,7 @@
 // ne pas prendre l'erreu à la légère concernant le pb du copy2clipboard c peut etre ça le pb !!!
 // Idees de fctionnalites en plus : mettre en favoris / création de sa propre carte en rajoutant via un formulaire
 //Factoriser les langages
+//TODO faire un objet qui contiendrait les couleurs du background des keywords, les images, les eventListener etc selon le type de carte 
 
 
 //rajouter le langage aux data de type tableau
@@ -2172,7 +2173,8 @@ leftMenuSpan.addEventListener("mouseover",()=>{
     leftMenuSpan.style.display="none" ;
     leftMenu.style.visibility="visible";
     leftMenu.style.top="0px";
-    wrapper.style.left="20vw"; scrollToTop(0,0)
+    wrapper.style.left="20dvw"; 
+    // scrollToTop(0,0)
 }) //correspond à var(--leftMenuWidth)
 leftMenu.addEventListener("mouseleave",()=>{
     leftMenuSpan.style.display="inline" ;
