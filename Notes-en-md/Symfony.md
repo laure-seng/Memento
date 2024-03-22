@@ -94,7 +94,7 @@ Ms le principal, c'est gérer l'installation. Normalement on aura un OS install�
 Ben a fait un script pour faire ça. **installation-serveur**
 Il faut créer la **clé ssh pour le git de la VM** => **ssh-keygen -t ed25519 -C "vm_serveur"**
 On va recuperer la **clé publique** et on l'affiche avec cat **cat /home/student/.ssh/id_ed25519.pub**
-On va sur **github et on la rajoute'ds settings** pour créer une nvelle clé
+On va sur **github et on la rajoute'ds settings** pour créer une nvelle clé.
 on **clone le repo**,on fait entrée
 sh installation-serveur/installation-serveur.sh
 
@@ -119,7 +119,11 @@ sudo apt-get install -y php8.2-json
 sudo apt-get install -y php8.2-xml
 sudo apt-get install -y php8.2-xdebug
 sudo service apache2 restart
+=========================
+moig l a php8.3.4
+https://php.watch/articles/php-8.3-install-upgrade-on-debian-ubuntu
 
+================
 ETVOILA LA LE SERVEUR EST INSTALLE !!
 
 ====================
@@ -130,7 +134,7 @@ la racine du domaine est dans ce dossier
 Le nom de domaine, on l'achète ou on pt l'avoir via l'hébergeur' on va faire le lien entre l'ip et l'hébergeur en vrai je crois'
 **NE pas oublier de cliquer sur rendre la VM publiqued**
 =====
-Pb il faut installer compose etc 
+Pb il faut installer composer etc 
 ====
 #INSTALLER REMOTE SSH POUR AVOIR VSCODE SUR LE SERVEUR
 On installe **remote ssh**, on a à gauche ""explorateur distant"" puis ds ssh on clique sur le + pour rajouter le lien de ladresse ssh ssh student@laure-seng-server.eddi.cloud
@@ -142,8 +146,8 @@ On va aller sur l'explorateur distant et on peut s'y connecter ! on clique sur l
 => en production == le site en ligne
 => on va installer comoser mais sans les dependances de dev
 **PBcomposer c'était pas installé**
-sudo apt install composer
-composer install --no-dev
+`sudo apt install composer`
+`composer install --no-dev`
 =>verifier si c installé
 =>si ca demde update, taper sudo apt install php8.2-xml puis composer install --no-dev
 => en fait on a eu des soucis dc on va installer une autre version de composer plus récente
@@ -186,9 +190,29 @@ rappel le .env.local est gitignorer pas le .env
 php bin/console do:da:cr
 ()si pb pour creer la db , il manque ptet
 sudo apt install php8.2-mysql)
+NOTES MOI IL ME MNAQUAIT AUSSI PDO, sudo apt-get install php-pdo-mysql
+
+
+=========
+g eu des soucis ici, je n arrive pas à lancer les migrations
+il dit que je n'ai pas les tables
+j essaie de creer une bdd depuis la CLI
+
+mysql -u VOTRE_UTILISATEUR -p 
+USE votre_base_de_donnees;
+source /chemin/vers/votre/script.sql;
+
+et j'ai pu ainsi importe ma bdd depuis un fichier.sql
+
+
 **lancer les migration**
 php bin/console do:mi:mi
 
+=============
+install adminer
+`sudo apt install adminer`
+`sudo a2enconf adminer`
+`sudo systemctl reload` apache2`
 
 **erreurs**
 on va voir ds error.log ds var/log/apache
@@ -196,6 +220,8 @@ redemarrer apache ctl
 **sudo apachectl restart
 
 **si ya pas le htaccess il faut installer apachepack composer**
+composer require symfony/apache-pack
+==>NB c etait oiur ca qu ej'avais que la home'
 si ca buggue voir les log il manquait la clé api
 
 **pour utiliser phpmyadmin** pas fait juste regardé
@@ -204,8 +230,8 @@ choisir apache2
 ben utilise le site bcrypt pour chiffrer le mdp
 
 **virtualhodtd**
-etc/apache2/sites available/
-sudo chown student sites-available/ pour se donner les droits d ecriuture
+cd /etc/apache2/   sites available/
+pour sudo chown student sites-available/ se donner les droits d ecriuture
 creeer oflix.conf
 coller le texte
 <VirtualHost *:80>
@@ -230,6 +256,15 @@ puis on fait et ça met le site ds dossier esites nabled
 sudo a2ensite oflix.conf
 on redemarre
 sudo service apache2 restart
+
+le site est disponibel à l'adresse de server-name
+SI TU AS DES PROBLEMES VOIR
+/var/log/apache2/error.log
+il me manquait php-xml
+sudo apt-get update -y
+sudo apt-get install -y php-xml
+
+
 
 
 

@@ -22,10 +22,10 @@ sudo lsof -nP -iTCP -sTCP:LISTEN
 
 extension git graph pour vscode
 
-##########################################################################################################################################################
-##
-################ SAISON 8- ########################### 
-#################################################################################################################
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+## 
+## ## ## ## ## ## ## ##  SAISON 8- ## ## ## ## ## ## ## ## ## ## ## ## ## # 
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## #
 
 
 **docker swarm =>orchestration** s'adapter à la montée en charge'
@@ -44,7 +44,7 @@ vérifiées et recommandées par les fournisseurs de logiciels
 
 nb CAS API  on pourrait avoir front et back sur des serveurs différents
 
-##demo de baptiste avec oshop Application monolithique
+## demo de baptiste avec oshop Application monolithique
 git clone du dossier ds var/www/html
 -dans etc/jecplusquoi on cree un fichier de conf virtualhost oshop.monpseudo.dfg.cong
 on specifie le **documentRoot** chemin abs depuis la racine du serveur vers le dossier public /repo et 
@@ -77,7 +77,7 @@ et il a copié la clé ssl ds un fichier
 2fichiers
 ca protege de larp pooisoning //  man in the middle
 
-##CI CD
+## CI CD
 
 continuoius integration co,tinuous deliverry 
 
@@ -115,7 +115,7 @@ il y a des workglow qui, se lancent qd y aura des evnmts push /pull request
 et ensuite ça va lancer la création du conteneurf, le test, l'anzalyse du code ..
 '
 
-##CRONTAB
+## CRONTAB
 crontab -e
 Automatisation de tâches :
 chaque étoile crrrspd à une fréquence
@@ -130,7 +130,7 @@ on crée sa commande crontab et on la met ds son fichier
 
 
 
-##SCRIPTBASH
+## SCRIPTBASH
 On peut fr des scripts bash pour automatiser les tâches sur l'OS'
 Pour afficher les commandes avnt execution set -x 
 
@@ -190,19 +190,19 @@ composer install
 ===============================================
 
 
-##HTTPS
+## HTTPS
 il faut rajouter un certiificat que fournit une autorité de certification comme letsencrypt
 (on va transmet la clé publique pour accéder)
 on peut facilement créer sa clé avec letsencrypt , génére un certificat en ligne de commaqnde
 on passe sur le port 443
-##ESsai de certbot et installation
+## ESsai de certbot et installation
 certbot.eff
 on crée le lien symboliq ds usr/bin comme ça fait partie du path,on pourra lancer certbot directemt
 on peut choisir de configurer apache directement
 ne pas oublier de changer le fichier js avec https
 ??certbot avec docker ???
 
-##Hebergement nom de domaijne
+## Hebergement nom de domaijne
 cf ovh extension .ovh pas cher
 on relie son nom de domaine à son VPS
 puis on fait docker/virtualhosts/..
@@ -250,7 +250,7 @@ arguments de base de docker
 -v relier le fichier /volume
 
 
-##DOCKER PRODUCTION
+## DOCKER PRODUCTION
 **docker volume ls** => lister les volumes
 Qd on arreete les containers, il dt rester celui qu'on a enregistré'
 
@@ -277,13 +277,13 @@ On fait persister les données
 On met l'**option restart always en prod** pour qu'il y ait disponibilité h24'
 Mais pas en dév. sinon ça va se relancer tout le temps au moindre bug.
 
-##ORCHESTRATION INTEGRATION CONTINUE
+## ORCHESTRATION INTEGRATION CONTINUE
 avec github on pt configurer des tests automatisés pour voir si y a pas ds bugs
 
 
 
 
-##DOCKER COMPOSE
+## DOCKER COMPOSE
 => on crée plusieurs containers qui connaitront les containers voisins
 => docker compose va lancer un docker run avec les différents coneneurs précisés dans le fichier YAML
 => **fichier compose.YAML** :
@@ -338,17 +338,17 @@ Apache c le port 80 par défaut
 voir 8000 8080 l'un pour le front l'autre pour l'api' ,on pt voir si ça marche en les regardant ds le navigateur
 
 
-##Comment persister les donénes de la BDD malgré l'arrêt des conteneurs ??'
+## Comment persister les donénes de la BDD malgré l'arrêt des conteneurs ??'
 On va créer un volume **/var/lib/mysql qui sera stocké ds pomodoro-db**;  **:Z** signifie que l'accès est réservé qu'au dossier pomodoro-db (sinon on met :z)'
 il n'y a que le conteneur qui peut y accéder'
 
-##Rajout d'adminer dans le yaml
+## Rajout d'adminer dans le yaml
 par défaut il se connecte à db'
 changer le port 8080:80 par un autre comme le 8080 st déjà pris
 ports disponibles /réservés => y en a bcp
 les ports avec des serveurs web st par convention commencés par 80
 ========================
-##DOCKERFILE
+## DOCKERFILE
 On va créé notre dockerFile à partir d"'une image '"
 Là on va en faire une sorte de Laravel qu'on va mettre dans le dossier back de notre projet'
 # on part de l'image PHP 8.1 avec Apache
@@ -414,7 +414,7 @@ pas vesoin de changer le port en régle générale sauf si on veut rendre inacce
 Utilisatopn des containesr
 chq container contient un logiciel, php7, php8, sql etc par container
 
-##DOCKER
+## DOCKER
 #PREMIERS PAS avec DOCKER ET HTTPD (apache)
 1/**Installation**, copier les commandes une à une
 sudo apt update
@@ -444,9 +444,9 @@ Mais erreur donc on met apache2 comme on n'a pas totalement enlevé le container
 **docker rm apache** on pt rajouter -f pour forcer
 
 5/Gestion des images utilisées
-##liste 
+## liste 
 **docker images** ou **docker image ls**
-##supprimer
+## supprimer
 **docker image rm NOMDELIMAGE**
 On peut supprimer toutes les images inutilisées avec la commande **docker image prune -a**
 (supprimer toutes les containers **docker container prune**)
@@ -505,12 +505,12 @@ dump("Hello from symfony/var-dumper !");
 #==========EPISODE 2==================================================EPISODE 2===================================================
 
 
-##SERVEURS MUTUALISES VS SERVEUR DEDIE
+## SERVEURS MUTUALISES VS SERVEUR DEDIE
 => plusieurs clients sur la même machine : pon n'a pas la main dur les logiciels installés'
 SERVEUR DEDIE => on a un serveur qui nous est dédié , on est le seulà l'utiliser'
 On choisit son serveur , son OS, sa formlule...
 
-##SERVEUR PHYSIQUE vs VIRTUEL
+## SERVEUR PHYSIQUE vs VIRTUEL
 physique on doit s'ocuuper de l'aspect matériel
 virtuel on se charge de rien, sauf configurer, on pt configurer les performances, disque dur etc...
 
@@ -518,7 +518,7 @@ Attention sur serveeru mutualisé, ça peut migrer de technos et nous l'impoiser
 
 **LE MIEUX C SERVEUR DEDIE VIRTUEL :VPS** 60 balles par an chez ovh par exemple
 ========================================================================
-##CREER SON SERVEUR SOU SLINUX
+## CREER SON SERVEUR SOU SLINUX
 Les datacenters detiennent les serveurs
 serveur physique , on doit faire sa sauvegardee soi meme
 serveur rack1u 2u 4u le nb de u c l epaisseur
@@ -603,7 +603,7 @@ On supprimes le fichier index.html pour avoir l'arborescence des dossiers direct
 
 💡 Vous remarquerez que maintenant que l'utilisateur student a les droits d'écriture, plus besoin de la commande sudo 🎉
 
-##On lance la commande depuis son repo
+## On lance la commande depuis son repo
 
 1/scp -r front/* student@PSEUDOGH-server.eddi.cloud:/var/www/html/
 on remplace par nos noms 
@@ -623,7 +623,7 @@ On va configurer apache pour qu'il aille direct ds le bon dossier ^pour pas rend
 
 
 
-##VirtualHosts
+## VirtualHosts
 chq projet sera sur des dosisiers differents
 on configure apache2
 dossier /etc/apache2
@@ -669,7 +669,7 @@ qd on clic sur ""rdre la vm public"" on voit les ports
 #==========EPISODE 1================================
 
 **tester sur lighthouse**
-##ECOCONCEPTION
+## ECOCONCEPTION
 -> ressources :stockage, codes utilisés, ms aussi quel hébergeur et si'l est écolo'
 -> un code qi est plus rapide exécuet +de requetes dc + ecolo
 -> selon le framework, c plus ou moins ecoloolk
@@ -683,12 +683,12 @@ qd on clic sur ""rdre la vm public"" on voit les ports
 7/ne pas ssurdimensionner ses serveurs
 
 
-##Rappel API
+## Rappel API
 Ds le projet saison 7, l'api etait le dossier backend'
 ll'api va permettre de mettre à dispo les donn&es à tout le monde '
 
 
-##ACCESSIBILITE
+## ACCESSIBILITE
 **Responsive Web Design**
 -> accdéder au web depuis tout type d'écran, support,'
 -> **a11y** concerne l'accessibilité'
@@ -707,7 +707,7 @@ aattribut lang ds une balise avec langf +pays par exemple
 header=>header ; footer=>role=contentinfo
 
 
-##IMAGES
+## IMAGES
 ->attribut alt des miages obligatoires
 -> le texte alt d'une image décrit l'image ,c'est lui qui s'afrfiche qs l'image n'est pas chargée'
 l'attribut alt est obligatoirement, mais on pt le laisser vide, on ava le remplir **que s'il fait partie du contenu du document**'
@@ -735,10 +735,10 @@ RGAA WCAG
 **lien accessible** 
 **présence de l'attribut title avec reprise du texte visible + infos complémentaires'**
 
-##########################################################################################################################################################
-##
-################ SAISON 7 - API LARAVEL  ########################### 
-#################################################################################################################
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+## 
+## ## ## ## ## ## ## ##  SAISON 7 - API LARAVEL  ## ## ## ## ## ## ## ## ## ## ## ## ## # 
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## #
 
 
 
@@ -746,7 +746,7 @@ RGAA WCAG
 **Log de laravel** dans storage/logs pour debugguer sa 500
 sinon on pt tous les supprimer et relance rla commande pour retrouver son eerrreur
 
-##{SGBDR}
+## {SGBDR}
 La table va définir la structure des donénes et définir la striucture des enregistrements.
 oracle, mysql,postgresql, sqlite, 
 mariadb est libre comme mysql est devenu propriétaire
@@ -837,7 +837,7 @@ Pour modifier le title on utilise le dataset précédemment attribué,
 
 #==========EPISODE 6===================================================
 
-##Partie 2 de l'épisode 6
+## Partie 2 de l'épisode 6
 -> pour ranger, Ben a tout mis ce qui concernait les requêtes ds un module server et renommé la variable url'
 --> **export default** pour exporter une variable, sinon on doit mettre entre {} comme un objet et importer de la meme manière 
 --> on crée un form et on récupère avec handleFormSubmit() 
@@ -870,7 +870,7 @@ crarion d'un JSON qu'on va envoyer au serveru'
 on vide le chp du form
 on crée l'élémt ds le DOM'
 
-##Corrections Partie 1 de l'épisode 6'
+## Corrections Partie 1 de l'épisode 6'
 
 --> mettre de l'ordre -> **GERER LES ERREURS** même qui ne pvt pas survenir
 On va utiliser **try...catch**
@@ -933,7 +933,7 @@ c'est un epu l'quivalent des classes'
 **ATTENTION LE CURRENTTZRGET EN ASYNCHRONE NE FCTNE PAS, i lfaut le mettre au dessus**
 
 
-##CREATION DU LIEN AVEC CATEGORIES
+## CREATION DU LIEN AVEC CATEGORIES
 -> bien stipuler la clé étrangère ??
 par exple pour récupérer les task avec la category
 Dans le model Task : 
@@ -994,7 +994,7 @@ on a utilise const article = event.currentTarget.parentElement;
 
 **NB DFAIRE LA SUPPRESSION COTE SERVEUR AVANT COTE CLIENT ??**
 **
-##RETOUR BACKEND CREER UNE TABLE A PARTIR 
+## RETOUR BACKEND CREER UNE TABLE A PARTIR 
 => conventions dans Laravel : eloquent relationship
 eloquent va gérer les clés atrangeres
 on va écrire en snakecase-id
@@ -1034,7 +1034,7 @@ du côté du n on met HasMany
 ds le controller on met ::with
 
 
-##CORRECTION
+## CORRECTION
 Fetch c un peu comme un insomnia,iun navigateur sans interface graphiq
 cors origin un nom de domaine ne pt pas fr un appel sur un aut nom de  domaine
 cors policy , on est pas autorisé, on n'a pas le meem nom de domaine'
@@ -1065,11 +1065,11 @@ const fragmentElement = document.createDocumentFragment();
 
 #==========EPISODE 4 Asynchrone  ===================================================
 
-##Corrections exos
+## Corrections exos
 -NB le SVG peut servir d'image de fond par exemple en l'intégrant ds le css direct comme c'est du XML'
 - texte.slice (0,-1) pour garder le texte -1
 
-##ASYNCHRONE
+## ASYNCHRONE
 faire plusieurs choses en même temps
 **Promises**
 **objet**qui va avoir **trois états**
@@ -1199,19 +1199,19 @@ Verifier sa méthode avec un return direct
 
 NB les creatde at et updated at st gétrés par LARAVEL
 **Méthodo ds le create**
-##A/ **Utiliser request** 
+## A/ **Utiliser request** 
 1/ soit on fait de li'njectiosn de dépendance en mettant (request $request)'
 ça va isntancier request 
 2/soit on utilise la fct globale request()
 Request est un objrt avec des attrivbuts et des infos sur la requete
-##B/ On valide les champs
+## B/ On valide les champs
 avec Validator de façade 
 en premier param notre champ et en deuxième les param "Validation Rules"
 On renvoie un json d'erreur si ça foire' et on envoie une 422
 ??Attention bien stipuler dans le header que c un JSON pour voir le JSON ??
 NB dans les filteres on pt rajouter un max qui ccrspd au max au max de la BDDpar exemple 50 pour  255 
-##C/ On crée l'objet et on lui set ses propriétés'
-##D/ On renvoie le JSON
+## C/ On crée l'objet et on lui set ses propriétés'
+## D/ On renvoie le JSON
 
 **Méthodo ds le update**
 -> attention sur un patch,il faut pas de required sur les propriétés
@@ -1223,14 +1223,14 @@ on peut installer cette dependance avec comoser require --dev barry larave ide h
 ça va préciser les noms des colonnes des tables pour qu'on puisse éviter d'aller sur adminer vérifier les noms'
 
 
-##TOPO SUR LES APIS ET LEUR UTILITE
+## TOPO SUR LES APIS ET LEUR UTILITE
 JS =>inerface => côté client
 API=> opnt
 PHP=> récupération des données => côté back
 Avant on va du front au back, c tout
 Avec les API, c'est encore plus dynamique, on a qqch de plus lourd avec le front par exp en React,mais ç an'accède pas aux données...LendpointAPI va connecter ce front au back.'
 
-##==========EPISODE 2===================================================
+## ==========EPISODE 2===================================================
 
 Les frameworks evoluent vite
 LARAVEL vient avec bcp de choses
@@ -1251,7 +1251,7 @@ php artisan make:model Task
 php artisan make:controller Task
 
 
-##Exemple de function avec syntaxe laravel
+## Exemple de function avec syntaxe laravel
 public function list()
     {
         //  appeller le model
@@ -1350,9 +1350,9 @@ On va utiliser $request->all()
 POur faire les requetes aller dans doc test  installer rest client /insomnia , ça lit les fichiers.http
 insomonia debug mieux
 
-##===========================================================EPISODE 1==========================================
+## ===========================================================EPISODE 1==========================================
 
-##LARAVEL
+## LARAVEL
 résumé des commandes du challenge du jour1
 composer create-project laravel/laravel backend
 cd backend
@@ -1361,7 +1361,7 @@ cd backend
 php artisan serve
 
 extension JSONViewer
-##INTRO API
+## INTRO API
 
 => le but grosso modo c'est de recharger direct ??
 Jusqu'à présent ,'le front est séparé du back, c'est PHP qui met en forme , le back s'occupe des 2'
@@ -1385,7 +1385,7 @@ Exemples d'API : maps de google'
 
 **On va commencer par s'intéresser à la partie back**
 
-##LARAVEL**=======
+## LARAVEL**=======
 
 Pour utiliser Laravel, on va utiliser **composer** avec sa 3eme possibilite create project
 Aller sur packagist pour installer Laravel **create projectlaravel/laravel backend=nom-du-projdt** 
@@ -1411,7 +1411,7 @@ on envoie pas le .env sur github, dc .env.example
 s'il y a une erreur , il faut changer les droites pour écrire les erreurs sudo chmod -R 777'
 **sur le dossier storage sudo chmod -R 777 backend/storage**
 
-##ROUTES**
+## ROUTES**
 =>les routes dans **routes/ web.php** st des routes web http classiques => on aura une vue directemt retouréne par la fct
 celle ds l'exple est ds views /welcome.blade.php ' **blade est un langage de template** de laravel
 **view est une fct globale** (un peu comme show() avant)
@@ -1420,7 +1420,7 @@ Le routeur de laravel dispatche en meme temps quoi, pas besoin de controller ??
 =>
  
 
-##BASES DE DONNES
+## BASES DE DONNES
 #Création de la BD
 Choisir **utf8mb4_general_ci**
 sur la base > Privilèges > Créer un utilisateur
@@ -1433,7 +1433,7 @@ All privileges
 Enregistrer
 Se reconnecter avec les id pwd et le nom de la bd
 
-##CONFIG
+## CONFIG
 On configure le .env
 localhost equivaut à 127.0.0.1
 php -m => quelsmodules st chargés ?
@@ -1442,12 +1442,12 @@ PHP s'adresse aux différents serveurs logiciels '
 Apache écoute sur le port 80 , port par défaut pour l http
 le port mysql est par défaut 3306
 
-##Lancer serveur de Laravel
+## Lancer serveur de Laravel
 **php artisan serve**dans le dossier avec le projet Laraval (artisan c la ligne de commande Laravel en qque sorte)
 **NB JC a eu une erreur parce qui'l a lancé Apache puis ce serveur'***
 PAsser par http://127.0.0.1:8000/ / ou supprimer ts les cookies via l'inspecteur / soit refaire chmod -R ds storage'
 
-##DIfférences entre routes/web et routes/API
+## DIfférences entre routes/web et routes/API
 Limitation de 60 requêtes sur ces routes
 attention si on est déclare la route dans routes/api.php la route sera /api/movies
 ..a completer ?
@@ -1461,7 +1461,7 @@ Method (l'action duu controllerd)')
 le tableau associe le controller et la méthod
 
 
-##Exemple COntroller et Model
+## Exemple COntroller et Model
 Illum:inate/controller c'est le controller de Laravel'
 en fait on a le corecontroller de laravel, on crée un controller qui va héroer de ce controller et tous nos controllers vt hériter de ce controller
 1/coreControler de laravle avec fctnalités de base
@@ -1483,12 +1483,12 @@ On a la clé primaire quiest id mais sinon on peut la créer
 ç ans a rencvoyé une c**collection** quiest dc un tableau d'objets du style movies'et dedans il y aun tableau **attributes** qui stocke les infos du Model
 **/api/Movies est le endpoint** l'API est l'interface de connexion'qui va se connecter à cet endpoint
 
-##Deuxième exemple avec une route param en quelque sorte
+## Deuxième exemple avec une route param en quelque sorte
 on crée la route
 on rajoute la méthode show ds le Moviecontroller
 mettre une 404 si movie est pas trouvé
 
-##DOCS
+## DOCS
 A la racine du dossier, on crée un dossier docs/API
 installer l'extension rest/client'
 pour exécuter des requetes deouis vscode, (on pt faire des requetes get mais POST et DELETE non qd on est ds le navigateur)
@@ -1537,10 +1537,10 @@ public timestaamp ==false ?? g pas suivi
 
 
 
-##########################################################################################################################################################
-##
-################ SAISON 6 - BACKOFFICE ########################### 
-##########################################################################################################################################################
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+## 
+## ## ## ## ## ## ## ##  SAISON 6 - BACKOFFICE ## ## ## ## ## ## ## ## ## ## ## ## ## # 
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
 
 **AUTHENTIFICATION et authorisations FROM CSCRATCH**
 => copier l'appUserCOntroler'
@@ -1602,7 +1602,7 @@ Le load balancer va permettre de gérer le **failover**, càdire, si y a un serv
 Donc comme ça le site reste disponible. On évite les **SPOF=SinglePointOfFailure**
 C'est plus du boulot d'admin system'
 
-##PERFORMANCES du site ##
+## PERFORMANCES du site ## 
 sur **GTMETRIX** pour analyser les perfs du site web=> besoin d'un compte'
 **Lighthouse** ds l'inspecteur'
 On peut utiiliser des **CDN** pour stocker les cosntenus statiques
@@ -1611,7 +1611,7 @@ On peut utiiliser des **CDN** pour stocker les cosntenus statiques
 **DDOS Déni de Services Distribué** un ensemble de machines va attaquer un serveur
 
 
-##SECURITE
+## SECURITE
 Https : va permettre que les données qui transitent soit chiffréées
 avec un analyseur de reseau de paquets comme Wireshark on peut analyser les data
 cf kali pour avoir ce qui'l faut :) 'dit sebastien 
@@ -1649,7 +1649,7 @@ Laravel est une sorte de morceau de symfony, il utilise des composants de symfon
 
 Le gros morceau sera docker
 
-##C quoi un FRAMEWORK
+## C quoi un FRAMEWORK
 **squelette** 
 **boite a outils**
 **Doctrine**=>ORM
@@ -1657,7 +1657,7 @@ Le gros morceau sera docker
 
 
 ================================================================================================
-##RESUME
+## RESUME
 Utilisation d'alto distpatcher
 Requetes préparées contre les injections SQL
 Sessions'
@@ -1702,7 +1702,7 @@ On récupère un tableau comme name=""emplacement[]"" en filter_input avec un fi
 
 
 
-##Correction authorization
+## Correction authorization
 -->on pt fusionner lastname et firstname en les mettant dans la meme colonne <td> en html 
 --> **conditionner l'affichage du lien en fct du role**qu'il a, une fois que les vérifs ont été faites
 -> sur l'**update ne pas préremplir le mdp** en général'
@@ -1750,7 +1750,7 @@ public function __construct($router, $match)
         // la route n'est pas restreinte, on ne fait rien de spécial, la page est donc accessible !
 
 
-##pourquoi iil faut sécuriser la route en post aussi
+## pourquoi iil faut sécuriser la route en post aussi
 bien qu'on ne puisse pas y accéder si on n'est pas connecté' ?'
 le  hacker peut créer un fichier html avec un form qu'il va envoyer sur notre site à l'adress/user/add' pour créer un user ou utiliser curl pour envoyer une requete http
 broken access control 
@@ -1871,10 +1871,10 @@ pour déterminer si un utilisateur a le bon rôle pour accéder à une page. Rvo
 http_response_code(404);
 => ds chq page, on lance cette méthode avec les bon rôles en params
 
-##################
+## ## ## ## ## ## ## ## ## 
 #E04 challenge
 
-## REQUETE PREPAREE 
+##  REQUETE PREPAREE 
 SQL PREPARE BIND EXECUTE
 Exemple :
 $pdo = Database::getPDO();
@@ -1884,14 +1884,14 @@ $pdo = Database::getPDO();
         $stmt->execute();
         $user =  $stmt->fetchObject('App\Models\AppUser');
 
-##Pour le suppresion
+## Pour le suppresion
 On a juste un bouton donc on peut pas choisir POST, c'est en GET comme c un <a>'
 On écrit la route en GET, on crée la méthode ds le controller et on la crée ds le model.
 
 Si on veut rediriger de là où est venu l'utilisateur, on pt utiliser $_SERVER['httpreferer'] qui contient l'url de provenance ']'
 **header('Location: ' . $_SERVER["HTTP_REFERER"]);**
 
-##authentification
+## authentification
 il faut
 -la table users
 - lre Model qui respecte l'active record
@@ -1935,7 +1935,7 @@ $product = new Product();
 **créer une fct save() qui va, selon la présence d'un id >0 ou pas, utiliser insert() ou update()'
 comme ça pas besoin de lancer insert ou update , ça sera fait par save()
 
-##**classe abstraite**
+## **classe abstraite**
 - si on rajoute **abstract** devant une classe **abstract class Model {}**, **on ne pourra pas l'instancier**
 Exemple le coreModel ou le coreController, on vt pas pouvoir les instancier dc on les met en abstract
 - on ajoute des **méthodes abstraites** (on rajoute abstract à nos méthodes static: ces méthodes nous permettent de définir uniquement la **signature** de la méthode
@@ -1977,9 +1977,9 @@ interrompent le script
 die va lui permettre d'afficher l'erreur'
 
 
-#######################################################
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## #
 
-##EP03
+## EP03
 
 ctrl + r pour rechercher ds le terminal
 
@@ -2189,27 +2189,27 @@ cliquer g à d des aut $ pour agrandir le curseursur les aut attrib
 puis clic d
 
 Selection en haut puis avant derniere option ;)
-###############################################################""""
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## #""""
 
 **try(cond) catch ''exception PDO exception $exception par exp)(callcack)** => pour traiter des exceptions
 
-"###########################################################################################################"
+"## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## #"
 
 
 
-##########################################################################################################################################################
-##
-################ SAISON 5 - BDD - SQL - MVC - MCD ########################### 
-##########################################################################################################################################################
-##Mercredi soir challenge en pair et jeudi challenge en pair la journée
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+## 
+## ## ## ## ## ## ## ##  SAISON 5 - BDD - SQL - MVC - MCD ## ## ## ## ## ## ## ## ## ## ## ## ## # 
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+## Mercredi soir challenge en pair et jeudi challenge en pair la journée
 
 NB vscode prend en compte la doc pmour ses verif
 notamment return void par exemple
 
 
-##EPISODE 6
+## EPISODE 6
 
-## route->geenrate()
+##  route->geenrate()
 Les routes sont enregistrées par AltoRouter ds des variables
 AltoRouter va générer une url direfctement à partir des routes, on pt donc modifier les parttern de match et le nom de la route sera le même et va générer l'url complète'
 1er param nom de l aroute 2é/ tabl asso avec clé=id(param de match) par exep et value = valeur d(id de la bdd)
@@ -2217,7 +2217,7 @@ AltoRouter va générer une url direfctement à partir des routes, on pt donc mo
 Le constructeur du corecontroller est appelée ds les deux aut controllers filles
 à chq fois qu'on fait New => on appelle le constructeur du coreController'
 ===============
-##Récap dans l'ordre de la démarche PSR 4
+## Récap dans l'ordre de la démarche PSR 4
 1/ changer le **composer.json** avec la norme PSR-4 et le namespace du dossier racine
 2/ **déclarer les namespaces** ds les fichiers de classes et les use 
 3/ vérifier qd on appelle les fichiers que le chemin crrspd au nveau chemin, on pt réécrire tt le chemin avec le namespace ms on utilise **self::class**
@@ -2262,7 +2262,7 @@ A lieu de réécrire tt les nom = **self::class** FQCN = Full Qualified Class Na
 
 ok si on ne déclare pas le namespace, par défaut c celui de la classe courante 
 =============================================**============================================================
-##EPISODE 5 **Requetes SQL** **Héritage**
+## EPISODE 5 **Requetes SQL** **Héritage**
 
 #Héritage**
 Factoriser du code commun à plusrs classes
@@ -2296,23 +2296,23 @@ A rajouter SELECT types.* FROM types WHERE footer_order>0 ORDER BY footer_order 
 afficher 1àrate pour étoiles pleines
 et 2e boucle pour rate à 5 pour vide
 
-## Récupérer les marques pour la liste du footer
+##  Récupérer les marques pour la liste du footer
 Averifier
 SELECT brands.* FROM brands WHERE footer_order>0 ORDER BY footer_order ASC  ; 
 
 
-## Récupérer les données des produits ET de leur marque
+##  Récupérer les données des produits ET de leur marque
 SELECT products.*, brands.* 
 FROM products
 INNER JOIN brands
 ON products.brand_id=brands.id
 
-## Récupérer les infos d'une catégorie en fonction de son id
+##  Récupérer les infos d'une catégorie en fonction de son id
 "SELECT categories.*
 FROM categories
 WHERE id=$id ; "
 
-## Récupérer la liste des produits qui appartiennent à une catégorie donnée + le nom du type de chaque produit
+##  Récupérer la liste des produits qui appartiennent à une catégorie donnée + le nom du type de chaque produit
 
 "SELECT products.name AS product_name ,types.name
 FROM products
@@ -2320,7 +2320,7 @@ INNER JOIN types
 ON products.type_id = types.id
 WHERE category_id=$id"
 
-## Récupérer la liste des produits qui sont fabriqués par une marque donnée pour la marque 1 exp
+##  Récupérer la liste des produits qui sont fabriqués par une marque donnée pour la marque 1 exp
 
 SELECT products.name AS product_name , brands.name ,
 FROM products
@@ -2331,7 +2331,7 @@ WHERE products.brands_id = 1
 
 ============================================================
 
-##RENTREE RAPPELS TRUCA A RAJOUTER au resume mvc
+## RENTREE RAPPELS TRUCA A RAJOUTER au resume mvc
 on importe les models ds les controllerles controllers 
 les frontcontroller c htaccess et index.php
 htaacces va permettre de réécrire les url
@@ -2346,7 +2346,7 @@ route paramétrique on va récup la variable et la valeur dans $match
 
 ======================================================================================
 
-##PHP
+## PHP
 /**
 voir phpdocblockgenerator
 
@@ -2356,17 +2356,17 @@ NB les liens sont en français, le code en anglais
 
 ==============================================
 #MVC Mon résumé d'après ce que j'ai cru comprendre
-##On sépare Model View Controller
+## On sépare Model View Controller
 On commence par créer un répertoire avec les **views** : les tpl spécifiqs, les header et footer.
 On crée les **controllers** qui sont des classes avec des méthodes qui vt permettre d'afficher, elles servent d'intermédiaire entre la vue et le modéle notamment. 
 On a la méthode show qui est la méthode principale et qui va être réutilisée au sein du controller pour créer les méthodes spécifiqs à chaque page.
 La méthode show va accepter un paramètre $viewData =[] qui pourra, si on le veut, contenir des données à afficher, ss forme de tabl. assoicatif c encore mieux.
 Dans l'**index.php**, on va créer le dispatcher et le router. C'est le **Frontctroller**'
 Le dispatcher va permettre d'exécuter la bonne méthode du bon controller d'après la route.
-##On déclare ses **routes** à l'aide de la librairie altorouter, c plus simple que manuellement. C'est le **tableau des routes**= router.
+## On déclare ses **routes** à l'aide de la librairie altorouter, c plus simple que manuellement. C'est le **tableau des routes**= router.
 **Altorouter**  :
 On définit le **setBasePath** qui va être le morceau commun de l'url => utilisation de la superGlobale **$_SERVER['BASE_URI']**
-##Altorouter a la méthode **map()** qui va permettre de créer les routes avec **4 arg** : 
+## Altorouter a la méthode **map()** qui va permettre de créer les routes avec **4 arg** : 
 **1/méthode HTTP** 
 **2/pattern** de la route dt les résultats vt être attribués à la propriété **['target']**du $match
 **3/Ce qui va être mis comme propriété ['target']** du $match et le pattern ds **['params']**
@@ -2494,7 +2494,7 @@ On **crée nue instance ProductModel pour lancer ProductModel->findAll()**
 Attention fetchAll renvoie un tabl, mais s'il y en a un,' **UTILISER FETCH::OBJECT pour aovir qu'une réponse**'Exp: $product = $pdoStatement->fetchObject('Type');
 
 
-##BDD Approfondissements - Adminer
+## BDD Approfondissements - Adminer
 **Clé étrangère** va définir **la relation entre deux tables** ici product et brand
 la colonne brand_id ds product référence l'id de la bonne brand dans la table brand
 c'est une clé étrangère'
@@ -2522,7 +2522,7 @@ WHERE products.id = 3**
 (on pt remplacer le INNER par LEFT ou RIGHT, INNER JOIN===JOIN)
 On peut rajouter AS à la fin pour ajouter un alias pour clarifier le nom de la colonne de résultats
 
-##TRUCSIMPORTANTS E03 SUR LES ROUTES 
+## TRUCSIMPORTANTS E03 SUR LES ROUTES 
 **convention de nommage du 4e argument name dqd on map = controller-methode**
 **ds la doc, écrire en angalis sauf ce quiest destiné à être affiché ""**
 **rajourter $params ds la méthode comme argumt meme qd on l'utilise pas pour se rappelr qu'on l'utilsie'**'
@@ -2539,12 +2539,12 @@ on ne peut pas la déclarer ds l'index car elle serait pas accesible depuis show
 **une méthode uen pagge**
 =======================================================================================
 
-##MCD ET CARDINALITES
+## MCD ET CARDINALITES
 
 Pour traduire les relations et les cardinalités, dire : **1 machin de l'entité'"" verbe "1 0 ou n"" de l'autre entité'**
 Exemplex : 1 produit est fabriqué par 1 seule marque, 1 marque fabrique 0 ou n produits
 =============================================================================================================================================================
-##**COMPOSER**=> on a installé var_dumper et altoRouter
+## **COMPOSER**=> on a installé var_dumper et altoRouter
 est un **dépendency manager** pour php,
 il va gérer l'ajout de dépendances ds le projet'
 D'abord installer composer dans son OS'
@@ -2618,11 +2618,11 @@ script d'import pour récupérer le code du dépot de pierrick ds son dépot'
 1er arg mon dépot 2e nom de la nv branch 3 e nom de labranche dudepot depierrick qu'on vt copimer'
 ATTENTION commit son code avant
 =======================================================================================================
-## Scrum /Agile suite 
+##  Scrum /Agile suite 
 BackOffice => administration du site
 NB ya que le srcum qui pt bouger kes poistuf ds trello
 
-## AGILITE => une approche, une philosophie
+##  AGILITE => une approche, une philosophie
 **Gestion de projet en cascade** :  définiction -> conception-> réalisation->  vaidation->  livraison => pas le droit à l'erreur ni de retour en arrière'
 En Agile, on va pouvoir m^me revenir sur le CDC
 Principes : **individus interactions** **logiciels opérationnels**(vs technique trop cplexe)
@@ -2644,10 +2644,10 @@ ds productBacklog , taches priorisées, catégorisées selon la pers concernée 
 
 #MVC E02
 --> il faudra récupérer les branches ds le repo de Pierrick en les pullant sur notre machine
-## Création des dossiers
+##  Création des dossiers
 On crée un dossier **app** qui ctiendra **Controllers(ctiendra des classes) et un dossier **views** ( ctiendra des tpl)
 On rajoute un dossier **public** dans lequel on met index.php et un dossier **assets** ( ctiendra js, csss, images,fonts...)
-## Création des tpl
+##  Création des tpl
 On modifie pour faire les **tpl**
 On récupère l'index de l'autre projet Oshow et puis aussi on crée le MainCOntroller' bien vérifier les chemins des fichiers css, images , etc avec assets avant /css ds le lien
 Puis on crée les routes **table de routage**
@@ -2765,7 +2765,7 @@ Routes est un tableau où clé est l'url et valeur est le tpl à appeler'
 **NB si ce string correspond exactement à une méthode déclarée dans la classe, on peut utiliser cette syntaxe donc on peut $fonction=$this->$methode()**
 **NB autre : l'url ds le href de la nav dt bien crrspondre avec la clé de la route ds $routes, avec le /'
 **ds les tpl, on a accès à ttes les var de show
-###################################################################################################################################################################"""""
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## #"""""
 #Rappel sur les classes
 La classe est stockée ds un fichier en texte mais pas en RAM
 Chq instance est stockée dans la RAM en binaire'
@@ -2780,9 +2780,9 @@ Puis create pull request
 On peut merger en ligne puis on fait git pull origin=quelDépôtOnEnvoie main=nomDeLaBrancheQuonPousse 
 
 
-##########################################################################################################################################################
-################## SAISON 4 (suite) - ADMINER - PDO -  ########################### 
-##########################################################################################################################################################
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+## ## ## ## ## ## ## ## ##  SAISON 4 (suite) - ADMINER - PDO -  ## ## ## ## ## ## ## ## ## ## ## ## ## # 
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
 
 
 #PDO suite
@@ -2892,7 +2892,7 @@ mettre direct les variables dans le query sans passer par une méthode prepare =
 tu vérifies pas les données insérer, ni en qualité (string/number...) ni en quantité (la longueur d'un string par exemple)
 là tu insère le mdp en bdd sans le hasher
 
-######################################################################################################[]
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## []
 #MCD
 Modele Conceptuel de Données
 C'est uns chéma de modélisation des donn&zq
@@ -2998,9 +2998,9 @@ sudo systemctl reload apache2
 On pt avoir plusierus users en régle générale, on met un user par BDD
 
 
-##########################################################################################################################################################
-################## SAISON 4 -RESPONSIVE - GESTION DE PROJET - POO - MCD - BRANCHES - SGBDR  ########################### 
-##########################################################################################################################################################
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+## ## ## ## ## ## ## ## ##  SAISON 4 -RESPONSIVE - GESTION DE PROJET - POO - MCD - BRANCHES - SGBDR  ## ## ## ## ## ## ## ## ## ## ## ## ## # 
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
 "
 #PHP trucs à maitriser
 opérateur coaslescent si ma variable est pas dans $_gGET ?? null équivaut à    $var = isset($_GET['id']) ?  $_GET['id']: null
@@ -3163,9 +3163,9 @@ push la branch avec **git push origin nomDeLaBranch **
 On peut configurer pour pas se faire puller la master
 
 
-##########################################################################################################################################################
-################## SAISON 3 - BASES DE JS - CLIENT ########################### 
-##########################################################################################################################################################
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+## ## ## ## ## ## ## ## ##  SAISON 3 - BASES DE JS - CLIENT ## ## ## ## ## ## ## ## ## ## ## ## ## # 
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
 #JS
 
 #Tuyaus en vrac
@@ -3232,7 +3232,7 @@ const index = {
 
 document.addEventListener("DOMContentLoaded", index.init);
 
-##Pour que ça soit un **module ES6** , il faut faire **type="module"** dans la balise <script>" qu'on a mise en bas du html
+## Pour que ça soit un **module ES6** , il faut faire **type="module"** dans la balise <script>" qu'on a mise en bas du html
 ainsi on peut utiliser **import** {nomDumodule} from "cheminVersLeModule"
 On doit avant mettre export dans le module pour pouvoir l'utilsier
 Pour mettre ts les modules en un =>créer un fichier **app.js**
@@ -3336,9 +3336,9 @@ En JS on peut déclarer la function après l'avoir exécutée => hoisting, la fu
 dans les for in et for of, il vaut mx mettre **const** machin in tableau 
 
 
-##########################################################################################################################################################
-################## SAISON 2 - BASES DE PHP - SERVEUR ########################### 
-##########################################################################################################################################################
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+## ## ## ## ## ## ## ## ##  SAISON 2 - BASES DE PHP - SERVEUR ## ## ## ## ## ## ## ## ## ## ## ## ## # 
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
 #PHP
 
 #VRACS from JC
@@ -3405,7 +3405,7 @@ on peut créer un css à part pour le form mais ne pas oublier de l'inclure dans
 => Protocole http : différentes méthodes pour envoyer une requête
 **headers infos recues par le serveur, contient notamment la méthode GET ou POST**
 inspecteur=> network headers ,payload (les données envoyées)
-##On va envoyer les données du formulaire vers machin.php
+## On va envoyer les données du formulaire vers machin.php
 **action vide** renvoie à la page php 
 Si on ne met pas de méthod http avec method="" dans le form=>c'est par défaut get', ça l'affiche dans la barre url, c'est la **query string'** sous la forme?number=1
 on peut mettre "post" pour envoyer au serveur" => ça l'envoie au serveur', ça se voit pas côté client
@@ -3424,7 +3424,7 @@ nb vérifier ce qui correspond à **empty())** car par exp 0 est empty
 il y a aussi **$_GET** on peut mettre des trucs ds la barre url pour faire get 
 , pour recuperer les infos ds la query string de la barre url
 
-##TEMPLATES :
+## TEMPLATES :
 .tpl.php
 le **template crrspd en qque sorte à l'html**, le **php pur** au css ??'
 header.tpl.php main.tpl.php et footer.tpl.php
@@ -3451,11 +3451,11 @@ OU BIEN **manière alternative** :
 au lieu de for {} on écrit /ça marche pour if else aussi /
 **for() : ...endfor;**
 ou bien **if : else : endif ;**
-##travailler les dates convertir en timestamp=> cvertir son php en francais avec timezone
+## travailler les dates convertir en timestamp=> cvertir son php en francais avec timezone
 
 
 
-##TYPES ET TABLEAUX
+## TYPES ET TABLEAUX
 types scalaires => une donnée
 écrire le tableau avec les crochets puis aller à la ligne et mettre les données
 indenter pour la lisibilité
@@ -3468,9 +3468,9 @@ Dans l'absolu faire un tableau qui contient des **tableaux associatifs** pour mi
 
 
 
-##########################################################################################################################################################
-################## SAISON1 - HTML/CSS ########################### 
-##########################################################################################################################################################
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
+## ## ## ## ## ## ## ## ##  SAISON1 - HTML/CSS ## ## ## ## ## ## ## ## ## ## ## ## ## # 
+## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## 
 
 #RACCOURCISCLAVIER
 ctrl + D ou ctrl+maj+L pour sélectionner toutes les occurrences d'une variable pour changer son nom par exple
@@ -3669,7 +3669,7 @@ git clone + le bt de code
 a une mise en forme auto ressblt au html
 fichier txt avec mise en page auto
 avec # devant gros titre=niv1
-avec ## titre niv.2
+avec ##  titre niv.2
 entre ** => en gras
 entre * => en italique
 ``` + nom du langage  codeAInserer```

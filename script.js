@@ -68,6 +68,19 @@ const datas = [
 
     //RAJOUTER LE TRUC POUR FR SOB PROVIDER CUSTOM ET AUSSI DATE IMMUTABLE
 // Fiche PHP new DateTimeImmutable pour créer une date et format () pour formater la date
+
+{
+            nom : "SQL CLI - debug déploiement" ,
+        datas : [{"mysql -u root":"lancer en root sans mdp"},
+                {"SELECT user, host FROM mysql.user;":"voir ts les users"},
+                {"item3":"item3"},
+                {"item4":"item4"},
+                ],
+        tableau : true,
+        type : "BDD"
+},
+
+
 {
             nom : "TRUCS A PENSER A NE PAS OUBLIER /A TESTER SYMFONY  " ,
             definition : [ 
