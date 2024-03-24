@@ -1799,7 +1799,9 @@ const datas = [
     } ,
     {
         nom : "LocalStorage" ,
-        definition : ["Stockage d'infos (en string) dans un objet le navigateur sans délai d'expiration !=sessionStorage"] ,
+        definition : ["Stockage d'infos (en string) dans un objet le navigateur sans délai d'expiration !=sessionStorage",
+        "Dans l'inspecteur de Chrome -> Application->Storage->LocalStorage"
+    ] ,
         example : ["localStorage.setItem('monChat', 'Tom');",
         "var cat = localStorage.getItem('monChat');",
         "localStorage.removeItem('monChat');",
