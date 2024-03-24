@@ -2,12 +2,14 @@
 trouver les 4 couleurs du theme => je crois qu'il en faut plus que 4, pas le temps d'implémenter ça :not()
 trouver 4 colueurs pour les langages et les attribuer en js 
 aux cartes concernées en utilisant var CSS => idee bof ça fait une distraction pour rien
+ne pas rendre toutes les oculeurs variables
 -remplacer les JS CSS HTML des carts par les petit logos officiels
 ATTENTION IL DOIT Y AVOIR QQCH A MODIFIER AU NIVEAU DU JS 
 PEUT ETRE CREATION DES ELEMENTS
 CAR J AI RAJOUTE LE WRAPPER ET SES PROPRIETES NE S APPLIQUENT PAS AUX CARTES
 MAIS CELLES DU BODY OUI
 */
+/* !ainColor =couleur du h1=couleur du wrapper keywords =card color */
 
 :root{
     /* srgb, srgb-linear, lab, oklab, xyz, xyz-d50, xyz-d65, hsl, hwb, lch, oklch. */
@@ -33,12 +35,19 @@ body{
 }
 
 h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: "Dangrek", sans-serif;
     font-size : 3rem;
     text-shadow: 2px 2px 1px pink;
     text-shadow: -2px -2px 1px rgb(20, 3, 6);
     background-color: var(--mainColor) ;
     color: #c2c3ba;
+}
+
+h1 input {
+    margin :  0 1em ;
 }
 
 h2{
@@ -248,7 +257,7 @@ li:hover {
     position: relative;
     border : 5px solid black ;
     border-radius: 15px 5px 15px 5px;
-    background-color: rgb(44, 40, 40);
+    background-color: var(--mainColor);
     margin : 3%  3%;
     height: fit-content;
     z-index: 4;

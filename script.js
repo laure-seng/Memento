@@ -261,7 +261,7 @@ const datas = [
                 "",
                 "",
             ],
-                type : "CSS"
+                type : "SYMFONY"
         },
     {
                 nom : "EVENTS DS SYMFONY - Events du kernel 1/2" ,
@@ -1798,6 +1798,16 @@ const datas = [
     type : "JS"
     } ,
     {
+        nom : "LocalStorage" ,
+        definition : ["Stockage d'infos (en string) dans un objet le navigateur sans délai d'expiration !=sessionStorage"] ,
+        example : ["localStorage.setItem('monChat', 'Tom');",
+        "var cat = localStorage.getItem('monChat');",
+        "localStorage.removeItem('monChat');",
+    
+    ],
+        type : "JS"
+        } ,
+    {
     nom : "Reduce()" ,
     definition : ["Prend paramètre une fonction qui a 2 arguments(acc et value)+ 1 optionnel(initValue)",
     ".reduce ((accumulateur, current value)=> instructions,valeurDeDepart)"],
@@ -2424,3 +2434,24 @@ function displayCard(dataArray){
 }
 displayCard(datas)
 
+//bgCustomColor feature
+let r = document.querySelector(':root');
+if(localStorage.getItem("customBgColor")) {
+    customBgColor=localStorage.getItem("customBgColor");
+}
+else {
+    customBgColor='#2b2828';
+}
+r.style.setProperty('--mainColor', customBgColor);
+
+let customBgColorElement =document.getElementById("customBgColor") ;
+customBgColorElement.addEventListener("change",(e)=>{
+    customBgColor =e.target.value ;
+    console.log(customBgColor) ;
+//Récupération de la variable CSS correspondant à --mainColor
+let rs = getComputedStyle(r);
+rs.getPropertyValue('--mainColor');
+r.style.setProperty('--mainColor', customBgColor);
+localStorage.setItem("customBgColor", customBgColor);
+console.log("cc",localStorage.getItem("customBgColor"));
+})
