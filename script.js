@@ -14,9 +14,9 @@ const body=document.querySelector("body")
 const li=document.getElementsByTagName("li")
 let keywords= document.querySelector("#keywords")
 const keywordsWrapper= document.querySelector("#keywordsWrapper")
-const leftMenuSpan= document.querySelector("#left-menu-span")
-const leftMenu= document.querySelector("#left-menu")
-const leftMenuWrapper= document.querySelector("#left-menu-wrapper")
+// const leftMenuSpan= document.querySelector("#left-menu-span")
+// const leftMenu= document.querySelector("#left-menu")
+// const leftMenuWrapper= document.querySelector("#left-menu-wrapper")
 const wrapper= document.querySelector("#wrapper")
 let cards=document.querySelector("#cards")
 let  keywordList=[]
@@ -2145,14 +2145,6 @@ const datas = [
     } 
 ]
 
-//pas encore utilisées
-const bonnesPratiques = [
-"Ne pas créer des variables JS inutiles !" ,
-"Utiliser des sélecteurs CSS" ,
-"Utiliser la sémantique HTML" ,
-"Utiliser grid pour l organisation générale et flex pour chaque sous-partie "
-]
-
 //ScrollToTop
 function scrollToTop(top,left){
 window.scrollTo({
@@ -2160,58 +2152,63 @@ top: top,
 left: left,
 behavior: "smooth",
 });
-console.log("scrollin")        
+console.log("scrollin");        
 }
 document.getElementById("scrollToTop").addEventListener("click",()=>scrollToTop(100,100))
-
-
-// leftMenu.style.visibility="visible";
-// wrapper.style.left="20vw"; 
 scrollToTop(0,0);
-// Visibilite du menu de gauche
-leftMenuSpan.addEventListener("mouseover",()=>{
-    leftMenuSpan.style.display="none" ;
-    leftMenu.style.visibility="visible";
-    leftMenu.style.top="0px";
-    wrapper.style.left="20dvw"; 
-    // scrollToTop(0,0)
-}) //correspond à var(--leftMenuWidth)
-leftMenu.addEventListener("mouseleave",()=>{
-    leftMenuSpan.style.display="inline" ;
-    leftMenu.style.visibility="hidden";
-    wrapper.style.left="0vw"})
 
-//Génération du menu gauche
-//Génération de la liste des keywords classés par ordre alpha
-keywordListAlphaSort=
-//Propriété "nom" 1ère lettre majuscule
-datas.map(function(value) { return {
-nom : value.nom[0].toUpperCase()+ value.nom.slice(1,value.nom.length) ,
-definition : value.definition ,
-example : value.example ,
-type : value.type }
-})
-//classement par ordre alpha
-.sort(function (a, b) {
-if (a.nom < b.nom) {
-return -1;
-}
-if (a.nom > b.nom) {
-return 1;
-}
-return 0;
-})
-//création des liens et display à gauche
-.map((data)=>{
-let parag=document.createElement("p")
-parag.setAttribute("class" ,`paragLeftMenuLink`)
-let keywordLink=document.createElement("a")
-keywordLink.textContent=`${data.nom}`
-keywordLink.setAttribute("href" ,`#data${data.nom}`)
-keywordLink.setAttribute("class" ,`leftMenuLink`)
-parag.appendChild(keywordLink)
-leftMenu.appendChild(parag);
-})
+////SECTION LEFT MENU EN STANDBY
+// //Récupération de la variable CSS correspondant à la largeur du menu de gauche
+// let r = document.querySelector(':root');
+// let rs = getComputedStyle(r);
+// rs.getPropertyValue('--leftMenuOffset');
+// r.style.setProperty('--leftMenuOffset', 'Opx');
+
+// // Visibilite du menu de gauche
+// leftMenuSpan.addEventListener("mouseover",()=>{
+//     leftMenuSpan.style.display="none" ;
+//     leftMenu.style.visibility="visible";
+//     leftMenu.style.top="0px";
+//     r.style.setProperty('--leftMenuOffset', '20dvw');
+//     // scrollToTop(0,0)
+// }) //correspond à var(--leftMenuWidth)
+// leftMenu.addEventListener("mouseleave",()=>{
+//     leftMenuSpan.style.display="inline" ;
+//     leftMenu.style.visibility="hidden";
+//     r.style.setProperty('--leftMenuOffset', '0dvw');
+// })
+
+// //Génération du menu gauche
+// //Génération de la liste des keywords classés par ordre alpha
+// keywordListAlphaSort=
+// //Propriété "nom" 1ère lettre majuscule
+// datas.map(function(value) { return {
+// nom : value.nom[0].toUpperCase()+ value.nom.slice(1,value.nom.length) ,
+// definition : value.definition ,
+// example : value.example ,
+// type : value.type }
+// })
+// //classement par ordre alpha
+// .sort(function (a, b) {
+// if (a.nom < b.nom) {
+// return -1;
+// }
+// if (a.nom > b.nom) {
+// return 1;
+// }
+// return 0;
+// })
+// //création des liens et display à gauche
+// .map((data)=>{
+// let parag=document.createElement("p")
+// parag.setAttribute("class" ,`paragLeftMenuLink`)
+// let keywordLink=document.createElement("a")
+// keywordLink.textContent=`${data.nom}`
+// keywordLink.setAttribute("href" ,`#data${data.nom}`)
+// keywordLink.setAttribute("class" ,`leftMenuLink`)
+// parag.appendChild(keywordLink)
+// leftMenu.appendChild(parag);
+// })
 
 
 //Fonction pour filtrer par langage
@@ -2249,13 +2246,15 @@ cards=document.createElement("div")
 cards.setAttribute("id","cards")
 wrapper.appendChild(cards)
 displayCard(datas)})
-//afficher toutes les cartes si filtrées pour accéder à la carte demandée 
-document.querySelector("a").addEventListener("click",()=>{
-wrapper.removeChild(cards)
-cards=document.createElement("div")
-cards.setAttribute("id","cards")
-wrapper.appendChild(cards)
-displayCard(datas)})
+
+// affichage de la carte demandée /:cf leftMenu
+// document.querySelector("a").addEventListener("click",()=>{
+// wrapper.removeChild(cards)
+// cards=document.createElement("div")
+// cards.setAttribute("id","cards")
+// wrapper.appendChild(cards)
+// displayCard(datas)})
+
 
 
 //Création de la liste des keywords

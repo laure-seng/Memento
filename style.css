@@ -1,5 +1,5 @@
 /* a faire
-trouver les 4 couleurs du theme
+trouver les 4 couleurs du theme => je crois qu'il en faut plus que 4, pas le temps d'implémenter ça :not()
 trouver 4 colueurs pour les langages et les attribuer en js 
 aux cartes concernées en utilisant var CSS => idee bof ça fait une distraction pour rien
 -remplacer les JS CSS HTML des carts par les petit logos officiels
@@ -15,7 +15,8 @@ MAIS CELLES DU BODY OUI
     --secondColor : #e1e2f3 ;
     --accentColor : #e2dcdc ;
     --fourthColor : #6d717c ;
-    --leftMenuWidth : 20dvw ;
+    /* --leftMenuWidth : 20dvw ;
+    --leftMenuOffset: 0dvw; */
 }
 
 *{
@@ -25,7 +26,6 @@ MAIS CELLES DU BODY OUI
 
 body{
     background-color: var(--mainColor);
-    /* background-color: color-mix(in srgb, rgb(0, 247, 255) 20%, rgb(0, 28, 128) 80%); */
     color: rgb(255, 255, 255) ;
     font-family: 'Rubik', sans-serif;
     background-color: #DFDBE5;
@@ -135,7 +135,7 @@ border-radius: 15px 5px 15px 5px;
     width: 100%;
     height: 100vh ;
     top: 0%;
-    left :0px ;
+    left :var(--leftMenuOffset) ;
     transition: left 1s;
 }
 
@@ -143,8 +143,6 @@ h1,h2{
     padding: 10px;
     text-align: center;
 }
-
-
 
 #menu{
     background-color: var(--mainColor);
@@ -191,8 +189,8 @@ h1,h2{
 }
 
 .keywordLink:hover{
-    background-color: rgb(15, 8, 122) ;
-    color :rgb(240, 247, 254) ;
+    background-color: rgb(13, 13, 14) ;
+    color :rgb(234, 255, 0) ;
 }
 
 #filtersList{
@@ -250,7 +248,7 @@ li:hover {
     position: relative;
     border : 5px solid black ;
     border-radius: 15px 5px 15px 5px;
-    background-color: rgb(9, 42, 230);
+    background-color: rgb(44, 40, 40);
     margin : 3%  3%;
     height: fit-content;
     z-index: 4;
