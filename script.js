@@ -1521,6 +1521,19 @@ const datas = [
         ],
             type : "CSS"
         } ,
+        {
+            nom : "Déployer un projet React sur gh-pages" ,
+            definition : [ "1/ L'installer",
+            "2/ builder le projet",
+            "3/ Copier les images ds le dossier du build (dist/src/images )pour un projet Vite",
+            "4/ Lancer le déploiement à partir du dossier du build (dist pour projet Vite)",
+            ] ,
+            example : [ "1/ npm install -g gh-pages ou npm install gh-pages --save-dev ",
+            "2/ npm run build",
+            "4/ gh-pages -d dist "    
+        ],
+            type : "HOSTING"
+        } ,
     {
         nom : "Shuffle - Fisher-Yates Sorting Algorithm" ,
         definition : [ "On crée une boucle for qui va nous permettre de permuter",
