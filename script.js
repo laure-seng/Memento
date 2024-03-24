@@ -6,6 +6,7 @@
 // ne pas prendre l'erreu à la légère concernant le pb du copy2clipboard c peut etre ça le pb !!!
 // Idees de fctionnalites en plus : mettre en favoris / création de sa propre carte en rajoutant via un formulaire
 //Factoriser les langages
+//TODO faire un objet qui contiendrait les couleurs du background des keywords, les images, les eventListener etc selon le type de carte 
 
 
 //rajouter le langage aux data de type tableau
@@ -13,9 +14,9 @@ const body=document.querySelector("body")
 const li=document.getElementsByTagName("li")
 let keywords= document.querySelector("#keywords")
 const keywordsWrapper= document.querySelector("#keywordsWrapper")
-const leftMenuSpan= document.querySelector("#left-menu-span")
-const leftMenu= document.querySelector("#left-menu")
-const leftMenuWrapper= document.querySelector("#left-menu-wrapper")
+// const leftMenuSpan= document.querySelector("#left-menu-span")
+// const leftMenu= document.querySelector("#left-menu")
+// const leftMenuWrapper= document.querySelector("#left-menu-wrapper")
 const wrapper= document.querySelector("#wrapper")
 let cards=document.querySelector("#cards")
 let  keywordList=[]
@@ -260,7 +261,7 @@ const datas = [
                 "",
                 "",
             ],
-                type : "CSS"
+                type : "SYMFONY"
         },
     {
                 nom : "EVENTS DS SYMFONY - Events du kernel 1/2" ,
@@ -1797,6 +1798,16 @@ const datas = [
     type : "JS"
     } ,
     {
+        nom : "LocalStorage" ,
+        definition : ["Stockage d'infos (en string) dans un objet le navigateur sans délai d'expiration !=sessionStorage"] ,
+        example : ["localStorage.setItem('monChat', 'Tom');",
+        "var cat = localStorage.getItem('monChat');",
+        "localStorage.removeItem('monChat');",
+    
+    ],
+        type : "JS"
+        } ,
+    {
     nom : "Reduce()" ,
     definition : ["Prend paramètre une fonction qui a 2 arguments(acc et value)+ 1 optionnel(initValue)",
     ".reduce ((accumulateur, current value)=> instructions,valeurDeDepart)"],
@@ -2144,14 +2155,6 @@ const datas = [
     } 
 ]
 
-//pas encore utilisées
-const bonnesPratiques = [
-"Ne pas créer des variables JS inutiles !" ,
-"Utiliser des sélecteurs CSS" ,
-"Utiliser la sémantique HTML" ,
-"Utiliser grid pour l organisation générale et flex pour chaque sous-partie "
-]
-
 //ScrollToTop
 function scrollToTop(top,left){
 window.scrollTo({
@@ -2159,57 +2162,63 @@ top: top,
 left: left,
 behavior: "smooth",
 });
-console.log("scrollin")        
+console.log("scrollin");        
 }
 document.getElementById("scrollToTop").addEventListener("click",()=>scrollToTop(100,100))
-
-
-// leftMenu.style.visibility="visible";
-// wrapper.style.left="20vw"; 
 scrollToTop(0,0);
-// Visibilite du menu de gauche
-leftMenuSpan.addEventListener("mouseover",()=>{
-    leftMenuSpan.style.display="none" ;
-    leftMenu.style.visibility="visible";
-    leftMenu.style.top="0px";
-    wrapper.style.left="20vw"; scrollToTop(0,0)
-}) //correspond à var(--leftMenuWidth)
-leftMenu.addEventListener("mouseleave",()=>{
-    leftMenuSpan.style.display="inline" ;
-    leftMenu.style.visibility="hidden";
-    wrapper.style.left="0vw"})
 
-//Génération du menu gauche
-//Génération de la liste des keywords classés par ordre alpha
-keywordListAlphaSort=
-//Propriété "nom" 1ère lettre majuscule
-datas.map(function(value) { return {
-nom : value.nom[0].toUpperCase()+ value.nom.slice(1,value.nom.length) ,
-definition : value.definition ,
-example : value.example ,
-type : value.type }
-})
-//classement par ordre alpha
-.sort(function (a, b) {
-if (a.nom < b.nom) {
-return -1;
-}
-if (a.nom > b.nom) {
-return 1;
-}
-return 0;
-})
-//création des liens et display à gauche
-.map((data)=>{
-let parag=document.createElement("p")
-parag.setAttribute("class" ,`paragLeftMenuLink`)
-let keywordLink=document.createElement("a")
-keywordLink.textContent=`${data.nom}`
-keywordLink.setAttribute("href" ,`#data${data.nom}`)
-keywordLink.setAttribute("class" ,`leftMenuLink`)
-parag.appendChild(keywordLink)
-leftMenu.appendChild(parag);
-})
+////SECTION LEFT MENU EN STANDBY
+// //Récupération de la variable CSS correspondant à la largeur du menu de gauche
+// let r = document.querySelector(':root');
+// let rs = getComputedStyle(r);
+// rs.getPropertyValue('--leftMenuOffset');
+// r.style.setProperty('--leftMenuOffset', 'Opx');
+
+// // Visibilite du menu de gauche
+// leftMenuSpan.addEventListener("mouseover",()=>{
+//     leftMenuSpan.style.display="none" ;
+//     leftMenu.style.visibility="visible";
+//     leftMenu.style.top="0px";
+//     r.style.setProperty('--leftMenuOffset', '20dvw');
+//     // scrollToTop(0,0)
+// }) //correspond à var(--leftMenuWidth)
+// leftMenu.addEventListener("mouseleave",()=>{
+//     leftMenuSpan.style.display="inline" ;
+//     leftMenu.style.visibility="hidden";
+//     r.style.setProperty('--leftMenuOffset', '0dvw');
+// })
+
+// //Génération du menu gauche
+// //Génération de la liste des keywords classés par ordre alpha
+// keywordListAlphaSort=
+// //Propriété "nom" 1ère lettre majuscule
+// datas.map(function(value) { return {
+// nom : value.nom[0].toUpperCase()+ value.nom.slice(1,value.nom.length) ,
+// definition : value.definition ,
+// example : value.example ,
+// type : value.type }
+// })
+// //classement par ordre alpha
+// .sort(function (a, b) {
+// if (a.nom < b.nom) {
+// return -1;
+// }
+// if (a.nom > b.nom) {
+// return 1;
+// }
+// return 0;
+// })
+// //création des liens et display à gauche
+// .map((data)=>{
+// let parag=document.createElement("p")
+// parag.setAttribute("class" ,`paragLeftMenuLink`)
+// let keywordLink=document.createElement("a")
+// keywordLink.textContent=`${data.nom}`
+// keywordLink.setAttribute("href" ,`#data${data.nom}`)
+// keywordLink.setAttribute("class" ,`leftMenuLink`)
+// parag.appendChild(keywordLink)
+// leftMenu.appendChild(parag);
+// })
 
 
 //Fonction pour filtrer par langage
@@ -2247,13 +2256,15 @@ cards=document.createElement("div")
 cards.setAttribute("id","cards")
 wrapper.appendChild(cards)
 displayCard(datas)})
-//afficher toutes les cartes si filtrées pour accéder à la carte demandée 
-document.querySelector("a").addEventListener("click",()=>{
-wrapper.removeChild(cards)
-cards=document.createElement("div")
-cards.setAttribute("id","cards")
-wrapper.appendChild(cards)
-displayCard(datas)})
+
+// affichage de la carte demandée /:cf leftMenu
+// document.querySelector("a").addEventListener("click",()=>{
+// wrapper.removeChild(cards)
+// cards=document.createElement("div")
+// cards.setAttribute("id","cards")
+// wrapper.appendChild(cards)
+// displayCard(datas)})
+
 
 
 //Création de la liste des keywords
@@ -2423,3 +2434,24 @@ function displayCard(dataArray){
 }
 displayCard(datas)
 
+//bgCustomColor feature
+let r = document.querySelector(':root');
+if(localStorage.getItem("customBgColor")) {
+    customBgColor=localStorage.getItem("customBgColor");
+}
+else {
+    customBgColor='#2b2828';
+}
+r.style.setProperty('--mainColor', customBgColor);
+
+let customBgColorElement =document.getElementById("customBgColor") ;
+customBgColorElement.addEventListener("change",(e)=>{
+    customBgColor =e.target.value ;
+    console.log(customBgColor) ;
+//Récupération de la variable CSS correspondant à --mainColor
+let rs = getComputedStyle(r);
+rs.getPropertyValue('--mainColor');
+r.style.setProperty('--mainColor', customBgColor);
+localStorage.setItem("customBgColor", customBgColor);
+console.log("cc",localStorage.getItem("customBgColor"));
+})
