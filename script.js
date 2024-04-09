@@ -103,6 +103,19 @@ const datas = [
             type : "AUTRES"
     },
     {
+        nom : "TAILWIND CUSTOM CLASS" ,
+        definition : [ 
+        "1/ Projet Vite : Dans src/index.css",
+        "2/ Projet Symfo avec WebPackEncore : dans assets/styles/app.css"
+        ] ,
+        example : [ 
+        "1/ @layer components {",
+        ".maClasse { écrire son CSS vanilla}",
+        "}",
+    ],
+        type : "TAILWIND"
+    },
+    {
             nom : "CODES HTTP SYMFONY RESPONSE" ,
             datas : [{"200":"HTTP_OK"},
                     {"201":"HTTP_CREATED"},
@@ -118,8 +131,6 @@ const datas = [
                     {"422":"erreurs sémantiques sur l'entité"},
                     {"500":"erreur serveur"},
                     {"504":"HTTP_GATEWAY_TIMEOUT"},
-
-
                     ],
 
             tableau : true,
@@ -462,7 +473,7 @@ const datas = [
             {"Tailles possibles(variable)":"xs sm md lg xl 2xl 3xl 4xl 5xl 6xl full"},
             {"background":"bg-couleur-luminosité(100 200 etc)"},
             {"texte taille":"text-xs, text-lg etcc "},
-            {"texte font":"font-bold text-gray-800"},
+            {"texte font":"font-bold italic font-mono text-gray-800 text-red-500-contrast "},
             {"ombre portée ":"shadow-lg / shadow-inner(intér.) /shadow-outline "},
             {"border":"border border-gray-300 rounded"},
             {"largeur max":"max-w-lg"},
@@ -475,7 +486,8 @@ const datas = [
             {"Pseudo-classes on met : ":"focus:shadow-outline hover: "},
             {"Responsive-4 breakpoints":"sm md lg xl Exple : lg:'class à appliquer'"},
             {"flex-basis pour ne pas agrandit le séléments sur l'item:":"flex-1"},
-
+            {"pour avoir un texte de couleur contrastant avec son fond -contrast":"text-red-500-contrast"},
+            {"https://davidpiesse.github.io/tailwind-md-colours/":"couleurs"}
                 ],
         tableau : true,
         type : "TAILWIND"
@@ -525,17 +537,18 @@ const datas = [
         "On pt rajouter en 3e arg de CreateForm des options qu'on va nommer ici 'custom_option' par exp",
         "Ds le controller ds la route edit on mettra $form = $this->createForm(UserType::class, $user, ['custom_option' => 'edit']);",
         "Ds le configureOptions(OptionsResolver $resolver) ... ... 'custom_option' => 'default'  ??? à revoir" ,
-        ""] ,
+        "NB : On peut générer un hash depuis la CLI"] ,
         example : ["RepeatedType::class, https://symfony.com/doc/current/reference/forms/types/repeated.html",
         "$user->setPassword($passwordHasher->hashPassword($user,$user->getPassword()));",
-        "","",
+        "NB :php -r 'echo password_hash('ThePassword', PASSWORD_BCRYPT, ['cost' => 13]) . PHP_EOL;'",
+        "",
     ],
         type : "SYMFONY"
     },
     {
         nom : "SECURITE AUTHENTIFICATION - ACCESS CONTROL -ROLES 1/3  " ,
         definition : [ "1/Installer le bundle",
-        "Ds le fichier security.yaml, ça configure le user, le firewall et l'access control", 
+        "Ds le fichier config/packages/security.yaml, ça configure le user, le firewall et l'access control", 
         "2/Il ft créer une entité User particulière avec les propriétés password,role", 
         "On utilise généralemt l'email comme discriminant",
         "Ne pas oublier le migrate",
@@ -787,6 +800,21 @@ const datas = [
             "7/ puis on setMachin($faker->randomElements($faker->getReactions()))",
             "NB : $show->addGenre($faker->randomElement($genreList));"
     ],
+        type : "SYMFONY"
+    },
+    {
+        nom : "DOCTRINE Fixtures : créer son provider pour Faker pour avoir des data custom" ,
+        definition : [ 
+            "Créer un fichier AppProvider.php dans DataFixtures",
+            "Dedans, créer les propriétés sous forme de tableau par exemple et leurs getters",
+        ],
+        example : [
+            "class AppProvider {",
+            " private $name = ['lor','coucou','youpi',];",
+            " public function getName(){return $this->textileName;}",
+            "}",
+            "Les utiliser dans AppFixtures.php",
+        ],
         type : "SYMFONY"
     },
     {
@@ -1604,12 +1632,14 @@ const datas = [
         type : "CSS"
     } ,
     {
-        nom : "Personnaliser Vscode" ,
-        definition : ["Changer la couleur de la scrollbar",
-        " scrollbarSlider.shadow /activeBackground /background/hoverBackground"
+        nom : "Trucs Vscode" ,
+        definition : ["1/ Changer la couleur de la scrollbar",
+        " scrollbarSlider.shadow /activeBackground /background/hoverBackground",
+        "2/ En général, ctrl + , pour accéder aux préférences de config"
                 ] ,
-        example : [ "ctrl+shift+P et ouvrir user preferences JSON",
+        example : [ "1/ ctrl+shift+P et ouvrir user preferences JSON",
         "\"workbench.colorCustomizations\"\: \{\"scrollbarSlider.background\"\: \"#ff0000\"\}",
+        "2/ taper window: zoomLevel pour régler le coef du zoom"
     ],
 
         type : "OTHERS"
