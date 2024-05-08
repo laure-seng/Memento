@@ -69,6 +69,27 @@ const datas = [
 
     //RAJOUTER LE TRUC POUR FR SOB PROVIDER CUSTOM ET AUSSI DATE IMMUTABLE
 // Fiche PHP new DateTimeImmutable pour créer une date et format () pour formater la date
+{
+            nom : "TAILWIND TEXT COLORS " ,
+            definition : [ 
+            "Il y a des classes utilitaires très pratiques pour la couleur du texte : ", 
+            "1/ choix d'une couleur", 
+            "2/ contraste élevé", 
+            "3/ teinte plus claire que celle spécifiée",
+            "4/ teinte plus foncée que celle spécifiée",
+            "5/ couleur du texte transparente",
+            "6/ Et il y a des classes qui crrspondent au thème du site en général, sans spécifier la couleur :",
+            "NB : ça marche aussi avec les couleurs définies par défaut ? ptet pas  ;) ",
+        ] ,
+            example : [ 
+            "1/ text-red-500", 2/ "text-red-500-contrast/ 3/ light/4/dark/ 5/ transparent",
+            "6/ text-neutral-content, text-muted, text-body, text-heading ",
+            "NB : text-accent-contrast , text-primary-light => à retester ?? "
+        ],
+            type : "TAILWIND"
+    },
+
+
 
 {
             nom : "SQL CLI - debug déploiement" ,
