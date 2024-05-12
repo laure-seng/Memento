@@ -95,8 +95,6 @@ const datas = [
             nom : "SQL CLI - debug déploiement" ,
         datas : [{"mysql -u root":"lancer en root sans mdp"},
                 {"SELECT user, host FROM mysql.user;":"voir ts les users"},
-                {"item3":"item3"},
-                {"item4":"item4"},
                 ],
         tableau : true,
         type : "BDD"
@@ -116,9 +114,9 @@ const datas = [
             "C/si je protege un truc côté front le protéger coté back Si j'ai enlevé le form en front=> enpecher de le créer en back",
         ] ,
             example : [ 
-            "",
             "A/ $shows = $this->entityManager->getRepository(Show::class)->findAll();",
             "B/ public function __construct(private MailerInterface $mailer,private $ownerMail) {}",
+            "B/ pour Request : public function __construct(private RequestStack $req",
             "C/if (!$question->isActive()) {throw $this->createAccessDeniedException('La question est bloqué');}"
         ],
             type : "AUTRES"
@@ -657,6 +655,7 @@ const datas = [
         "NB2 :Utiliser BS pour le form : rajouter ds config/packages/twig.yaml ",
         "composer require symfony translation pour traduire les mes d'erruers automatiqmt",
         "FakeFiller Extension pour remplir les forms pour test",
+        "7/ TAILWIND DS SYMFONY : a/ installer la lib et b/ l'importer ds le fichier twig tt en haut"
     ] ,
         example : [ 
             "A/ composer require symfony/form ",
@@ -672,7 +671,9 @@ const datas = [
             "5/c/ https://symfony.com/doc/current/form/form_customization.html",
             "3/ $form->handleRequest($request);",
             "NB1 :{{ form_start(formPost, {'attr' : {'novalidate' : 'novalidate'}}) }}",
-            "NB2 : twig:form_themes: ['bootstrap_5_layout.html.twig']"
+            "NB2 : twig:form_themes: ['bootstrap_5_layout.html.twig']",
+            "7a/ npm install -D @tailwindcss/forms puis ds le fichier config require :require('@tailwindcss/forms')", 
+            "7b/ {% form_theme form 'tailwind_2_layout.html.twig' %}",
     ],
         type : "SYMFONY"
     } ,
