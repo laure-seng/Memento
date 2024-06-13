@@ -99,7 +99,17 @@ const datas = [
         tableau : true,
         type : "BDD"
 },
-
+{
+    nom : "HOSTING DEBUG SECURITE" ,
+datas : [{"voir les IP qui se sont connectées":"last -i"},
+        {"monip.org":"voir mon ip"},
+        {"sudo apt-get install auditd audispd-plugins" : "installer un démon de sécu pour l'audit"},
+        {"sudo auditctl -w /chemin/vers/fichier_ou_repertoire -p wa -k surveillance_ip":"configurer le fichier d'audit"},
+        {'sudo ausearch -k surveillance_ip | grep "104.248.139.71"':'examiner'}
+        ],
+tableau : true,
+type : "HOSTING"
+},
 
 {
             nom : "TRUCS A PENSER A NE PAS OUBLIER /A TESTER SYMFONY  " ,
