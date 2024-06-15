@@ -69,6 +69,22 @@ const datas = [
 
     //RAJOUTER LE TRUC POUR FR SOB PROVIDER CUSTOM ET AUSSI DATE IMMUTABLE
 // Fiche PHP new DateTimeImmutable pour créer une date et format () pour formater la date
+
+    {
+        nom : "NGROK" ,
+        definition : [ 
+        "tunnel pour fournir un lien pour servir ", 
+        "installer ngrok cf lien sur le site", 
+        "lancer vscode et le live server ", 
+        "puis lancer ngrok http + le numéro du port",
+    "copier le lien et le partager"
+    ] ,
+        example : [ 
+        "",
+    ],
+        type : "HOSTING"
+},
+
 {
             nom : "TAILWIND TEXT COLORS " ,
             definition : [ 
