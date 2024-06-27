@@ -1764,8 +1764,6 @@ type : "HOSTING"
         type : "LINUX"
     } ,
 
-
-
     {
     nom : "Shell bases" ,
     datas : [{"history":" !ID permet d'exécuter la cmd retrouvée ds l'historique "},
@@ -1787,7 +1785,8 @@ type : "HOSTING"
             {"En vrac 2 ": "remplacer (cf doc)"},
             {"En vrac 3 ": "read reponse ; echo $reponse ;"},
             {"alias": "alias monalias='commandes'"},
-            {"désinstaller":"apt remove php8.1"}
+            {"désinstaller":"apt remove php8.1"},
+            {"installer un deb":"sudo dpkg -i package.deb"}
 
         ],
         tableau : true,
