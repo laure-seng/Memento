@@ -161,6 +161,27 @@ type : "HOSTING"
         type : "TAILWIND"
     },
     {
+        nom : "PDF AVEC SYMFONY" ,
+        definition : [ 
+        "1/ Se rendre à https://github.com/KnpLabs/KnpSnappyBundle",
+        "2/ Rajouter la ligne ds le fichier config/bundles.php",
+        "3/ S'il manque wkhtmltopdf nanana, a/ installer les fonts",
+        "3/b/ Aller à : https://wkhtmltopdf.org/index.html et télécharger le .deb ",
+        "3/b Ds le répertoire de téléchargements, exécuter : "
+    ] ,
+        example : [ 
+            "2/ return [",
+                "//...",
+                "Knp\Bundle\SnappyBundle\KnpSnappyBundle::class => ['all' => true],",
+                //...
+            "];",
+            "3/a/sudo apt-get install -y",
+            "3/a/sudo apt-get install -y xfonts-75dpi",
+            "3/b/sudo dpkg -i wkhtmltox_0.12.6-1.focal_amd64.deb"
+    ],
+        type : "SYMFONY"
+    },
+    {
             nom : "CODES HTTP SYMFONY RESPONSE" ,
             datas : [{"200":"HTTP_OK"},
                     {"201":"HTTP_CREATED"},
