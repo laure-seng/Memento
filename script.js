@@ -69,7 +69,22 @@ const datas = [
 
     //RAJOUTER LE TRUC POUR FR SOB PROVIDER CUSTOM ET AUSSI DATE IMMUTABLE
 // Fiche PHP new DateTimeImmutable pour créer une date et format () pour formater la date
-
+    {
+        nom : "PHP VERSIONS" ,
+        definition : [ 
+        "1/ Forcer l'utilisation d'une version de PHP =>", 
+        "faire un lien symbolique 'php' vers la version qu'on veut utiliser", 
+        "Exporter la variable d'environnement", 
+        "",
+    ""
+    ] ,
+        example : [ 
+        "1/a mkdir -p $HOME/bin",
+        "1/b ln -sfn /usr/bin/php8.1 $HOME/bin/php",
+        "1/c export PATH=$HOME/bin:$PATH"
+    ],
+        type : "PHP"
+    },
     {
         nom : "NGROK" ,
         definition : [ 
@@ -84,7 +99,17 @@ const datas = [
     ],
         type : "HOSTING"
 },
-
+{
+    nom : "ZSH BASH SHELL" ,
+    definition : [ 
+    "changer de shell par défaut", 
+    
+] ,
+    example : [ 
+    "chsh -s $(which zsh)",
+],
+    type : "LINUX"
+},
 {
             nom : "TAILWIND TEXT COLORS " ,
             definition : [ 
@@ -1094,6 +1119,7 @@ type : "HOSTING"
     {   nom : "NPM NVM install" ,
         definition : ["Installer npm avec nvm et verifier la version ",
         "Et là où il est installé",
+        "on peut forcer les versions avec un fichier .nvmrc , à essayer !"
         ],
         example : [ 
         "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash\n",
@@ -1763,7 +1789,17 @@ type : "HOSTING"
         "export PS1=\"\e[1;91m\A\e[1;36m\d\e[1;33m\\u\e[1;31m@\e[1;33m\H\e[1;35m\w]\$\e[m \""] ,
         type : "LINUX"
     } ,
+    {
+        nom : "Flatpack" ,
+        definition : ["Où sont les binaires des logiciels installés via FlatPak ?", 
+            "Comment les lancer depuis le terminal ?",
+            "Exp pour Flameshot"
+                ] ,
 
+        example : ["/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=/app/bin/flameshot org.flameshot.Flameshot"
+        ] ,
+        type : "LINUX"
+    } ,
     {
     nom : "Shell bases" ,
     datas : [{"history":" !ID permet d'exécuter la cmd retrouvée ds l'historique "},
@@ -2262,8 +2298,14 @@ type : "HOSTING"
     } ,
     {
     nom : "$PATH" ,
+    definition : [
+        "Variable d'environnement",
+        "On la déclare dans le .bashrc, .zshrc etc...",
+        "chemin vers les binaires =exécutables des programmes" , 
+        "?? ?? à modifier, dans votre environnement, en utilisant votre .bash_profile", 
+        "— celui qui est enregistré dans /Users/votrenomdutilisateur/.bash_profile",
+    ] ,
     example : ["$PATH=/usr/bin/local"] ,
-    definition : ["chemin vers les binaires =exécutables des programmes" , "à modifier, dans votre environnement, en utilisant votre .bash_profile", "— celui qui est enregistré dans /Users/votrenomdutilisateur/.bash_profile"] ,
     type : "LINUX"
     } 
 ]
