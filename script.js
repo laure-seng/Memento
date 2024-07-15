@@ -69,6 +69,32 @@ const datas = [
 
     //RAJOUTER LE TRUC POUR FR SOB PROVIDER CUSTOM ET AUSSI DATE IMMUTABLE
 // Fiche PHP new DateTimeImmutable pour créer une date et format () pour formater la date
+
+
+{
+    nom : "SCP" ,
+    definition : [ 
+        "scp -P numPort -r fichiersAEnvoyer user@hôte:dossierDestination"
+] ,
+    example : [ 
+    "scp -P 5022 -r . gvvnfdht@node10-eu.n0c.com:/home/gvvnfdht/laure/testcicd",
+],
+    type : "LINUX"
+},
+{
+    nom : "TAR" ,
+    definition : [ 
+    "1/ Compresser --create", 
+    "2/ Décompresser --extract ", 
+    "3/Autres arguments :"
+] ,
+    example : [ 
+    "1/tar -czf nomDeLarchive.tar.gz noms-des-fichiers-a-compresser ",
+    "2/tar -xzf nomDeLarchive.tar.gz -C dossierOùDécompresser",
+    "3/-v verbeux, -j bzip"
+],
+    type : "LINUX"
+},
     {
         nom : "PHP VERSIONS" ,
         definition : [ 
@@ -134,8 +160,13 @@ const datas = [
 
 {
             nom : "SQL CLI - debug déploiement" ,
-        datas : [{"mysql -u root":"lancer en root sans mdp"},
+        datas : [{"sudo mysql -u root":"lancer en root sans mdp"},
                 {"SELECT user, host FROM mysql.user;":"voir ts les users"},
+                {"ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'nvMDP';" : "changer MDP root"},
+                {"CREATE USER 'new_user'@'localhost' IDENTIFIED BY 'new_password';":"créer user"},
+                {"GRANT ALL PRIVILEGES ON database_name.* TO 'new_user'@'localhost';" : "donner des privilèges à une BDD"},
+                {"FLUSH PRIVILEGES;" : "appliquer les privilèges"},
+                {"CREATE DATABASE nom_de_bdd;":"créer BDD"}
                 ],
         tableau : true,
         type : "BDD"
