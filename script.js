@@ -72,6 +72,118 @@ const datas = [
 
 
 {
+    nom : "SQL remettre les id à zéro" ,
+    definition : [ 
+    "1/ S'il y a des FK impliquées les désactiver.", 
+    "2/ Puis tronquer la table", 
+    "Réactiver les FK"
+    ] ,
+    example : [ 
+    "1/ SET FOREIGN_KEY_CHECKS = 0;",
+    "2/ TRUNCATE TABLE training_courses;",
+    "3/ SET FOREIGN_KEY_CHECKS = 1;",
+
+],
+    type : "LARAVEL"
+},
+{
+    nom : "LARAVEL CREER MODEL + MIGRATION + etc " ,
+    definition : [ 
+    "1/ Model + migration", 
+    "2/ + controller + factory", 
+    ] ,
+    example : [ 
+    "1/ php artisan make:model Category -m",
+    "2/ php artisan make:model Category -mcf",
+
+],
+    type : "LARAVEL"
+},
+{
+    nom : "LARAVEL CREER UNE MANY TO ONE" ,
+    definition : [ 
+    "1/ Créer les deux tables",
+    "2/ Modifier les migrations et models", 
+    "3/ Bien distinguer quel model porte la foreign key", 
+    "3/ Pour utiliser les relations dans les modèles :",
+    "3/a C'est lui qui aura le belongTo", 
+    "3/b L'autre aura le HasMany",
+    ] ,
+    example : [ 
+    "1/ php artisan make:model Category -m",
+    "3a/ public function trainingCourses(){return $this->hasMany(TrainingCourse::class, 'category_training_course');}",      
+    "3b/ public function modules(){return $this->belongsToMany(Module::class, 'category_training_course');}",      
+],
+    type : "LARAVEL"
+},
+{
+    nom : "LARAVEL CREER UNE MANY TO MANY" ,
+    definition : [ 
+    "1/ Créer les deux tables puis la table pivot",
+    "1/nb le nom de la table pivot respecte l'ordre alphabétiq des noms des deux tables", 
+    "2/ Modifier la migration avec les foreign keys", 
+    "3/ Exécuter la migration", 
+    "4/ Utiliser la relation dans le modèle",
+    ] ,
+    example : [ 
+    "1/ php artisan make:migration create_machintruc_table",
+    "Exp : table book_user",
+    "2/ $table->foreignId('category_id')->constrained()->onDelete('cascade');",
+    "2/$table->foreignId('training_course_id')->constrained()->onDelete('cascade');",   
+    "3/ php artisan migrate",
+    "4/ public function trainingCourses(){return $this->belongsToMany(TrainingCourse::class, 'category_training_course');}",      
+],
+    type : "LARAVEL"
+},
+{
+    nom : "LARAVEL CREER UNE TABLE VIA MIGRATION" ,
+    definition : [ 
+    "1/ Créer une migration", 
+    "2/ Modifier la migration dans le up()", 
+    "2b/Et dans le down()", 
+    "3/ Autre exp pour renommer les colonnes",
+    ] ,
+    example : [ 
+    "1/ php artisan make:migration create_machintruc_table",
+    "2a/ Schema::table('testimonials', function (Blueprint $table){$table->id();$table->timestamps();});",
+    "2b/ Schema::dropIfExists('testimonials');});",   
+    "3a/ Schema::table('testimonials', function (Blueprint $table){$table->renameColumn('abc', 'ABC');});",
+    "3b/ Schema::table('testimonials', function (Blueprint $table){$table->renameColumn('ABC', 'abc');});",      
+],
+    type : "LARAVEL"
+},
+
+
+
+{
+    nom : "LARAVEL SEEDERS " ,
+    definition : [ 
+        "1/ Créer le seeder",
+        "2/ Modifier le Seeder",
+        "3/ Le rajouter dans DatabaseSeeder",
+        "4/a/ Le lancer ou 4/b Relancer tous les seeders"
+] ,
+    example : [ 
+    "1/ php artisan make:seeder MonSeeder",
+    "2/ DB::table('membersNews')->insert([['title' => $membersNew['title'],]]);",
+    "3/ $this->call([UsersTableSeeder::class]);",
+    "4/a php artisan db:seed --class=MaTablesSeeder",
+    "4/b php artisan migrate:refresh --seed",
+],
+    type : "LARAVEL"
+}, 
+{
+        nom : "LARAVEL COMMANDES BASES" ,
+        datas : [{"version ":"php artisan --version"},
+                {"drop BD":"php artisan migrate:reset"},
+                {"apply migrations":"php artisan migrate "},
+                {"drop et recréer":"php artisan migrate:fresh"},
+                ],
+        tableau : true,
+        type : "LARAVEL"
+        },
+
+{
     nom : "SCP" ,
     definition : [ 
         "scp -P numPort -r fichiersAEnvoyer user@hôte:dossierDestination"
@@ -1166,9 +1278,12 @@ type : "HOSTING"
     {   nom : "HISTORY" ,
         definition : ["history | grep sass",
         "history et le numéro de la commande",
+        "1/mettre à jour le fichier .bash_history ",
+        "2/ L'éditer"
         ],
         example : [ 
-        "",
+        "1/ history -a",
+        "2/ vi ~/.bash_history",
         ],
         type : "LINUX"
     },
