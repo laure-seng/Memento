@@ -29,6 +29,7 @@ const JSfilterLink=document.getElementById("JSfilter")
 const TAILWINDfilterLink=document.getElementById("TAILWINDfilter")
 const PHPfilterLink=document.getElementById("PHPfilter")
 const SYMFONYfilterLink=document.getElementById("SYMFONYfilter")
+const LARAVELfilterLink=document.getElementById("LARAVELfilter")
 const BDDfilterLink=document.getElementById("BDDfilter")
 const HOSTINGfilterLink=document.getElementById("HOSTINGfilter")
 const LINUXfilterLink=document.getElementById("LINUXfilter")
@@ -65,11 +66,73 @@ const datas = [
 //     ],
 //         type : "CSS"
 // },
+{
+    nom : "CHEMINS PHP et WP " ,
+    datas : [{"__DIR__":"chemin absolu du répertoire contenant le fichier où elle est utilisée"},
+            {"dirname(chemin, nb de niveaux)":"chemin du répertoire parent d’un chemin donné"},
+            {"dirname(__FILE__);":"__DIR__"},
+            {"dirname(__FILE__, 2)":"Parent à 2 niveaux"},
+            {"__FILE__":"chemin absolu du fichier courant avec le nom du fichier"},
+            {"get_template_directory()":"chemin absolu vers le répertoire du thème actif"},
+            {"get_template_directory_uri()":"URL vers le répertoire du thème actif."},
+            {"get_stylesheet_directory()":"chemin absolu vers le répertoire du thème enfant si existant sinon du thème parent"},
+            {"get_stylesheet_directory_uri()":"idem ci-dessus ms URL"},
+            {"plugin_dir_path(__FILE__)":"chemin absolu du plugin contenant le fichier spécifié"},
+            {"plugins_url()":"idem ci-dessus ms URL"},
+            {"WP_PLUGIN_DIR":" chemin absolu de base des plugins"},
+            {"WP_PLUGIN_URL":"URL absolue de base des plugins"},
 
+            ],
+    tableau : true,
+    type : "PHP"
+},
+{
+    nom : "IMAGEMAGICK" ,
+    datas : [{"installer":"sudo apt-get install imagemagick"},
+            {"convertir les jpg du dossier en webp":"mogrify -path ./mondossier -format webp *.jpg"},
+            ],
+    tableau : true,
+    type : "LINUX"
+    },
+{
+    nom : "UTILISER <template>" ,
+    definition : [ 
+    "On va créer un morceau de html qui ne sera pas affiché dans un élément <template>.", 
+    " Son id nous permettra de l'identifier facilement.",
+    "On pourra l'utiliser via JS en en faisant des clones qu'on réinjectera", 
+    "En pratique : 1/ Récupérer le contenu du template. 2/ Le cloner puis le modifier.  3/ Le réinjecter."
+    ] ,
+    example : [ 
+    "1/ let moduleFormTemplate = document.getElementById('module_form_tpl').content;",
+    "2/ let moduleFormClone = document.importNode(moduleFormTemplate, true);",
+    "3/ moduleContainer.appendChild(moduleFormClone);",
 
-    //RAJOUTER LE TRUC POUR FR SOB PROVIDER CUSTOM ET AUSSI DATE IMMUTABLE
-// Fiche PHP new DateTimeImmutable pour créer une date et format () pour formater la date
-
+],
+    type : "HTML"
+},
+{
+    nom : "UTILISER UN DATASET" ,
+    definition : [ 
+    "Attribut HTML qui va permettre de 1/ stocker une valeur dans l'HTML", 
+    "2/ qu'on pourra récupérer via JS",
+    ] ,
+    example : [ 
+    "1/ data-order='1' ",
+    "2/ let order = test.dataset.order ;",
+],
+    type : "HTML"
+},
+{
+    nom : "Quelques propriétés pour cibler un élément du DOM" ,
+    datas : [{"button.closest('.module-form');":"l'élément .module-form parent du bouton"},
+            {"item.previousElementSibling":"premier élément précédent"},
+            {"item.previousElementSibling":"premier élément suivant"},
+            {"item.nextElementSibling":""},
+            {"moduleForm.querySelector('input[id*='moduleOrder']');":"l’input de moduleForm dont l’id contient le string “moduleOrder”"},
+            ],
+    tableau : true,
+    type : "JS"
+    },
 
 {
     nom : "SQL remettre les id à zéro" ,
@@ -84,7 +147,7 @@ const datas = [
     "3/ SET FOREIGN_KEY_CHECKS = 1;",
 
 ],
-    type : "LARAVEL"
+    type : "BDD"
 },
 {
     nom : "LARAVEL CREER MODEL + MIGRATION + etc " ,
@@ -153,8 +216,6 @@ const datas = [
     type : "LARAVEL"
 },
 
-
-
 {
     nom : "LARAVEL SEEDERS " ,
     definition : [ 
@@ -186,10 +247,12 @@ const datas = [
 {
     nom : "SCP" ,
     definition : [ 
-        "scp -P numPort -r fichiersAEnvoyer user@hôte:dossierDestination"
+        "scp -P numPort -r fichiersAEnvoyer user@hôte:dossierDestination",
+        '2/ si il y a erreur de clé privée, on pt forcerà utiliser la meme clé que ssh'
 ] ,
     example : [ 
     "scp -P 5022 -r . gvvnfdht@node10-eu.n0c.com:/home/gvvnfdht/laure/testcicd",
+    "2/ scp -i /chemin/vers/votre/cle_privee -r /mondossieràenvoyer/* user@host:/dossier/destination/"
 ],
     type : "LINUX"
 },
@@ -230,10 +293,12 @@ const datas = [
         "installer ngrok cf lien sur le site", 
         "lancer vscode et le live server ", 
         "puis lancer ngrok http + le numéro du port",
-    "copier le lien et le partager"
+        "copier le lien et le partager",
+        "1/ Cas d'un site WP ",
     ] ,
         example : [ 
-        "",
+
+        "1/ngrok http 80 --host-header=rewrite ",
     ],
         type : "HOSTING"
 },
@@ -1585,7 +1650,7 @@ type : "HOSTING"
                     "php artisan key:generate",
                     "php artisan serve"
     ],
-        type : "PHP"
+        type : "LARAVEL"
     } ,
     {
         nom : "LARAVEL BASES A SAVOIR VRAC" ,
@@ -1599,7 +1664,7 @@ type : "HOSTING"
                     "php artisan make:model Task",
                     "php artisan make:controller Task",
     ],
-        type : "PHP"
+        type : "LARAVEL"
     } ,
     {
             nom : "LARAVEL ELOQUENT RELATIONSHIPS One to One" ,
@@ -1616,7 +1681,7 @@ type : "HOSTING"
                 ""
 
         ],
-            type : "PHP"
+            type : "LARAVEL"
         } ,
     {
         nom : "DOCKER-Commandes de base" ,
@@ -2546,6 +2611,7 @@ JSfilterLink.addEventListener("click",()=>filter("JS"))
 TAILWINDfilterLink.addEventListener("click",()=>filter("TAILWIND"))
 PHPfilterLink.addEventListener("click",()=>filter("PHP"))
 SYMFONYfilterLink.addEventListener("click",()=>filter("SYMFONY"))
+LARAVELfilterLink.addEventListener("click",()=>filter("LARAVEL"))
 BDDfilterLink.addEventListener("click",()=>filter("BDD"))
 HOSTINGfilterLink.addEventListener("click",()=>filter("HOSTING"))
 LINUXfilterLink.addEventListener("click",()=>filter("LINUX"))
@@ -2704,13 +2770,24 @@ function displayCard(dataArray){
             switch (data.type) {
                 case 'HTML':
                 typeImageSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" ;
-                console.log(data.type)
                 break;
                 case 'CSS':
                 typeImageSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" ;
                 break;
                 case 'JS':
                 typeImageSrc="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg";
+                break;
+                case 'TAILWIND':
+                typeImageSrc="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" ;
+                break;
+                case 'PHP':
+                typeImageSrc="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg";
+                break;
+                case 'SYMFONY':
+                typeImageSrc="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/symfony/symfony-original.svg";
+                break;
+                case 'LARAVEL':
+                typeImageSrc="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg";
                 break;
                 case 'OTHERS':
                 typeImageSrc="https://icongr.am/material/cat.svg?size=128&color=currentColor" ;
