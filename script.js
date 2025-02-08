@@ -771,7 +771,7 @@ type : "HOSTING"
         datas : [
             {"Tailles possibles(variable)":"xs sm md lg xl 2xl 3xl 4xl 5xl 6xl full"},
             {"background":"bg-couleur-luminosité(100 200 etc)"},
-            {"texte taille":"text-xs, text-lg etcc "},
+            {"texte taille":"text-xs, text-lg etcc--> 9xl "},
             {"texte font":"font-bold italic font-mono text-gray-800 text-red-500-contrast "},
             {"ombre portée ":"shadow-lg / shadow-inner(intér.) /shadow-outline "},
             {"border":"border border-gray-300 rounded"},
@@ -1151,6 +1151,7 @@ type : "HOSTING"
         "Dans Doctrine, le \"owner\" de la relation est important, c'est celui sur leqL on fait make:entity",
         "il pt y avoir des bugs car doctrine regarde l'état de la table maitre qd on flush",
         "1/ Avec la console, ça va créer la propriété crrspdt au nom de la 2e entité au pluriel dans l'entité 1",
+        "Pour le nom de la propriété, bien mettre le pluriel de l'entite2, sans majuscule",
         "On met type=ManyToMany",
         "On répond oui aux questions, on récupérera facilement entite1.entite2s et entite2.entite1s",
         "2/Dans entite.php,on reconnait le owner=maitre par 'inversedBy',l'autre c'est celui qui a le 'mappedBy' ",
